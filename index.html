@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SR Cleaning Solutions - Premium V4</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--gold:#d4af37;--navy:#0f172a;--light:#f8fafc}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Inter,sans-serif;background:#fff;color:#475569;overflow-x:hidden}
+.container{width:min(1200px,92%);margin:auto}
+.nav{position:fixed;top:0;width:100%;z-index:999;background:rgba(15,23,42,.8);backdrop-filter:blur(15px)}
+.navin{display:flex;justify-content:space-between;align-items:center;padding:16px}
+.logo{color:#fff;font:700 28px Fraunces,serif}
+.menu{display:flex;gap:20px}
+.menu a{text-decoration:none;color:#fff}
+.hero{min-height:100vh;display:flex;align-items:center;background:linear-gradient(rgba(15,23,42,.75),rgba(15,23,42,.75)),url('https://images.unsplash.com/photo-1484154218962-a197022b5858?q=80&w=2000&auto=format&fit=crop') center/cover}
+.hero h1{font:700 clamp(3rem,8vw,6rem) Fraunces,serif;color:#fff}
+.hero p{color:#e2e8f0;max-width:650px;margin:20px 0}
+.btn{display:inline-block;padding:14px 24px;border-radius:999px;text-decoration:none;font-weight:600}
+.gold{background:var(--gold);color:#111}
+.out{border:1px solid #fff;color:#fff}
+.actions{display:flex;gap:15px;flex-wrap:wrap}
+section{padding:90px 0}
+.title{text-align:center;font:700 clamp(2rem,5vw,3.5rem) Fraunces,serif;color:var(--navy)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px;margin-top:40px}
+.card{background:#fff;padding:30px;border-radius:24px;box-shadow:0 15px 40px rgba(0,0,0,.08)}
+.featured{border-top:5px solid var(--gold)}
+.review{border-left:4px solid var(--gold)}
+.cta{background:var(--navy);text-align:center}
+.cta h2{color:#fff;font:700 3rem Fraunces,serif}
+.float{position:fixed;right:18px;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:26px}
+.call{bottom:90px;background:var(--gold);color:#111}
+.wa{bottom:18px;background:#25D366;color:#fff}
+.footer{text-align:center;padding:30px}
+.mobile-btn{display:none;color:#fff;font-size:28px;cursor:pointer}
+@media(max-width:768px){
+.menu{display:none}
+.mobile-btn{display:block}
+.hero{text-align:center}
+.actions{justify-content:center}
+}
+</style>
+</head>
+<body>
+<nav class="nav">
+<div class="container navin">
+<div class="logo">SR Cleaning Solutions</div>
+<div class="menu">
+<a href="#services">Services</a>
+<a href="#reviews">Reviews</a>
+<a href="#about">About</a>
+</div>
+<div class="mobile-btn">☰</div>
+</div>
+</nav>
+
+<section class="hero">
+<div class="container">
+<h1>A Spotless Home. No Effort Required.</h1>
+<p>Premium residential cleaning with meticulous attention to detail. Call or WhatsApp us and we'll take care of the rest.</p>
+<div class="actions">
+<a href="tel:+919494239260" class="btn gold">Call Now</a>
+<a href="https://wa.me/919494239260" class="btn out">WhatsApp</a>
+</div>
+</div>
+</section>
+
+<section>
+<div class="container">
+<h2 class="title">How It Works</h2>
+<div class="cards">
+<div class="card"><h3>01. Contact Us</h3><p>Call or WhatsApp us instantly.</p></div>
+<div class="card"><h3>02. Schedule</h3><p>Choose your preferred cleaning time.</p></div>
+<div class="card"><h3>03. Relax</h3><p>Enjoy a spotless, refreshed home.</p></div>
+</div>
+</div>
+</section>
+
+<section id="services" style="background:#f8fafc">
+<div class="container">
+<h2 class="title">Clear Cleaning Checklists</h2>
+<div class="cards">
+<div class="card"><h3>Standard Clean</h3><ul><li>Dusting</li><li>Vacuuming</li><li>Bathrooms</li><li>Kitchen</li></ul></div>
+<div class="card featured"><h3>Deep Clean</h3><ul><li>Baseboards</li><li>Grout Scrubbing</li><li>Fans & Vents</li><li>Detailed Cleaning</li></ul></div>
+<div class="card"><h3>Move In/Out</h3><ul><li>Cabinets</li><li>Appliances</li><li>Windows</li><li>Inspection Ready</li></ul></div>
+</div>
+</div>
+</section>
+
+<section id="reviews">
+<div class="container">
+<h2 class="title">What Clients Are Saying</h2>
+<div class="cards">
+<div class="card review"><p>Add customer reviews here.</p><strong>Client Name</strong></div>
+</div>
+</div>
+</section>
+
+<section id="about">
+<div class="container">
+<h2 class="title">Dedicated, Reliable & Local</h2>
+<p style="text-align:center;max-width:700px;margin:20px auto">Every home is treated with care, professionalism and attention to detail.</p>
+</div>
+</section>
+
+<section class="cta">
+<div class="container">
+<h2>Your Home Deserves The Best.</h2>
+<p style="color:#cbd5e1;margin:15px 0">Let's talk today.</p>
+<div class="actions" style="justify-content:center">
+<a href="tel:+919494239260" class="btn gold">Call Now</a>
+<a href="https://wa.me/919494239260" class="btn out">WhatsApp</a>
+</div>
+</div>
+</section>
+
+<div class="footer">© 2026 SR Cleaning Solutions</div>
+
+<a class="float call" href="tel:+919494239260">📞</a>
+<a class="float wa" href="https://wa.me/919494239260">💬</a>
+</body>
+</html>
