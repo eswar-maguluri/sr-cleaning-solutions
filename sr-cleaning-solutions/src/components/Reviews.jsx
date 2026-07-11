@@ -67,7 +67,7 @@ export default function Reviews() {
                 border border-white/10
                 rounded-[32px]
                 p-8
-                h-[280px]
+                min-h-[280px]
                 flex flex-col
                 justify-between
                 "

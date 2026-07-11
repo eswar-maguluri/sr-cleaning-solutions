@@ -2,9 +2,12 @@ import "./globals.css";
 
 export const metadata = {
   title: "SR Cleaning Solutions",
-  description: "Premium Residential Cleaning",
+  description: "Professional Home Cleaning Services",
 };
-
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
