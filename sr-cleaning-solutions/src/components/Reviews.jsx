@@ -7,8 +7,10 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination, Autoplay } from "swiper/modules";
+import { useLanguage } from "../context/LanguageContext";
 
 export default function Reviews() {
+  const { t } = useLanguage();
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
     loadReviews();
@@ -38,7 +40,7 @@ export default function Reviews() {
           mb-16
           "
         >
-          What Clients Are Saying
+          {t.reviews.heading}
         </h2>
         <Swiper
           slidesPerView={1}

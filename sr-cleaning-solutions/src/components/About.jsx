@@ -1,4 +1,8 @@
+"use client";
+
+import { useLanguage } from "../context/LanguageContext";
 export default function About() {
+  const { t } = useLanguage();
   return (
     <section
       id="about"
@@ -6,12 +10,10 @@ export default function About() {
     >
       <div className="max-w-5xl mx-auto px-5 md:px-6 text-center">
         <h2 className="text-3xl md:text-5xl font-bold text-white">
-          Dedicated, Reliable & Local
+          {t.about.heading}
         </h2>
         <p className="mt-6 md:mt-8 text-base md:text-xl text-slate-300 leading-relaxed">
-          Every home is treated with care, respect, and attention to detail.
-          Our mission is simple: deliver a spotless home and complete peace of
-          mind.
+          {t.about.text}
         </p>
       </div>
     </section>

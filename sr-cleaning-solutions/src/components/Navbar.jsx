@@ -2,48 +2,71 @@
 
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { useLanguage } from "../context/LanguageContext";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+
+  const { language, changeLanguage, t } = useLanguage();
+
   const closeMenu = () => setOpen(false);
+
   return (
     <>
-      {/* NAVBAR */}
       <nav className="fixed top-0 left-0 w-full z-50 backdrop-blur-2xl bg-black/40 border-b border-white/10">
-        <div className="max-w-7xl mx-auto px-6">
+        <div className="max-w-7xl mx-auto px-5 md:px-6">
           <div className="h-20 flex items-center justify-between">
-            {/* LOGO */}
-            <a
-              href="#"
-              className="font-bold tracking-tight"
-            >
-              <span className="text-white text-2xl md:text-3xl">
+
+            <a href="#" className="font-bold tracking-tight">
+              <span className="text-white text-xl md:text-3xl">
                 SR Cleaning
               </span>
-              <span className="text-yellow-400 text-2xl md:text-3xl">
+              <span className="text-yellow-400 text-xl md:text-3xl">
                 {" "}Solutions
               </span>
             </a>
-            {/* DESKTOP MENU */}
-            <div className="hidden md:flex items-center gap-10">
+
+            <div className="hidden md:flex items-center gap-8">
+
               <a
                 href="#services"
                 className="text-white/80 hover:text-yellow-400 transition"
               >
-                Services
+                {t.navbar.services}
               </a>
+
               <a
                 href="#reviews"
                 className="text-white/80 hover:text-yellow-400 transition"
               >
-                Reviews
+                {t.navbar.reviews}
               </a>
+
               <a
                 href="#about"
                 className="text-white/80 hover:text-yellow-400 transition"
               >
-                About
+                {t.navbar.about}
               </a>
+
+              <select
+                value={language}
+                onChange={(e) => changeLanguage(e.target.value)}
+                className="
+                bg-white/10
+                border
+                border-white/20
+                text-white
+                rounded-xl
+                px-3
+                py-2
+                outline-none
+                "
+              >
+                <option value="en">English</option>
+                <option value="te">తెలుగు</option>
+              </select>
+
               <a
                 href="tel:+919494239260"
                 className="
@@ -61,10 +84,10 @@ export default function Navbar() {
                 hover:scale-105
                 "
               >
-                Call Now
+                {t.navbar.callNow}
               </a>
             </div>
-            {/* MOBILE BUTTON */}
+
             <button
               onClick={() => setOpen(true)}
               className="md:hidden text-white"
@@ -74,7 +97,7 @@ export default function Navbar() {
           </div>
         </div>
       </nav>
-      {/* BACKDROP */}
+
       <div
         onClick={closeMenu}
         className={`
@@ -91,7 +114,7 @@ export default function Navbar() {
         md:hidden
         `}
       />
-      {/* MOBILE MENU */}
+
       <div
         className={`
         fixed
@@ -113,11 +136,11 @@ export default function Navbar() {
         md:hidden
         `}
       >
-        {/* HEADER */}
         <div className="flex items-center justify-between px-6 h-20 border-b border-white/10">
           <h2 className="text-white text-2xl font-bold">
             Menu
           </h2>
+
           <button
             onClick={closeMenu}
             className="text-white"
@@ -125,45 +148,53 @@ export default function Navbar() {
             <X size={32} />
           </button>
         </div>
-        {/* LINKS */}
-        <div className="flex flex-col items-center justify-center flex-1 gap-10">
+
+        <div className="flex flex-col items-center justify-center flex-1 gap-8 px-6">
+
+          <select
+            value={language}
+            onChange={(e) => changeLanguage(e.target.value)}
+            className="
+            w-full
+            bg-white/10
+            border
+            border-white/20
+            text-white
+            rounded-xl
+            px-4
+            py-3
+            "
+          >
+            <option value="en">English</option>
+            <option value="te">తెలుగు</option>
+          </select>
+
           <a
             href="#services"
             onClick={closeMenu}
-            className="
-            text-3xl
-            text-white
-            hover:text-yellow-400
-            transition
-            "
+            className="text-3xl text-white"
           >
-            Services
+            {t.navbar.services}
           </a>
+
           <a
             href="#reviews"
             onClick={closeMenu}
-            className="
-            text-3xl
-            text-white
-            hover:text-yellow-400
-            transition
-            "
+            className="text-3xl text-white"
           >
-            Reviews
+            {t.navbar.reviews}
           </a>
+
           <a
             href="#about"
             onClick={closeMenu}
-            className="
-            text-3xl
-            text-white
-            hover:text-yellow-400
-            transition
-            "
+            className="text-3xl text-white"
           >
-            About
+            {t.navbar.about}
           </a>
-          <div className="flex flex-col gap-4 w-[85%] mt-8">
+
+          <div className="flex flex-col gap-4 w-full mt-4">
+
             <a
               href="tel:+919494239260"
               className="
@@ -175,8 +206,9 @@ export default function Navbar() {
               font-semibold
               "
             >
-              Call Now
+              {t.navbar.callNow}
             </a>
+
             <a
               href="https://wa.me/919494239260"
               className="
@@ -188,8 +220,9 @@ export default function Navbar() {
               text-center
               "
             >
-              WhatsApp Us
+              {t.navbar.whatsapp}
             </a>
+
           </div>
         </div>
       </div>

@@ -2,8 +2,11 @@
 
 import { useEffect } from "react";
 import gsap from "gsap";
+import { useLanguage } from "../context/LanguageContext";
 
 export default function Hero() {
+  const { t } = useLanguage();
+
   useEffect(() => {
     gsap.from(".hero-badge", {
       opacity: 0,
@@ -35,7 +38,7 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Background */}
+
       <div
         className="absolute inset-0 bg-cover bg-center scale-105"
         style={{
@@ -44,17 +47,13 @@ export default function Hero() {
         }}
       />
 
-      {/* Overlay */}
       <div className="absolute inset-0 bg-black/75" />
 
-      {/* Gold Glow */}
       <div className="absolute top-0 right-0 w-[700px] h-[700px] bg-yellow-500/10 blur-[180px] rounded-full" />
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-yellow-400/10 blur-[150px] rounded-full" />
 
-      {/* Content */}
       <div className="max-w-7xl mx-auto px-5 sm:px-6 relative z-10 pt-24 md:pt-0">
 
-        {/* Badge */}
         <div
           className="
           hero-badge
@@ -70,10 +69,9 @@ export default function Hero() {
           sm:text-sm
           "
         >
-          Certified Independent Cleaner
+          {t.hero.badge}
         </div>
 
-        {/* Heading */}
         <h1
           className="
           hero-title
@@ -88,12 +86,11 @@ export default function Hero() {
           max-w-5xl
           "
         >
-          A Spotless Home.
+          {t.hero.title1}
           <br />
-          No Effort Required.
+          {t.hero.title2}
         </h1>
 
-        {/* Description */}
         <p
           className="
           hero-text
@@ -106,12 +103,9 @@ export default function Hero() {
           leading-relaxed
           "
         >
-          We handle the dusting, deep scrubbing, and heavy lifting so you
-          come home to absolute peace. Thorough, reliable, and tailored
-          entirely to your lifestyle.
+          {t.hero.text}
         </p>
 
-        {/* Buttons */}
         <div
           className="
           hero-buttons
@@ -141,7 +135,7 @@ export default function Hero() {
             shadow-yellow-500/20
             "
           >
-            Call +91 9494239260
+            {t.navbar.callNow}
           </a>
 
           <a
@@ -164,11 +158,10 @@ export default function Hero() {
             duration-300
             "
           >
-            WhatsApp Us
+            {t.navbar.whatsapp}
           </a>
         </div>
 
-        {/* Trust Badges */}
         <div
           className="
           mt-10
@@ -180,20 +173,19 @@ export default function Hero() {
           "
         >
           <div className="bg-white/5 border border-white/10 backdrop-blur-xl rounded-2xl p-4 text-white text-sm">
-            ✓ 100% Satisfaction
+            ✓ {t.hero.satisfaction}
           </div>
 
           <div className="bg-white/5 border border-white/10 backdrop-blur-xl rounded-2xl p-4 text-white text-sm">
-            ✓ Trusted Service
+            ✓ {t.hero.trusted}
           </div>
 
           <div className="hidden sm:block bg-white/5 border border-white/10 backdrop-blur-xl rounded-2xl p-4 text-white text-sm">
-            ✓ All Supplies Provided
+            ✓ {t.hero.supplies}
           </div>
         </div>
       </div>
 
-      {/* Desktop Scroll Indicator */}
       <div
         className="
         hidden md:flex

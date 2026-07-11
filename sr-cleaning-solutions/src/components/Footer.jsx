@@ -1,4 +1,10 @@
+"use client";
+
+import { useLanguage } from "../context/LanguageContext";
+
 export default function Footer() {
+  const { t } = useLanguage();
+
   return (
     <footer className="bg-[#050b14] border-t border-white/10">
       <div className="max-w-7xl mx-auto px-5 md:px-6 py-12 md:py-16">
@@ -9,8 +15,7 @@ export default function Footer() {
           </h3>
 
           <p className="text-slate-400 mt-4 max-w-md mx-auto text-sm md:text-base">
-            Premium residential cleaning with exceptional attention to detail
-            and customer care.
+            {t.footer.text}
           </p>
 
           <div className="mt-8 flex flex-col gap-3">
