@@ -1,36 +1,161 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SR Cleaning Solutions
 
-## Getting Started
+### Live Demo
+https://sr-cleaning-solutions.vercel.app/
 
-First, run the development server:
+### GitHub Repository
+https://github.com/eswar-maguluri/sr-cleaning-solutions
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## Overview
+
+SR Cleaning Solutions is a modern multilingual cleaning services website built using Next.js, React, Tailwind CSS, Firebase Firestore, and Vercel.
+
+The platform allows customers to browse cleaning services, switch between English and Telugu, read customer reviews, submit feedback, and contact the business instantly through Phone, WhatsApp, or Email.
+
+---
+
+## Features
+
+- English & Telugu Language Support
+- Mobile-First Responsive Design
+- Customer Review System
+- Firebase Firestore Integration
+- Click-to-Call Support
+- WhatsApp Integration
+- Business Email Integration
+- GSAP Animations
+- Fast Deployment with Vercel
+
+---
+
+## Tech Stack
+
+### Frontend
+- Next.js
+- React.js
+- Tailwind CSS
+
+### Backend & Database
+- Firebase Firestore
+
+### Libraries
+- GSAP
+- Lucide React
+
+### Deployment
+- Vercel
+
+---
+
+## Project Structure
+
+```text
+src/
+├── app/
+│   ├── globals.css
+│   ├── layout.js
+│   └── page.js
+│
+├── components/
+│   ├── About.jsx
+│   ├── FloatingButtons.jsx
+│   ├── Footer.jsx
+│   ├── Hero.jsx
+│   ├── Loader.jsx
+│   ├── Navbar.jsx
+│   ├── ReviewForm.jsx
+│   ├── Reviews.jsx
+│   └── Services.jsx
+│
+├── context/
+│   └── LanguageContext.jsx
+│
+├── firebase/
+│   └── firebase.js
+│
+└── locales/
+    ├── en.js
+    └── te.js
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Highlights
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Developed a multilingual service platform supporting English and Telugu audiences.
+- Built 9 reusable React components for maintainability and scalability.
+- Implemented Firebase Firestore for dynamic review submission and retrieval.
+- Created a fully responsive mobile-first user interface.
+- Integrated WhatsApp, Phone, and Email communication channels.
+- Added GSAP animations and Swiper testimonial sliders for enhanced user engagement.
+- Deployed a production-ready application using Vercel.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## Installation
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Clone the repository:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+git clone https://github.com/eswar-maguluri/sr-cleaning-solutions.git
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Navigate to the project:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+cd sr-cleaning-solutions
+
+
+Install dependencies:
+
+npm install
+
+
+Run development server:
+
+npm run dev
+
+
+Build production version:
+
+npm run build
+
+
+Start production server:
+
+npm start
+
+---
+
+## Use Case
+
+This project was developed for a residential cleaning services business to improve customer engagement, increase online visibility, and provide multilingual support for local customers.
+
+---
+
+## Business Contact
+
+Phone:
++91 9494239260
+
+Email:
+services.srcleaningsolutions@gmail.com
+
+Website:
+https://sr-cleaning-solutions.vercel.app/
+
+---
+
+## Author
+
+### Eswar Maguluri
+
+GitHub:
+https://github.com/eswar-maguluri
+
+LinkedIn:
+https://www.linkedin.com/in/eswar-maguluri
+
+---
+
+If you found this project useful, consider giving it a star.
