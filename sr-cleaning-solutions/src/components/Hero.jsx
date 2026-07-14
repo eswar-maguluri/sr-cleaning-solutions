@@ -13,21 +13,18 @@ export default function Hero() {
       y: 30,
       duration: 0.8,
     });
-
     gsap.from(".hero-title", {
       opacity: 0,
       y: 80,
       duration: 1.2,
       delay: 0.2,
     });
-
     gsap.from(".hero-text", {
       opacity: 0,
       y: 40,
       duration: 1,
       delay: 0.5,
     });
-
     gsap.from(".hero-buttons", {
       opacity: 0,
       y: 40,
@@ -38,7 +35,6 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
-
       <div
         className="absolute inset-0 bg-cover bg-center scale-105"
         style={{
@@ -46,14 +42,10 @@ export default function Hero() {
             "url('https://images.unsplash.com/photo-1484154218962-a197022b5858?q=80&w=2200&auto=format&fit=crop')",
         }}
       />
-
       <div className="absolute inset-0 bg-black/75" />
-
       <div className="absolute top-0 right-0 w-[700px] h-[700px] bg-yellow-500/10 blur-[180px] rounded-full" />
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-yellow-400/10 blur-[150px] rounded-full" />
-
       <div className="max-w-7xl mx-auto px-5 sm:px-6 relative z-10 pt-24 md:pt-0">
-
         <div
           className="
           hero-badge
@@ -71,7 +63,6 @@ export default function Hero() {
         >
           {t.hero.badge}
         </div>
-
         <h1
           className="
           hero-title
@@ -90,7 +81,6 @@ export default function Hero() {
           <br />
           {t.hero.title2}
         </h1>
-
         <p
           className="
           hero-text
@@ -105,7 +95,6 @@ export default function Hero() {
         >
           {t.hero.text}
         </p>
-
         <div
           className="
           hero-buttons
@@ -179,7 +168,6 @@ export default function Hero() {
             📧 Email Us
           </a>
         </div>
-
         <div
           className="
           mt-10
@@ -193,17 +181,14 @@ export default function Hero() {
           <div className="bg-white/5 border border-white/10 backdrop-blur-xl rounded-2xl p-4 text-white text-sm">
             ✓ {t.hero.satisfaction}
           </div>
-
           <div className="bg-white/5 border border-white/10 backdrop-blur-xl rounded-2xl p-4 text-white text-sm">
             ✓ {t.hero.trusted}
           </div>
-
           <div className="hidden sm:block bg-white/5 border border-white/10 backdrop-blur-xl rounded-2xl p-4 text-white text-sm">
             ✓ {t.hero.supplies}
           </div>
         </div>
       </div>
-
       <div
         className="
         hidden md:flex

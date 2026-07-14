@@ -16,7 +16,6 @@ export default function Footer() {
           <p className="text-slate-400 mt-4 max-w-md mx-auto text-sm md:text-base">
             {t.footer.text}
           </p>
-
           <div className="mt-8 flex flex-col gap-3">
             <a
               href="tel:+919494239260"

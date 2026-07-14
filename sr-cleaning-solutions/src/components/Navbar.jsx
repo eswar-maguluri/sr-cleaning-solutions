@@ -6,9 +6,7 @@ import { useLanguage } from "../context/LanguageContext";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
-
   const { language, changeLanguage, t } = useLanguage();
-
   const closeMenu = () => setOpen(false);
 
   return (
@@ -93,7 +91,6 @@ export default function Navbar() {
                 {t.navbar.callNow}
               </a>
             </div>
-
             <button
               onClick={() => setOpen(true)}
               className="md:hidden text-white"
@@ -103,7 +100,6 @@ export default function Navbar() {
           </div>
         </div>
       </nav>
-
       <div
         onClick={closeMenu}
         className={`

@@ -6,9 +6,7 @@ export default function FloatingButtons() {
   return (
     <>
       {/* Desktop Floating Buttons */}
-
       <div className="hidden md:block">
-
         <a
           href="tel:+919494239260"
           className="
@@ -27,7 +25,6 @@ export default function FloatingButtons() {
         >
           <Phone size={24} />
         </a>
-
         <a
           href="https://wa.me/919494239260"
           className="
@@ -47,11 +44,9 @@ export default function FloatingButtons() {
         >
           <MessageCircle size={24} />
         </a>
-
       </div>
 
       {/* Mobile Sticky Bar */}
-
       <div
         className="
         md:hidden
@@ -67,7 +62,6 @@ export default function FloatingButtons() {
         grid-cols-2
         "
       >
-
         <a
           href="tel:+919494239260"
           className="
@@ -84,7 +78,6 @@ export default function FloatingButtons() {
           <Phone size={18} />
           Call Now
         </a>
-
         <a
           href="https://wa.me/919494239260"
           className="
@@ -101,7 +94,6 @@ export default function FloatingButtons() {
           <MessageCircle size={18} />
           WhatsApp
         </a>
-
       </div>
     </>
   );

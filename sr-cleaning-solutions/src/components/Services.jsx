@@ -1,10 +1,8 @@
 "use client";
-
 import { useLanguage } from "../context/LanguageContext";
 
 export default function Services() {
   const { t } = useLanguage();
-
   const services = [
     {
       title: t.services.standard,
@@ -36,16 +34,13 @@ export default function Services() {
           <span className="text-yellow-400 uppercase tracking-[4px] text-sm">
             {t.services.label}
           </span>
-
           <h2 className="text-4xl md:text-6xl font-bold text-white mt-4">
             {t.services.heading}
           </h2>
-
           <p className="text-slate-400 mt-6 max-w-2xl mx-auto">
             {t.services.subtitle}
           </p>
         </div>
-
         <div
           className="
           grid
@@ -92,15 +87,12 @@ export default function Services() {
                   {t.services.requested}
                 </div>
               )}
-
               <div className="text-yellow-400 text-sm uppercase tracking-wider">
                 {service.badge}
               </div>
-
               <h3 className="text-2xl md:text-3xl font-bold text-white mt-4">
                 {service.title}
               </h3>
-
               <ul className="mt-6 space-y-3">
                 {service.items.map((item, i) => (
                   <li
@@ -112,7 +104,6 @@ export default function Services() {
                   </li>
                 ))}
               </ul>
-
               <a
                 href="tel:+919494239260"
                 className="

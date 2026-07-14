@@ -1,5 +1,4 @@
 "use client";
-
 import { createContext, useContext, useState, useEffect } from "react";
 import en from "../locales/en";
 import te from "../locales/te";
@@ -11,7 +10,6 @@ export function LanguageProvider({ children }) {
 
   useEffect(() => {
     const saved = localStorage.getItem("language");
-
     if (saved) {
       setLanguage(saved);
     }
@@ -23,7 +21,6 @@ export function LanguageProvider({ children }) {
   };
 
   const translations = language === "te" ? te : en;
-
   return (
     <LanguageContext.Provider
       value={{
@@ -36,5 +33,4 @@ export function LanguageProvider({ children }) {
     </LanguageContext.Provider>
   );
 }
-
 export const useLanguage = () => useContext(LanguageContext);

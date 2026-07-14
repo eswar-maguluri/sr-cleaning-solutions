@@ -7,33 +7,28 @@ import { useLanguage } from "../context/LanguageContext";
 
 export default function ReviewForm() {
   const { t } = useLanguage();
-
   const [name, setName] = useState("");
   const [rating, setRating] = useState(5);
   const [review, setReview] = useState("");
 
   const submitReview = async (e) => {
     e.preventDefault();
-
     try {
       await addDoc(collection(db, "reviews"), {
         name,
         rating: Number(rating),
         review,
       });
-
       alert(
         t.language === "te"
           ? "సమీక్ష విజయవంతంగా పంపబడింది!"
           : "Review submitted successfully!"
       );
-
       setName("");
       setRating(5);
       setReview("");
     } catch (err) {
       console.error(err);
-
       alert(
         t.language === "te"
           ? "సమీక్ష పంపడంలో విఫలమైంది"
@@ -48,7 +43,6 @@ export default function ReviewForm() {
         <h2 className="text-4xl font-bold text-center mb-10">
           {t.reviews.leaveReview}
         </h2>
-
         <form
           onSubmit={submitReview}
           className="
@@ -79,7 +73,6 @@ export default function ReviewForm() {
             text-base
             "
           />
-
           <select
             value={rating}
             onChange={(e) => setRating(e.target.value)}
@@ -101,7 +94,6 @@ export default function ReviewForm() {
             <option value="2">★★</option>
             <option value="1">★</option>
           </select>
-
           <textarea
             rows="5"
             placeholder={t.reviews.writeReview}
@@ -120,7 +112,6 @@ export default function ReviewForm() {
             text-base
             "
           />
-
           <button
             type="submit"
             className="
