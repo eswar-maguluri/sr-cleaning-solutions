@@ -48,6 +48,12 @@ export default function Navbar() {
               >
                 {t.navbar.about}
               </a>
+              <a
+                href="mailto:services.srcleaningsolutions@gmail.com"
+                className="text-white/80 hover:text-blue-400 transition"
+              >
+                Email
+              </a>
 
               <select
                 value={language}
@@ -222,7 +228,19 @@ export default function Navbar() {
             >
               {t.navbar.whatsapp}
             </a>
-
+            <a
+              href="mailto:services.srcleaningsolutions@gmail.com"
+              className="
+              border
+            border-white/20
+            text-white
+              py-4
+              rounded-full
+              text-center
+              "
+            >
+              📧 Email Us
+            </a>
           </div>
         </div>
       </div>

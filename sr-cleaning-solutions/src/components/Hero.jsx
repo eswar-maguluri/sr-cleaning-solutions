@@ -137,7 +137,6 @@ export default function Hero() {
           >
             {t.navbar.callNow}
           </a>
-
           <a
             href="https://wa.me/919494239260"
             target="_blank"
@@ -159,6 +158,25 @@ export default function Hero() {
             "
           >
             {t.navbar.whatsapp}
+          </a>
+          <a
+            href="mailto:services.srcleaningsolutions@gmail.com"
+            className="
+            w-full
+            sm:w-auto
+            border
+          border-blue-400/30
+          text-white
+            px-6
+            py-4
+            rounded-full
+            text-center
+          hover:bg-blue-500/10
+            transition-all
+            duration-300
+            "
+            >
+            📧 Email Us
           </a>
         </div>
 
