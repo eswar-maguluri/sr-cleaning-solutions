@@ -45,6 +45,7 @@ const en = {
     moveItems: [
       "Inside cupboard",
       "TIDCO houses cleaning services available in Guntur",
+      "Chimney, Fridge & Fan Cleaning services",
       "Full property refresh",
       "Inspection ready finish",
     ],
