@@ -33,7 +33,6 @@ const en = {
       "Detailed floor mopping",
       "Bathroom sanitization",
       "Kitchen wipe down",
-      "Trash removal",
     ],
     deepItems: [
       "Cupboard cleaning",
