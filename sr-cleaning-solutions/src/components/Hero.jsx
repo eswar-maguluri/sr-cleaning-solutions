@@ -8,201 +8,661 @@ export default function Hero() {
   const { t } = useLanguage();
 
   useEffect(() => {
-    gsap.from(".hero-badge", {
-      opacity: 0,
-      y: 30,
-      duration: 0.8,
+    const ctx = gsap.context(() => {
+      const intro = gsap.timeline({
+        defaults: {
+          ease: "power3.out",
+        },
+      });
+
+      intro
+        .from(".hero-image", {
+          scale: 1.12,
+          duration: 1.8,
+          ease: "power2.out",
+        })
+        .from(
+          ".hero-overlay",
+          {
+            opacity: 0,
+            duration: 1.2,
+          },
+          "-=1.4"
+        )
+        .from(
+          ".hero-badge",
+          {
+            opacity: 0,
+            y: 24,
+            duration: 0.7,
+          },
+          "-=0.7"
+        )
+        .from(
+          ".hero-title-line",
+          {
+            opacity: 0,
+            yPercent: 110,
+            rotateX: 8,
+            duration: 1,
+            stagger: 0.12,
+          },
+          "-=0.35"
+        )
+        .from(
+          ".hero-text",
+          {
+            opacity: 0,
+            y: 30,
+            duration: 0.8,
+          },
+          "-=0.55"
+        )
+        .from(
+          ".hero-buttons",
+          {
+            opacity: 0,
+            y: 28,
+            duration: 0.8,
+          },
+          "-=0.45"
+        )
+        .from(
+          ".hero-stat",
+          {
+            opacity: 0,
+            y: 24,
+            duration: 0.7,
+            stagger: 0.1,
+          },
+          "-=0.4"
+        )
+        .from(
+          ".hero-scroll",
+          {
+            opacity: 0,
+            duration: 0.8,
+          },
+          "-=0.3"
+        );
+
+      gsap.to(".hero-image", {
+        yPercent: -3,
+        duration: 6,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+      });
+
+      gsap.to(".hero-cyan-glow", {
+        x: 35,
+        y: 25,
+        duration: 5,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+      });
+
+      gsap.to(".hero-green-glow", {
+        x: -25,
+        y: -20,
+        duration: 6,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+      });
     });
-    gsap.from(".hero-title", {
-      opacity: 0,
-      y: 80,
-      duration: 1.2,
-      delay: 0.2,
-    });
-    gsap.from(".hero-text", {
-      opacity: 0,
-      y: 40,
-      duration: 1,
-      delay: 0.5,
-    });
-    gsap.from(".hero-buttons", {
-      opacity: 0,
-      y: 40,
-      duration: 1,
-      delay: 0.8,
-    });
+
+    return () => ctx.revert();
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
+    <section className="relative min-h-[100svh] overflow-hidden bg-[#031B60]">
+
+      {/* =====================================================
+          HERO IMAGE
+          ===================================================== */}
+
       <div
-        className="absolute inset-0 bg-cover bg-center scale-105"
+        className="
+          hero-image
+          absolute
+          inset-0
+          bg-cover
+          bg-center
+          will-change-transform
+        "
         style={{
           backgroundImage:
             "url('https://images.unsplash.com/photo-1484154218962-a197022b5858?q=80&w=2200&auto=format&fit=crop')",
         }}
       />
-      <div className="absolute inset-0 bg-black/75" />
-      <div className="absolute top-0 right-0 w-[700px] h-[700px] bg-yellow-500/10 blur-[180px] rounded-full" />
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-yellow-400/10 blur-[150px] rounded-full" />
-      <div className="max-w-7xl mx-auto px-5 sm:px-6 relative z-10 pt-24 md:pt-0">
-        <div
-          className="
-          hero-badge
-          inline-flex
-          border
-          border-white/20
-          backdrop-blur-xl
-          px-4
-          py-2
-          rounded-full
-          text-white
-          text-xs
-          sm:text-sm
-          "
-        >
-          {t.hero.badge}
-        </div>
-        <h1
-          className="
-          hero-title
-          mt-6
-          font-bold
-          text-white
-          leading-[1]
-          text-4xl
-          sm:text-5xl
-          md:text-6xl
-          lg:text-8xl
-          max-w-5xl
-          "
-        >
-          {t.hero.title1}
-          <br />
-          {t.hero.title2}
-        </h1>
-        <p
-          className="
-          hero-text
-          mt-6
-          text-slate-300
-          text-base
-          sm:text-lg
-          md:text-xl
-          max-w-3xl
-          leading-relaxed
-          "
-        >
-          {t.hero.text}
-        </p>
-        <div
-          className="
-          hero-buttons
-          flex
-          flex-col
-          sm:flex-row
-          gap-4
-          mt-8
-          "
-        >
-          <a
-            href="tel:+919494239260"
-            className="
-            w-full
-            sm:w-auto
-            bg-yellow-500
-            hover:bg-yellow-400
-            text-black
-            px-6
-            py-4
-            rounded-full
-            font-bold
-            text-center
-            transition-all
-            duration-300
-            shadow-lg
-            shadow-yellow-500/20
-            "
-          >
-            {t.navbar.callNow}
-          </a>
-          <a
-            href="https://wa.me/919494239260"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="
-            w-full
-            sm:w-auto
-            border
-            border-white/20
-            backdrop-blur-xl
-            text-white
-            px-6
-            py-4
-            rounded-full
-            text-center
-            hover:bg-white/10
-            transition-all
-            duration-300
-            "
-          >
-            {t.navbar.whatsapp}
-          </a>
-          <a
-            href="mailto:services.srcleaningsolutions@gmail.com"
-            className="
-            w-full
-            sm:w-auto
-            border
-          border-blue-400/30
-          text-white
-            px-6
-            py-4
-            rounded-full
-            text-center
-          hover:bg-blue-500/10
-            transition-all
-            duration-300
-            "
-            >
-            📧 Email Us
-          </a>
-        </div>
-        <div
-          className="
-          mt-10
-          grid
-          grid-cols-1
-          sm:grid-cols-3
-          gap-3
-          max-w-4xl
-          "
-        >
-          <div className="bg-white/5 border border-white/10 backdrop-blur-xl rounded-2xl p-4 text-white text-sm">
-            ✓ {t.hero.satisfaction}
-          </div>
-          <div className="bg-white/5 border border-white/10 backdrop-blur-xl rounded-2xl p-4 text-white text-sm">
-            ✓ {t.hero.trusted}
-          </div>
-          <div className="hidden sm:block bg-white/5 border border-white/10 backdrop-blur-xl rounded-2xl p-4 text-white text-sm">
-            ✓ {t.hero.supplies}
-          </div>
-        </div>
-      </div>
+
+      {/* =====================================================
+          PREMIUM IMAGE TREATMENT
+          ===================================================== */}
+
       <div
         className="
-        hidden md:flex
-        absolute
-        bottom-8
-        left-1/2
-        -translate-x-1/2
-        text-white/60
-        text-sm
-        animate-bounce
+          hero-overlay
+          absolute
+          inset-0
+          bg-gradient-to-b
+          from-[#031B60]/95
+          via-[#031B60]/82
+          to-[#021449]/96
+        "
+      />
+
+      <div
+        className="
+          absolute
+          inset-0
+          bg-gradient-to-r
+          from-[#031B60]
+          via-[#031B60]/65
+          to-transparent
+        "
+      />
+
+      <div
+        className="
+          absolute
+          inset-0
+          bg-gradient-to-t
+          from-[#021449]
+          via-transparent
+          to-[#031B60]/40
+        "
+      />
+
+      {/* =====================================================
+          BRAND GLOWS
+          ===================================================== */}
+
+      <div
+        className="
+          hero-cyan-glow
+          absolute
+          -top-32
+          -right-32
+          w-[360px]
+          h-[360px]
+          sm:w-[500px]
+          sm:h-[500px]
+          rounded-full
+          bg-[#00A3E0]/20
+          blur-[100px]
+          sm:blur-[150px]
+          pointer-events-none
+        "
+      />
+
+      <div
+        className="
+          hero-green-glow
+          absolute
+          -bottom-32
+          -left-32
+          w-[300px]
+          h-[300px]
+          sm:w-[450px]
+          sm:h-[450px]
+          rounded-full
+          bg-[#25D366]/15
+          blur-[100px]
+          sm:blur-[140px]
+          pointer-events-none
+        "
+      />
+
+      {/* =====================================================
+          CONTENT
+          ===================================================== */}
+
+      <div
+        className="
+          relative
+          z-10
+          min-h-[100svh]
+          max-w-7xl
+          mx-auto
+          px-5
+          sm:px-6
+          lg:px-8
+          pt-32
+          pb-28
+          md:pt-40
+          md:pb-20
+          flex
+          items-center
         "
       >
-        Scroll Down
+
+        <div className="w-full max-w-5xl">
+
+          {/* Badge */}
+
+          <div
+            className="
+              hero-badge
+              inline-flex
+              items-center
+              gap-2
+              border
+              border-white/20
+              bg-white/10
+              backdrop-blur-xl
+              px-4
+              py-2.5
+              rounded-full
+              text-white
+              font-medium
+              text-xs
+              sm:text-sm
+              shadow-[0_10px_30px_rgba(0,0,0,0.12)]
+            "
+          >
+            <span
+              className="
+                w-2
+                h-2
+                rounded-full
+                bg-[#25D366]
+                shadow-[0_0_12px_rgba(37,211,102,0.8)]
+              "
+            />
+
+            {t.hero.badge}
+          </div>
+
+
+          {/* =================================================
+              TITLE
+              ================================================= */}
+
+          <h1
+            className="
+              hero-title
+              mt-7
+              sm:mt-8
+              font-bold
+              text-white
+              leading-[0.94]
+              tracking-[-0.045em]
+              text-[clamp(3rem,13vw,5rem)]
+              sm:text-6xl
+              md:text-7xl
+              lg:text-[6.8rem]
+              max-w-5xl
+              [perspective:800px]
+            "
+          >
+            <span className="hero-title-line block overflow-hidden">
+              {t.hero.title1}
+            </span>
+
+            <span className="hero-title-line block overflow-hidden text-[#67DFFF]">
+              {t.hero.title2}
+            </span>
+          </h1>
+
+
+          {/* =================================================
+              DESCRIPTION
+              ================================================= */}
+
+          <p
+            className="
+              hero-text
+              mt-7
+              sm:mt-8
+              text-white/75
+              text-[15px]
+              sm:text-lg
+              md:text-xl
+              max-w-2xl
+              leading-7
+              sm:leading-8
+            "
+          >
+            {t.hero.text}
+          </p>
+
+
+          {/* =================================================
+              BUTTONS
+              ================================================= */}
+
+          <div
+            className="
+              hero-buttons
+              flex
+              flex-col
+              sm:flex-row
+              gap-3
+              sm:gap-4
+              mt-8
+              sm:mt-10
+              max-w-xl
+            "
+          >
+
+            <a
+              href="tel:+919494239260"
+              className="
+                group
+                relative
+                overflow-hidden
+                w-full
+                sm:w-auto
+                min-h-[54px]
+                flex
+                items-center
+                justify-center
+                bg-white
+                text-[#031B60]
+                px-7
+                py-4
+                rounded-full
+                font-bold
+                text-center
+                shadow-[0_14px_35px_rgba(0,0,0,0.18)]
+                hover:-translate-y-1
+                active:scale-[0.98]
+              "
+            >
+              <span className="relative z-10">
+                {t.navbar.callNow}
+              </span>
+
+              <span
+                className="
+                  absolute
+                  inset-0
+                  bg-gradient-to-r
+                  from-transparent
+                  via-[#00A3E0]/20
+                  to-transparent
+                  -translate-x-full
+                  group-hover:translate-x-full
+                  transition-transform
+                  duration-700
+                "
+              />
+            </a>
+
+
+            <a
+              href="https://wa.me/919494239260"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="
+                group
+                relative
+                overflow-hidden
+                w-full
+                sm:w-auto
+                min-h-[54px]
+                flex
+                items-center
+                justify-center
+                bg-[#25D366]
+                text-white
+                px-7
+                py-4
+                rounded-full
+                font-bold
+                text-center
+                shadow-[0_14px_35px_rgba(37,211,102,0.22)]
+                hover:bg-[#1FBD5B]
+                hover:-translate-y-1
+                active:scale-[0.98]
+              "
+            >
+              <span className="relative z-10">
+                {t.navbar.whatsapp}
+              </span>
+
+              <span
+                className="
+                  absolute
+                  inset-0
+                  bg-gradient-to-r
+                  from-transparent
+                  via-white/20
+                  to-transparent
+                  -translate-x-full
+                  group-hover:translate-x-full
+                  transition-transform
+                  duration-700
+                "
+              />
+            </a>
+
+
+            <a
+              href="mailto:services.srcleaningsolutions@gmail.com"
+              className="
+                w-full
+                sm:w-auto
+                min-h-[54px]
+                flex
+                items-center
+                justify-center
+                bg-white/10
+                border
+                border-white/20
+                backdrop-blur-xl
+                text-white
+                px-7
+                py-4
+                rounded-full
+                font-bold
+                text-center
+                hover:bg-white/15
+                hover:border-white/30
+                hover:-translate-y-1
+                active:scale-[0.98]
+              "
+            >
+              📧 Email Us
+            </a>
+
+          </div>
+
+
+          {/* =================================================
+              TRUST ITEMS
+              ================================================= */}
+
+          <div
+            className="
+              mt-10
+              sm:mt-12
+              grid
+              grid-cols-1
+              sm:grid-cols-3
+              gap-3
+              max-w-4xl
+            "
+          >
+
+            <div
+              className="
+                hero-stat
+                relative
+                overflow-hidden
+                bg-white/[0.08]
+                border
+                border-white/15
+                backdrop-blur-xl
+                rounded-2xl
+                p-4
+                sm:p-5
+                text-white
+                text-sm
+                shadow-[0_10px_30px_rgba(0,0,0,0.10)]
+              "
+            >
+              <div
+                className="
+                  absolute
+                  top-0
+                  left-0
+                  w-16
+                  h-px
+                  bg-[#25D366]
+                "
+              />
+
+              <span className="text-[#25D366] font-bold mr-1">
+                ✓
+              </span>
+
+              {t.hero.satisfaction}
+            </div>
+
+
+            <div
+              className="
+                hero-stat
+                relative
+                overflow-hidden
+                bg-white/[0.08]
+                border
+                border-white/15
+                backdrop-blur-xl
+                rounded-2xl
+                p-4
+                sm:p-5
+                text-white
+                text-sm
+                shadow-[0_10px_30px_rgba(0,0,0,0.10)]
+              "
+            >
+              <div
+                className="
+                  absolute
+                  top-0
+                  left-0
+                  w-16
+                  h-px
+                  bg-[#00A3E0]
+                "
+              />
+
+              <span className="text-[#25D366] font-bold mr-1">
+                ✓
+              </span>
+
+              {t.hero.trusted}
+            </div>
+
+
+            <div
+              className="
+                hero-stat
+                hidden
+                sm:block
+                relative
+                overflow-hidden
+                bg-white/[0.08]
+                border
+                border-white/15
+                backdrop-blur-xl
+                rounded-2xl
+                p-4
+                sm:p-5
+                text-white
+                text-sm
+                shadow-[0_10px_30px_rgba(0,0,0,0.10)]
+              "
+            >
+              <div
+                className="
+                  absolute
+                  top-0
+                  left-0
+                  w-16
+                  h-px
+                  bg-[#25D366]
+                "
+              />
+
+              <span className="text-[#25D366] font-bold mr-1">
+                ✓
+              </span>
+
+              {t.hero.supplies}
+            </div>
+
+          </div>
+
+        </div>
       </div>
+
+
+      {/* =====================================================
+          SCROLL INDICATOR
+          ===================================================== */}
+
+      <div
+        className="
+          hero-scroll
+          hidden
+          md:flex
+          absolute
+          bottom-8
+          left-1/2
+          -translate-x-1/2
+          z-20
+          items-center
+          gap-3
+          text-white/60
+          text-xs
+          tracking-[0.2em]
+          uppercase
+        "
+      >
+        <span
+          className="
+            w-10
+            h-px
+            bg-white/30
+          "
+        />
+
+        <span>
+          Scroll Down
+        </span>
+
+        <span
+          className="
+            w-10
+            h-px
+            bg-white/30
+          "
+        />
+      </div>
+
+
+      {/* Bottom gradient transition */}
+
+      <div
+        className="
+          absolute
+          bottom-0
+          left-0
+          right-0
+          h-24
+          bg-gradient-to-t
+          from-[#eef8ff]
+          to-transparent
+          pointer-events-none
+        "
+      />
+
     </section>
   );
 }

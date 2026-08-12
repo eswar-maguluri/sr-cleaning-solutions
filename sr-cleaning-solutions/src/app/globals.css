@@ -1,32 +1,370 @@
 @import "tailwindcss";
 
+/* =========================================================
+   SR CLEANING SOLUTIONS — GLOBAL DESIGN SYSTEM
+   Appearance only. No content or functionality changes.
+   ========================================================= */
+
+:root {
+  --brand-navy: #031b60;
+  --brand-navy-dark: #021449;
+
+  --brand-green: #25d366;
+  --brand-green-dark: #1fbd5b;
+
+  --brand-cyan: #00a3e0;
+
+  --brand-bg: #f4f9ff;
+  --brand-blue-bg: #f0f7ff;
+
+  --brand-white: #ffffff;
+
+  --brand-text: #0b1938;
+  --brand-muted: #506482;
+
+  --brand-border: #d8e8f8;
+  --brand-border-focus: #c8dffa;
+
+  --brand-shadow:
+    0 10px 30px rgba(3, 27, 96, 0.05);
+
+  --brand-shadow-hover:
+    0 18px 45px rgba(3, 27, 96, 0.12);
+
+  --brand-radius: 24px;
+  --brand-radius-sm: 14px;
+}
+
+
+/* =========================================================
+   BASE
+   ========================================================= */
+
 html {
   scroll-behavior: smooth;
+  background: var(--brand-bg);
+  scroll-padding-top: 84px;
 }
+
 body {
-  background: #081120;
-  color: white;
   margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-  /* space for mobile sticky bar */
+
+  /* Space for mobile sticky action bar */
   padding-bottom: 72px;
+
+  min-height: 100vh;
+
+  background:
+    linear-gradient(
+      180deg,
+      #f8fcff 0%,
+      #f4f9ff 42%,
+      #ffffff 100%
+    );
+
+  color: var(--brand-text);
+
+  overflow-x: hidden;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  text-rendering: optimizeLegibility;
 }
+
+
+/* Desktop doesn't need mobile action-bar space */
+
 @media (min-width: 768px) {
   body {
     padding-bottom: 0;
   }
 }
-* {
+
+
+/* =========================================================
+   BOX MODEL
+   ========================================================= */
+
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
+
+
+/* =========================================================
+   MEDIA
+   ========================================================= */
+
+img,
+svg,
+video,
+canvas {
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+}
+
+
+/* =========================================================
+   LINKS / BUTTONS
+   ========================================================= */
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button,
+a {
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+
+/* =========================================================
+   ACCESSIBILITY / FOCUS
+   ========================================================= */
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid rgba(0, 163, 224, 0.3);
+  outline-offset: 3px;
+}
+
+
+/* =========================================================
+   TEXT SELECTION
+   ========================================================= */
+
+::selection {
+  background: var(--brand-cyan);
+  color: var(--brand-white);
+}
+
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
 ::-webkit-scrollbar {
   width: 8px;
 }
+
 ::-webkit-scrollbar-track {
-  background: #081120;
+  background: #edf7ff;
 }
+
 ::-webkit-scrollbar-thumb {
-  background: #d4af37;
+  background: var(--brand-navy);
   border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--brand-cyan);
+}
+
+
+/* =========================================================
+   MOBILE TOUCH TARGETS
+   ========================================================= */
+
+@media (max-width: 767px) {
+  button,
+  a {
+    min-height: 48px;
+  }
+
+  input,
+  textarea,
+  select {
+    font-size: 16px;
+  }
+}
+
+
+/* =========================================================
+   SECTIONS
+   ========================================================= */
+
+section {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+
+/* =========================================================
+   FORM CONTROLS
+   ========================================================= */
+
+input,
+textarea,
+select {
+  color-scheme: light;
+  max-width: 100%;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #8090a7;
+}
+
+textarea {
+  resize: vertical;
+}
+
+option {
+  background: #ffffff;
+  color: var(--brand-text);
+}
+
+
+/* =========================================================
+   SWIPER — GLOBAL FOUNDATION
+   ========================================================= */
+
+.swiper {
+  width: 100%;
+  max-width: 100%;
+}
+
+.swiper-wrapper {
+  align-items: stretch;
+}
+
+.swiper-slide {
+  height: auto;
+  display: flex;
+}
+
+.swiper-slide > * {
+  width: 100%;
+}
+
+
+/* =========================================================
+   SWIPER PAGINATION
+   ========================================================= */
+
+.swiper-pagination {
+  position: relative !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+
+  margin-top: 26px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-pagination-bullet {
+  width: 7px !important;
+  height: 7px !important;
+
+  margin: 0 4px !important;
+
+  background: #b9cde4 !important;
+
+  opacity: 1 !important;
+
+  border-radius: 999px;
+
+  transition:
+    width 0.3s ease,
+    background-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+  width: 24px !important;
+
+  border-radius: 999px !important;
+
+  background: var(--brand-navy) !important;
+
+  transform: translateY(0);
+}
+
+
+/* =========================================================
+   MOBILE SWIPER
+   ========================================================= */
+
+@media (max-width: 767px) {
+  .swiper-pagination {
+    margin-top: 20px;
+  }
+
+  .swiper-slide {
+    min-width: 0;
+  }
+}
+
+
+/* =========================================================
+   SAFE AREA — MOBILE DEVICES
+   ========================================================= */
+
+@supports (padding: env(safe-area-inset-bottom)) {
+  @media (max-width: 767px) {
+    body {
+      padding-bottom:
+        calc(72px + env(safe-area-inset-bottom));
+    }
+  }
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  body {
+    font-size: 16px;
+  }
+}
+
+
+/* =========================================================
+   LARGE DESKTOP
+   ========================================================= */
+
+@media (min-width: 1280px) {
+  body {
+    font-size: 16px;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
