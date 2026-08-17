@@ -3,55 +3,177 @@
 import { useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Phone, Check } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
+/* =========================================================
+   WHATSAPP ICON
+========================================================= */
+
+function WhatsAppIcon({ size = 21 }) {
+  return (
+    <img
+      src="/whatsapp.svg"
+      alt=""
+      aria-hidden="true"
+      className="shrink-0 object-contain"
+      style={{
+        width: `${size}px`,
+        height: `${size}px`,
+      }}
+    />
+  );
+}
+
+/* =========================================================
+   SERVICES
+========================================================= */
+
 export default function Services() {
   const { t } = useLanguage();
 
+  const s = t.services;
+
+  /* =========================================================
+     SERVICE DATA
+  ========================================================= */
+
   const services = [
     {
-      title: t.services.standard,
-      badge: t.services.maintenance,
-      items: t.services.standardItems,
+      number: "01",
+
+      badge: s.routine,
+
+      title: s.standard,
+
+      description: s.standardDescription,
+
+      price: "₹1,799",
+
+      priceLabel: s.startsFrom,
+
+      size: "1 BHK",
+
+      method: s.manualCleaning,
+
+      duration: s.confirmedScope,
+
+      items: s.standardItems,
+
+      sectionTitle: s.materials,
+
+      tags: [
+        s.generalCleaners,
+        s.manualTools,
+      ],
+
       featured: false,
+
+      buttonText: s.bookEnquire,
+
+      buttonType: "phone",
     },
+
     {
-      title: t.services.deep,
-      badge: t.services.requested,
-      items: t.services.deepItems,
+      number: "02",
+
+      badge: s.intensive,
+
+      title: s.deep,
+
+      description: s.deepDescription,
+
+      price: "₹3,499",
+
+      priceLabel: s.startsFrom,
+
+      size: "1 BHK",
+
+      method: s.manualEquipment,
+
+      duration: s.confirmedScope,
+
+      items: s.deepItems,
+
+      sectionTitle: s.equipmentMaterials,
+
+      tags: [
+        s.vacuum,
+        s.miniScrubber,
+        s.miniBlower,
+        s.professionalCleaners,
+      ],
+
       featured: true,
+
+      buttonText: s.bookEnquire,
+
+      buttonType: "phone",
     },
+
     {
-      title: t.services.move,
-      badge: t.services.vacant,
-      items: t.services.moveItems,
+      number: "03",
+
+      badge: s.moveInOut,
+
+      title: s.move,
+
+      description: s.moveDescription,
+
+      price: s.quote,
+
+      priceLabel: s.pricing,
+
+      size: s.scopeBased,
+
+      method: s.availableEquipment,
+
+      duration: s.confirmedAfterScope,
+
+      items: s.moveItems,
+
+      sectionTitle: s.equipmentWhereSuitable,
+
+      tags: [
+        s.vacuum,
+        s.miniScrubber,
+        s.miniBlower,
+      ],
+
       featured: false,
+
+      buttonText: s.requestQuote,
+
+      buttonType: "whatsapp",
     },
   ];
+
+  /* =========================================================
+     GSAP ANIMATION
+  ========================================================= */
 
   useEffect(() => {
     const ctx = gsap.context(() => {
       const header = document.querySelector(".services-header");
+
       const cards = gsap.utils.toArray(".service-card");
 
       if (!header || !cards.length) return;
 
-      /*
-       * Header animation
-       */
       gsap.fromTo(
         header,
         {
           opacity: 0,
-          y: 35,
+          y: 30,
         },
         {
           opacity: 1,
           y: 0,
           duration: 0.8,
           ease: "power3.out",
+
           scrollTrigger: {
             trigger: header,
             start: "top 90%",
@@ -60,41 +182,34 @@ export default function Services() {
         }
       );
 
-      /*
-       * Cards animation
-       *
-       * Important:
-       * The cards are only hidden when they are actually
-       * close to entering the viewport.
-       *
-       * This prevents blank cards when navigating directly
-       * to #services.
-       */
       gsap.fromTo(
         cards,
         {
           opacity: 0,
-          y: 45,
+          y: 35,
         },
         {
           opacity: 1,
           y: 0,
-          duration: 0.75,
-          stagger: 0.14,
+          duration: 0.7,
+          stagger: 0.12,
           ease: "power3.out",
+
           scrollTrigger: {
             trigger: ".services-grid",
-            start: "top 95%",
+            start: "top 92%",
             once: true,
           },
         }
       );
     });
 
-    return () => {
-      ctx.revert();
-    };
+    return () => ctx.revert();
   }, []);
+
+  /* =========================================================
+     RETURN
+  ========================================================= */
 
   return (
     <section
@@ -102,14 +217,16 @@ export default function Services() {
       className="
         relative
         overflow-hidden
-        py-20
-        sm:py-24
-        md:py-32
         bg-[#eef8ff]
+        py-16
+        sm:py-20
+        md:py-28
+        lg:py-32
       "
     >
-
-      {/* Ambient cyan glow */}
+      {/* =====================================================
+          BACKGROUND GLOW
+      ====================================================== */}
 
       <div
         className="
@@ -117,15 +234,15 @@ export default function Services() {
           absolute
           -top-40
           -right-40
-          w-[420px]
-          h-[420px]
+          h-[360px]
+          w-[360px]
           rounded-full
           bg-[#00A3E0]/10
-          blur-[120px]
+          blur-[110px]
+          sm:h-[450px]
+          sm:w-[450px]
         "
       />
-
-      {/* Ambient green glow */}
 
       <div
         className="
@@ -133,11 +250,13 @@ export default function Services() {
           absolute
           -bottom-40
           -left-40
-          w-[450px]
-          h-[450px]
+          h-[360px]
+          w-[360px]
           rounded-full
           bg-[#25D366]/10
-          blur-[130px]
+          blur-[120px]
+          sm:h-[450px]
+          sm:w-[450px]
         "
       />
 
@@ -145,133 +264,136 @@ export default function Services() {
         className="
           relative
           z-10
-          max-w-7xl
           mx-auto
-          px-5
+          max-w-7xl
+          px-4
           sm:px-6
           lg:px-8
         "
       >
-
-        {/* Section heading */}
+        {/* ===================================================
+            SECTION HEADER
+        ==================================================== */}
 
         <div className="services-header max-w-3xl">
-
           <span
             className="
               inline-flex
               items-center
               gap-3
-              text-[#00A3E0]
-              uppercase
-              tracking-[0.22em]
               text-[11px]
-              sm:text-xs
               font-bold
+              uppercase
+              tracking-[0.2em]
+              text-[#00A3E0]
+              sm:text-xs
             "
           >
-            <span className="w-8 h-px bg-[#00A3E0]" />
+            <span className="h-px w-7 bg-[#00A3E0]" />
 
-            {t.services.label}
+            {s.label}
           </span>
 
           <h2
             className="
-              text-4xl
-              sm:text-5xl
-              md:text-6xl
-              lg:text-7xl
-              font-bold
-              text-[#031B60]
               mt-4
-              tracking-[-0.045em]
-              leading-[0.98]
+              text-3xl
+              font-bold
+              leading-tight
+              tracking-tight
+              text-[#031B60]
+              sm:text-4xl
+              md:text-5xl
+              lg:text-6xl
             "
           >
-            {t.services.heading}
+            {s.heading}
           </h2>
 
           <p
             className="
-              text-[#506482]
-              mt-6
+              mt-5
               max-w-2xl
-              text-base
-              sm:text-lg
+              text-sm
               leading-7
-              sm:leading-8
+              text-[#506482]
+              sm:text-base
+              md:text-lg
             "
           >
-            {t.services.subtitle}
+            {s.subtitle}
           </p>
-
         </div>
 
-        {/* Service cards */}
+        {/* ===================================================
+            SERVICE CARDS
+        ==================================================== */}
 
         <div
           className="
             services-grid
+            mt-10
             grid
             grid-cols-1
-            md:grid-cols-2
-            lg:grid-cols-3
             gap-5
+            sm:mt-12
+            md:grid-cols-2
+            lg:mt-16
+            lg:grid-cols-3
+            lg:items-stretch
             lg:gap-6
-            mt-12
-            sm:mt-14
-            lg:mt-20
           "
         >
-
-          {services.map((service, index) => (
-            <div
-              key={index}
+          {services.map((service) => (
+            <article
+              key={service.number}
               className={`
                 service-card
                 group
                 relative
-                overflow-hidden
                 flex
+                min-w-0
                 flex-col
-                min-h-[500px]
-                sm:min-h-[530px]
-                p-6
-                sm:p-7
-                lg:p-8
-                rounded-[24px]
+                overflow-hidden
+                rounded-[22px]
                 border
+                p-5
                 transition-all
-                duration-500
-                hover:-translate-y-2
+                duration-300
+                hover:-translate-y-1
+                sm:rounded-[26px]
+                sm:p-6
+                lg:p-7
+
                 ${
                   service.featured
                     ? `
-                      bg-[#031B60]
                       border-[#031B60]
-                      shadow-[0_25px_60px_rgba(3,27,96,0.20)]
-                      lg:-translate-y-3
+                      bg-[#031B60]
+                      shadow-[0_20px_55px_rgba(3,27,96,0.20)]
                     `
                     : `
+                      border-[#d5e5f2]
                       bg-white
-                      border-[#cfe5f5]
-                      shadow-[0_15px_40px_rgba(3,27,82,0.07)]
+                      shadow-[0_15px_40px_rgba(3,27,96,0.07)]
                       hover:border-[#9ed9f1]
-                      hover:shadow-[0_25px_55px_rgba(3,27,82,0.13)]
+                      hover:shadow-[0_22px_50px_rgba(3,27,96,0.12)]
                     `
                 }
               `}
             >
-
-              {/* Top accent */}
+              {/* =================================================
+                  TOP ACCENT
+              ================================================== */}
 
               <div
                 className={`
                   absolute
-                  top-0
                   left-0
-                  w-full
+                  top-0
                   h-1
+                  w-full
+
                   ${
                     service.featured
                       ? "bg-gradient-to-r from-[#25D366] via-[#00A3E0] to-[#25D366]"
@@ -280,78 +402,50 @@ export default function Services() {
                 `}
               />
 
-              {/* Featured badge */}
+              {/* =================================================
+                  CARD TOP
+              ================================================== */}
 
-              {service.featured && (
-                <div
-                  className="
-                    absolute
-                    top-5
-                    right-5
-                    bg-[#25D366]
-                    text-white
-                    text-[10px]
-                    sm:text-xs
-                    font-bold
-                    uppercase
-                    tracking-wider
+              <div className="flex items-start justify-between gap-3">
+                <span
+                  className={`
+                    inline-flex
+                    max-w-full
+                    rounded-full
                     px-3
                     py-2
-                    rounded-full
-                    shadow-[0_8px_22px_rgba(37,211,102,0.22)]
-                  "
+                    text-[10px]
+                    font-bold
+                    leading-4
+                    uppercase
+                    tracking-wide
+                    sm:text-xs
+
+                    ${
+                      service.featured
+                        ? "bg-[#25D366] text-white"
+                        : "bg-[#031B60] text-white"
+                    }
+                  `}
                 >
-                  {t.services.requested}
-                </div>
-              )}
-
-              {/* Number */}
-
-              <div
-                className={`
-                  text-5xl
-                  sm:text-6xl
-                  font-bold
-                  tracking-[-0.06em]
-                  leading-none
-                  ${
-                    service.featured
-                      ? "text-white/10"
-                      : "text-[#031B60]/[0.07]"
-                  }
-                `}
-              >
-                {String(index + 1).padStart(2, "0")}
+                  {service.number} · {service.badge}
+                </span>
               </div>
 
-              {/* Badge */}
-
-              <div
-                className={`
-                  mt-8
-                  text-xs
-                  uppercase
-                  tracking-[0.16em]
-                  font-bold
-                  ${
-                    service.featured
-                      ? "text-[#67DFFF]"
-                      : "text-[#00A3E0]"
-                  }
-                `}
-              >
-                {service.badge}
-              </div>
-
-              {/* Title */}
+              {/* =================================================
+                  TITLE
+              ================================================== */}
 
               <h3
                 className={`
-                  text-2xl
-                  sm:text-3xl
+                  mt-7
+                  text-xl
                   font-bold
-                  mt-3
+                  leading-tight
                   tracking-tight
+                  sm:text-2xl
+                  md:text-3xl
+
                   ${
                     service.featured
                       ? "text-white"
@@ -362,20 +456,118 @@ export default function Services() {
                 {service.title}
               </h3>
 
-              {/* Items */}
+              {/* =================================================
+                  DESCRIPTION
+              ================================================== */}
 
-              <ul className="mt-7 space-y-4 flex-1">
+              <p
+                className={`
+                  mt-3
+                  text-sm
+                  leading-6
+                  sm:text-[15px]
 
-                {service.items.map((item, i) => (
+                  ${
+                    service.featured
+                      ? "text-white/70"
+                      : "text-[#506482]"
+                  }
+                `}
+              >
+                {service.description}
+              </p>
+
+              {/* =================================================
+                  PRICE
+              ================================================== */}
+
+              <div className="mt-6">
+                <p
+                  className={`
+                    text-[11px]
+                    font-bold
+                    uppercase
+                    tracking-wide
+                    sm:text-xs
+
+                    ${
+                      service.featured
+                        ? "text-white/60"
+                        : "text-[#506482]"
+                    }
+                  `}
+                >
+                  {service.priceLabel}
+                </p>
+
+                <div className="mt-1 flex items-end justify-between gap-3">
+                  <p
+                    className={`
+                      text-3xl
+                      font-extrabold
+                      tracking-tight
+                      sm:text-4xl
+
+                      ${
+                        service.featured
+                          ? "text-white"
+                          : "text-[#031B60]"
+                      }
+                    `}
+                  >
+                    {service.price}
+                  </p>
+
+                  <span
+                    className={`
+                      pb-1
+                      text-xs
+
+                      ${
+                        service.featured
+                          ? "text-white/60"
+                          : "text-[#506482]"
+                      }
+                    `}
+                  >
+                    {service.size}
+                  </span>
+                </div>
+              </div>
+
+              {/* =================================================
+                  METHOD / DURATION
+              ================================================== */}
+
+              <div className="mt-5 grid grid-cols-1 gap-3 min-[390px]:grid-cols-2">
+                <InfoBox
+                  label={s.method}
+                  value={service.method}
+                  featured={service.featured}
+                />
+
+                <InfoBox
+                  label={s.duration}
+                  value={service.duration}
+                  featured={service.featured}
+                />
+              </div>
+
+              {/* =================================================
+                  INCLUDED SERVICES
+              ================================================== */}
+
+              <ul className="mt-6 space-y-3">
+                {service.items.map((item, index) => (
                   <li
-                    key={i}
+                    key={index}
                     className={`
                       flex
                       items-start
-                      gap-3
+                      gap-2.5
                       text-sm
-                      sm:text-[15px]
-                      leading-6
+                      leading-5
+
                       ${
                         service.featured
                           ? "text-white/75"
@@ -383,19 +575,17 @@ export default function Services() {
                       }
                     `}
                   >
-
                     <span
                       className={`
+                        mt-0.5
                         flex
+                        h-5
+                        w-5
+                        shrink-0
                         items-center
                         justify-center
-                        w-5
-                        h-5
-                        shrink-0
-                        mt-0.5
                         rounded-full
-                        text-[11px]
-                        font-bold
+
                         ${
                           service.featured
                             ? "bg-[#25D366] text-white"
@@ -403,82 +593,251 @@ export default function Services() {
                         }
                       `}
                     >
-                      ✓
+                      <Check size={12} strokeWidth={3} />
                     </span>
 
                     <span>{item}</span>
-
                   </li>
                 ))}
-
               </ul>
 
-              {/* CTA */}
+              {/* =================================================
+                  EQUIPMENT / MATERIALS
+              ================================================== */}
 
-              <a
-                href="tel:+919494239260"
+              <div
                 className={`
-                  relative
-                  overflow-hidden
-                  mt-8
-                  min-h-[52px]
-                  flex
-                  items-center
-                  justify-center
-                  w-full
-                  rounded-full
-                  font-bold
-                  text-sm
-                  transition-all
-                  duration-300
+                  mt-6
+                  border-t
+                  pt-5
+
                   ${
                     service.featured
-                      ? `
-                        bg-white
-                        text-[#031B60]
-                        shadow-[0_12px_30px_rgba(0,0,0,0.16)]
-                        hover:bg-[#25D366]
-                        hover:text-white
-                      `
-                      : `
-                        bg-[#031B60]
-                        text-white
-                        shadow-[0_10px_25px_rgba(3,27,96,0.14)]
-                        hover:bg-[#00A3E0]
-                      `
+                      ? "border-white/15"
+                      : "border-[#d8e8f8]"
                   }
                 `}
               >
+                <p
+                  className={`
+                    text-[11px]
+                    font-bold
+                    uppercase
+                    tracking-[0.12em]
+                    sm:text-xs
 
-                <span className="relative z-10">
-                  {t.services.book}
-                </span>
+                    ${
+                      service.featured
+                        ? "text-white/55"
+                        : "text-[#506482]"
+                    }
+                  `}
+                >
+                  {service.sectionTitle}
+                </p>
 
-                {/* Shine animation */}
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {service.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className={`
+                        rounded-full
+                        border
+                        px-3
+                        py-2
+                        text-[11px]
+                        font-semibold
+                        sm:text-xs
 
-                <span
-                  className="
-                    absolute
-                    inset-0
-                    -translate-x-full
-                    bg-gradient-to-r
-                    from-transparent
-                    via-white/20
-                    to-transparent
-                    transition-transform
-                    duration-700
-                    hover:translate-x-full
-                  "
-                />
+                        ${
+                          service.featured
+                            ? `
+                              border-white/15
+                              bg-white/10
+                              text-white/80
+                            `
+                            : `
+                              border-[#cce7f8]
+                              bg-[#f4faff]
+                              text-[#08679a]
+                            `
+                        }
+                      `}
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
 
-              </a>
+              {/* =================================================
+                  CTA
+              ================================================== */}
 
-            </div>
+              <div className="mt-7 pt-1">
+                {service.buttonType === "whatsapp" ? (
+                  <a
+                    href="https://wa.me/919494239260"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="WhatsApp SR Cleaning Solutions"
+                    className="
+                      flex
+                      min-h-[54px]
+                      w-full
+                      items-center
+                      justify-center
+                      gap-2
+                      rounded-full
+                      bg-[#031B60]
+                      px-5
+                      text-sm
+                      font-bold
+                      text-white
+                      shadow-[0_10px_25px_rgba(3,27,96,0.14)]
+                      transition-all
+                      duration-300
+                      hover:bg-[#25D366]
+                    "
+                  >
+                    <WhatsAppIcon size={21} />
+
+                    {service.buttonText}
+                  </a>
+                ) : (
+                  <a
+                    href="tel:+919494239260"
+                    aria-label="Call SR Cleaning Solutions"
+                    className={`
+                      flex
+                      min-h-[54px]
+                      w-full
+                      items-center
+                      justify-center
+                      gap-2
+                      rounded-full
+                      px-5
+                      text-sm
+                      font-bold
+                      transition-all
+                      duration-300
+
+                      ${
+                        service.featured
+                          ? `
+                            bg-white
+                            text-[#031B60]
+                            hover:bg-[#25D366]
+                            hover:text-white
+                          `
+                          : `
+                            bg-[#031B60]
+                            text-white
+                            hover:bg-[#00A3E0]
+                          `
+                      }
+                    `}
+                  >
+                    <Phone size={18} />
+
+                    {service.buttonText}
+                  </a>
+                )}
+              </div>
+            </article>
           ))}
-
         </div>
 
+        {/* =====================================================
+            PRICING NOTE
+        ====================================================== */}
+
+        <div
+          className="
+            mt-7
+            rounded-2xl
+            border
+            border-[#cfe5f5]
+            bg-white/70
+            p-4
+            sm:p-5
+          "
+        >
+          <p
+            className="
+              text-xs
+              leading-6
+              text-[#506482]
+              sm:text-sm
+            "
+          >
+            <strong className="text-[#031B60]">
+              {s.pricingNoteTitle}
+            </strong>{" "}
+            {s.pricingNote}
+          </p>
+        </div>
       </div>
     </section>
+  );
+}
+
+/* =========================================================
+   INFO BOX
+========================================================= */
+
+function InfoBox({ label, value, featured }) {
+  return (
+    <div
+      className={`
+        min-w-0
+        rounded-xl
+        border
+        px-3.5
+        py-3
+
+        ${
+          featured
+            ? "border-white/15 bg-white/[0.07]"
+            : "border-[#d8e8f8] bg-[#f7fbff]"
+        }
+      `}
+    >
+      <p
+        className={`
+          text-[10px]
+          font-bold
+          uppercase
+          tracking-[0.12em]
+
+          ${
+            featured
+              ? "text-white/50"
+              : "text-[#6d829e]"
+          }
+        `}
+      >
+        {label}
+      </p>
+
+      <p
+        className={`
+          mt-1
+          break-words
+          text-xs
+          font-bold
+          leading-5
+          sm:text-sm
+
+          ${
+            featured
+              ? "text-white"
+              : "text-[#031B60]"
+          }
+        `}
+      >
+        {value}
+      </p>
+    </div>
   );
 }

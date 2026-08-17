@@ -42,9 +42,9 @@ export default function Hero() {
           ".hero-title-line",
           {
             opacity: 0,
-            yPercent: 110,
-            rotateX: 8,
-            duration: 1,
+            y: 25,
+            rotateX: 4,
+            duration: 0.9,
             stagger: 0.12,
           },
           "-=0.35"
@@ -121,7 +121,7 @@ export default function Hero() {
 
       {/* =====================================================
           HERO IMAGE
-          ===================================================== */}
+      ====================================================== */}
 
       <div
         className="
@@ -140,7 +140,7 @@ export default function Hero() {
 
       {/* =====================================================
           PREMIUM IMAGE TREATMENT
-          ===================================================== */}
+      ====================================================== */}
 
       <div
         className="
@@ -178,7 +178,7 @@ export default function Hero() {
 
       {/* =====================================================
           BRAND GLOWS
-          ===================================================== */}
+      ====================================================== */}
 
       <div
         className="
@@ -218,7 +218,7 @@ export default function Hero() {
 
       {/* =====================================================
           CONTENT
-          ===================================================== */}
+      ====================================================== */}
 
       <div
         className="
@@ -238,10 +238,11 @@ export default function Hero() {
           items-center
         "
       >
-
         <div className="w-full max-w-5xl">
 
-          {/* Badge */}
+          {/* =================================================
+              BADGE
+          ================================================= */}
 
           <div
             className="
@@ -276,10 +277,10 @@ export default function Hero() {
             {t.hero.badge}
           </div>
 
-
           {/* =================================================
               TITLE
-              ================================================= */}
+              Telugu-safe sizing and line-height
+          ================================================= */}
 
           <h1
             className="
@@ -288,29 +289,50 @@ export default function Hero() {
               sm:mt-8
               font-bold
               text-white
-              leading-[0.94]
-              tracking-[-0.045em]
-              text-[clamp(3rem,13vw,5rem)]
-              sm:text-6xl
-              md:text-7xl
-              lg:text-[6.8rem]
+
+              /* Telugu-safe line height */
+              leading-[1.08]
+
+              /* Slightly tighter tracking */
+              tracking-[-0.025em]
+
+              /* Smaller than previous 6.8rem */
+              text-[clamp(2.7rem,9vw,4.5rem)]
+              sm:text-5xl
+              md:text-6xl
+              lg:text-[5.5rem]
+
               max-w-5xl
               [perspective:800px]
             "
           >
-            <span className="hero-title-line block overflow-hidden">
+            <span
+              className="
+                hero-title-line
+                block
+                whitespace-normal
+                break-words
+              "
+            >
               {t.hero.title1}
             </span>
 
-            <span className="hero-title-line block overflow-hidden text-[#67DFFF]">
+            <span
+              className="
+                hero-title-line
+                block
+                whitespace-normal
+                break-words
+                text-[#67DFFF]
+              "
+            >
               {t.hero.title2}
             </span>
           </h1>
 
-
           {/* =================================================
               DESCRIPTION
-              ================================================= */}
+          ================================================= */}
 
           <p
             className="
@@ -329,10 +351,9 @@ export default function Hero() {
             {t.hero.text}
           </p>
 
-
           {/* =================================================
               BUTTONS
-              ================================================= */}
+          ================================================= */}
 
           <div
             className="
@@ -347,6 +368,8 @@ export default function Hero() {
               max-w-xl
             "
           >
+
+            {/* CALL */}
 
             <a
               href="tel:+919494239260"
@@ -370,6 +393,8 @@ export default function Hero() {
                 shadow-[0_14px_35px_rgba(0,0,0,0.18)]
                 hover:-translate-y-1
                 active:scale-[0.98]
+                transition-all
+                duration-300
               "
             >
               <span className="relative z-10">
@@ -392,6 +417,7 @@ export default function Hero() {
               />
             </a>
 
+            {/* WHATSAPP */}
 
             <a
               href="https://wa.me/919494239260"
@@ -418,6 +444,8 @@ export default function Hero() {
                 hover:bg-[#1FBD5B]
                 hover:-translate-y-1
                 active:scale-[0.98]
+                transition-all
+                duration-300
               "
             >
               <span className="relative z-10">
@@ -440,6 +468,7 @@ export default function Hero() {
               />
             </a>
 
+            {/* EMAIL */}
 
             <a
               href="mailto:services.srcleaningsolutions@gmail.com"
@@ -464,6 +493,8 @@ export default function Hero() {
                 hover:border-white/30
                 hover:-translate-y-1
                 active:scale-[0.98]
+                transition-all
+                duration-300
               "
             >
               📧 Email Us
@@ -471,10 +502,9 @@ export default function Hero() {
 
           </div>
 
-
           {/* =================================================
               TRUST ITEMS
-              ================================================= */}
+          ================================================= */}
 
           <div
             className="
@@ -487,6 +517,8 @@ export default function Hero() {
               max-w-4xl
             "
           >
+
+            {/* SATISFACTION */}
 
             <div
               className="
@@ -523,6 +555,7 @@ export default function Hero() {
               {t.hero.satisfaction}
             </div>
 
+            {/* TRUSTED SERVICE */}
 
             <div
               className="
@@ -559,6 +592,7 @@ export default function Hero() {
               {t.hero.trusted}
             </div>
 
+            {/* SUPPLIES */}
 
             <div
               className="
@@ -602,10 +636,9 @@ export default function Hero() {
         </div>
       </div>
 
-
       {/* =====================================================
           SCROLL INDICATOR
-          ===================================================== */}
+      ====================================================== */}
 
       <div
         className="
@@ -646,8 +679,9 @@ export default function Hero() {
         />
       </div>
 
-
-      {/* Bottom gradient transition */}
+      {/* =====================================================
+          BOTTOM GRADIENT
+      ====================================================== */}
 
       <div
         className="
