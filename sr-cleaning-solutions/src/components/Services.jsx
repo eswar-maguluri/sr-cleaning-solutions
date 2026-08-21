@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Phone, Check } from "lucide-react";
@@ -33,8 +33,18 @@ function WhatsAppIcon({ size = 21 }) {
 
 export default function Services() {
   const { t } = useLanguage();
-
   const s = t.services;
+
+  /* =========================================================
+     SELECTED BHK
+
+     Each service has its own selected BHK.
+  ========================================================= */
+
+  const [selectedBhk, setSelectedBhk] = useState({
+    "01": "1 BHK",
+    "02": "1 BHK",
+  });
 
   /* =========================================================
      SERVICE DATA
@@ -43,23 +53,32 @@ export default function Services() {
   const services = [
     {
       number: "01",
-
       badge: s.routine,
 
       title: s.standard,
-
       description: s.standardDescription,
 
       price: "₹1,799",
-
       priceLabel: s.startsFrom,
-
       size: "1 BHK",
 
+      bhkPrices: [
+        {
+          bhk: "1 BHK",
+          price: "₹1,799",
+        },
+        {
+          bhk: "2 BHK",
+          price: "₹2,499",
+        },
+        {
+          bhk: "3 BHK",
+          price: "₹4,499",
+        },
+      ],
+
       method: s.manualCleaning,
-
       duration: s.confirmedScope,
-
       items: s.standardItems,
 
       sectionTitle: s.materials,
@@ -72,29 +91,37 @@ export default function Services() {
       featured: false,
 
       buttonText: s.bookEnquire,
-
       buttonType: "phone",
     },
 
     {
       number: "02",
-
       badge: s.intensive,
 
       title: s.deep,
-
       description: s.deepDescription,
 
       price: "₹3,499",
-
       priceLabel: s.startsFrom,
-
       size: "1 BHK",
 
+      bhkPrices: [
+        {
+          bhk: "1 BHK",
+          price: "₹3,499",
+        },
+        {
+          bhk: "2 BHK",
+          price: "₹4,999",
+        },
+        {
+          bhk: "3 BHK",
+          price: "₹8,999",
+        },
+      ],
+
       method: s.manualEquipment,
-
       duration: s.confirmedScope,
-
       items: s.deepItems,
 
       sectionTitle: s.equipmentMaterials,
@@ -109,27 +136,21 @@ export default function Services() {
       featured: true,
 
       buttonText: s.bookEnquire,
-
       buttonType: "phone",
     },
 
     {
       number: "03",
-
       badge: s.moveInOut,
 
       title: s.move,
-
       description: s.moveDescription,
 
       price: s.quote,
-
       priceLabel: s.pricing,
-
       size: s.scopeBased,
 
       method: s.availableEquipment,
-
       duration: s.confirmedAfterScope,
 
       items: s.moveItems,
@@ -145,7 +166,6 @@ export default function Services() {
       featured: false,
 
       buttonText: s.requestQuote,
-
       buttonType: "whatsapp",
     },
   ];
@@ -156,9 +176,13 @@ export default function Services() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const header = document.querySelector(".services-header");
+      const header = document.querySelector(
+        ".services-header"
+      );
 
-      const cards = gsap.utils.toArray(".service-card");
+      const cards = gsap.utils.toArray(
+        ".service-card"
+      );
 
       if (!header || !cards.length) return;
 
@@ -403,42 +427,18 @@ export default function Services() {
               />
 
               {/* =================================================
-                  CARD TOP
-              ================================================== */}
-
-              <div className="flex items-start justify-between gap-3">
-                <span
-                  className={`
-                    inline-flex
-                    max-w-full
-                    rounded-full
-                    px-3
-                    py-2
-                    text-[10px]
-                    font-bold
-                    leading-4
-                    uppercase
-                    tracking-wide
-                    sm:text-xs
-
-                    ${
-                      service.featured
-                        ? "bg-[#25D366] text-white"
-                        : "bg-[#031B60] text-white"
-                    }
-                  `}
-                >
-                  {service.number} · {service.badge}
-                </span>
-              </div>
-
-              {/* =================================================
                   TITLE
+
+                  BADGES REMOVED
+                  No:
+                  01 · Routine Cleaning
+                  02 · Intensive Cleaning
+                  03 · Move-In / Move-Out
               ================================================== */}
 
               <h3
                 className={`
-                  mt-7
+                  mt-3
                   text-xl
                   font-bold
                   leading-tight
@@ -478,62 +478,295 @@ export default function Services() {
               </p>
 
               {/* =================================================
-                  PRICE
+                  BHK PRICING
+                  HORIZONTAL TABS
               ================================================== */}
 
-              <div className="mt-6">
-                <p
-                  className={`
-                    text-[11px]
-                    font-bold
-                    uppercase
-                    tracking-wide
-                    sm:text-xs
+              {service.bhkPrices ? (
+                <div className="mt-7">
+                  {/* Small label */}
 
-                    ${
-                      service.featured
-                        ? "text-white/60"
-                        : "text-[#506482]"
-                    }
-                  `}
-                >
-                  {service.priceLabel}
-                </p>
-
-                <div className="mt-1 flex items-end justify-between gap-3">
                   <p
                     className={`
-                      text-3xl
-                      font-extrabold
-                      tracking-tight
-                      sm:text-4xl
+                      text-[10px]
+                      font-bold
+                      uppercase
+                      tracking-[0.16em]
+                      sm:text-xs
 
                       ${
                         service.featured
-                          ? "text-white"
-                          : "text-[#031B60]"
+                          ? "text-white/50"
+                          : "text-[#71839c]"
                       }
                     `}
                   >
-                    {service.price}
+                    Choose your home size
                   </p>
 
-                  <span
+                  {/* =================================================
+                      TABS
+                  ================================================== */}
+
+                  <div
                     className={`
-                      pb-1
-                      text-xs
+                      mt-4
+                      grid
+                      grid-cols-3
+                      border-b
 
                       ${
                         service.featured
-                          ? "text-white/60"
-                          : "text-[#506482]"
+                          ? "border-white/15"
+                          : "border-[#d8e8f8]"
                       }
                     `}
                   >
-                    {service.size}
-                  </span>
+                    {service.bhkPrices.map((item) => {
+                      const isSelected =
+                        selectedBhk[service.number] ===
+                        item.bhk;
+
+                      return (
+                        <button
+                          key={item.bhk}
+                          type="button"
+                          onClick={() =>
+                            setSelectedBhk(
+                              (previous) => ({
+                                ...previous,
+                                [service.number]:
+                                  item.bhk,
+                              })
+                            )
+                          }
+                          aria-pressed={isSelected}
+                          className="
+                            relative
+                            flex
+                            min-h-[72px]
+                            flex-col
+                            items-center
+                            justify-center
+                            px-2
+                            py-3
+                            text-center
+                            transition-all
+                            duration-300
+                          "
+                        >
+                          {/* BHK */}
+
+                          <span
+                            className={`
+                              text-xs
+                              font-bold
+                              sm:text-sm
+
+                              ${
+                                isSelected
+                                  ? service.featured
+                                    ? "text-white"
+                                    : "text-[#031B60]"
+                                  : service.featured
+                                    ? "text-white/50"
+                                    : "text-[#71839c]"
+                              }
+                            `}
+                          >
+                            {item.bhk}
+                          </span>
+
+                          {/* PRICE */}
+
+                          <span
+                            className={`
+                              mt-1
+                              text-sm
+                              font-extrabold
+                              tracking-tight
+                              sm:text-base
+
+                              ${
+                                isSelected
+                                  ? service.featured
+                                    ? "text-white"
+                                    : "text-[#031B60]"
+                                  : service.featured
+                                    ? "text-white/50"
+                                    : "text-[#71839c]"
+                              }
+                            `}
+                          >
+                            {item.price}
+                          </span>
+
+                          {/* ACTIVE UNDERLINE */}
+
+                          <span
+                            className={`
+                              absolute
+                              bottom-[-1px]
+                              left-1/2
+                              h-[3px]
+                              -translate-x-1/2
+                              rounded-full
+                              transition-all
+                              duration-300
+
+                              ${
+                                isSelected
+                                  ? service.featured
+                                    ? "w-12 bg-[#25D366]"
+                                    : "w-12 bg-[#00A3E0]"
+                                  : "w-0 bg-transparent"
+                              }
+                            `}
+                          />
+                        </button>
+                      );
+                    })}
+                  </div>
+
+                  {/* =================================================
+                      SELECTED PRICE SUMMARY
+                  ================================================== */}
+
+                  <div
+                    className={`
+                      mt-4
+                      flex
+                      items-center
+                      justify-between
+                      rounded-xl
+                      px-4
+                      py-3
+
+                      ${
+                        service.featured
+                          ? "bg-white/[0.07]"
+                          : "bg-[#f4faff]"
+                      }
+                    `}
+                  >
+                    <div>
+                      <p
+                        className={`
+                          text-[10px]
+                          font-bold
+                          uppercase
+                          tracking-[0.12em]
+
+                          ${
+                            service.featured
+                              ? "text-white/40"
+                              : "text-[#71839c]"
+                          }
+                        `}
+                      >
+                        Selected
+                      </p>
+
+                      <p
+                        className={`
+                          mt-0.5
+                          text-sm
+                          font-bold
+
+                          ${
+                            service.featured
+                              ? "text-white"
+                              : "text-[#031B60]"
+                          }
+                        `}
+                      >
+                        {selectedBhk[service.number]}
+                      </p>
+                    </div>
+
+                    <p
+                      className={`
+                        text-xl
+                        font-extrabold
+                        tracking-tight
+
+                        ${
+                          service.featured
+                            ? "text-white"
+                            : "text-[#031B60]"
+                        }
+                      `}
+                    >
+                      {
+                        service.bhkPrices.find(
+                          (item) =>
+                            item.bhk ===
+                            selectedBhk[
+                              service.number
+                            ]
+                        )?.price
+                      }
+                    </p>
+                  </div>
                 </div>
-              </div>
+              ) : (
+                /* =================================================
+                   MOVE-IN / MOVE-OUT PRICE
+                ================================================== */
+
+                <div className="mt-7">
+                  <p
+                    className={`
+                      text-[10px]
+                      font-bold
+                      uppercase
+                      tracking-[0.16em]
+
+                      ${
+                        service.featured
+                          ? "text-white/50"
+                          : "text-[#71839c]"
+                      }
+                    `}
+                  >
+                    {service.priceLabel}
+                  </p>
+
+                  <div className="mt-2 flex items-end justify-between gap-3">
+                    <p
+                      className={`
+                        text-3xl
+                        font-extrabold
+                        tracking-tight
+                        sm:text-4xl
+
+                        ${
+                          service.featured
+                            ? "text-white"
+                            : "text-[#031B60]"
+                        }
+                      `}
+                    >
+                      {service.price}
+                    </p>
+
+                    <span
+                      className={`
+                        pb-1
+                        text-xs
+
+                        ${
+                          service.featured
+                            ? "text-white/60"
+                            : "text-[#506482]"
+                        }
+                      `}
+                    >
+                      {service.size}
+                    </span>
+                  </div>
+                </div>
+              )}
 
               {/* =================================================
                   METHOD / DURATION
@@ -593,7 +826,10 @@ export default function Services() {
                         }
                       `}
                     >
-                      <Check size={12} strokeWidth={3} />
+                      <Check
+                        size={12}
+                        strokeWidth={3}
+                      />
                     </span>
 
                     <span>{item}</span>
@@ -786,7 +1022,11 @@ export default function Services() {
    INFO BOX
 ========================================================= */
 
-function InfoBox({ label, value, featured }) {
+function InfoBox({
+  label,
+  value,
+  featured,
+}) {
   return (
     <div
       className={`

@@ -7,10 +7,6 @@ import {
 } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 
-/* =========================================================
-   WHATSAPP ICON
-========================================================= */
-
 function WhatsAppIcon({ size = 18 }) {
   return (
     <img
@@ -31,66 +27,10 @@ function WhatsAppIcon({ size = 18 }) {
   );
 }
 
-/* =========================================================
-   RATE CARDS
-========================================================= */
-
 export default function RateCards() {
   const { t } = useLanguage();
   const r = t.rates;
-
-  /*
-    ONLY ONE INDIVIDUAL SERVICE CAN BE OPEN AT A TIME.
-
-    null = nothing is open
-    "washroom" = washroom is open
-    "chimney" = chimney is open
-    etc.
-  */
   const [openService, setOpenService] = useState(null);
-
-  /* =========================================================
-     STANDARD CLEANING
-  ========================================================= */
-
-  const standardCleaning = [
-    {
-      label: "1 BHK",
-      price: "₹1,799",
-    },
-    {
-      label: "2 BHK",
-      price: "₹2,499",
-    },
-    {
-      label: "3 BHK",
-      price: "₹4,499",
-    },
-  ];
-
-  /* =========================================================
-     DEEP CLEANING
-  ========================================================= */
-
-  const deepCleaning = [
-    {
-      label: "1 BHK",
-      price: "₹3,499",
-    },
-    {
-      label: "2 BHK",
-      price: "₹4,999",
-    },
-    {
-      label: "3 BHK",
-      price: "₹8,999",
-    },
-  ];
-
-  /* =========================================================
-     INDIVIDUAL SERVICES
-  ========================================================= */
-
   const individualServices = [
     {
       id: "washroom",
@@ -110,7 +50,6 @@ export default function RateCards() {
         },
       ],
     },
-
     {
       id: "chimney",
       title: r.chimney,
@@ -121,7 +60,6 @@ export default function RateCards() {
         },
       ],
     },
-
     {
       id: "refrigerator",
       title: r.refrigerator,
@@ -136,7 +74,6 @@ export default function RateCards() {
         },
       ],
     },
-
     {
       id: "microwave",
       title: r.microwave,
@@ -147,7 +84,6 @@ export default function RateCards() {
         },
       ],
     },
-
     {
       id: "kitchen-sink",
       title: r.kitchenSink,
@@ -158,7 +94,6 @@ export default function RateCards() {
         },
       ],
     },
-
     {
       id: "gas-stove",
       title: r.gasStove,
@@ -169,7 +104,6 @@ export default function RateCards() {
         },
       ],
     },
-
     {
       id: "ceiling-fan",
       title: r.ceilingFan,
@@ -188,7 +122,6 @@ export default function RateCards() {
         },
       ],
     },
-
     {
       id: "cobwebs",
       title: r.cobwebs,
@@ -199,7 +132,6 @@ export default function RateCards() {
         },
       ],
     },
-
     {
       id: "exhaust-fan",
       title: r.exhaustFan,
@@ -210,7 +142,6 @@ export default function RateCards() {
         },
       ],
     },
-
     {
       id: "glass-partition",
       title: r.glassPartition,
@@ -221,7 +152,6 @@ export default function RateCards() {
         },
       ],
     },
-
     {
       id: "wash-basin",
       title: r.washBasin,
@@ -232,7 +162,6 @@ export default function RateCards() {
         },
       ],
     },
-
     {
       id: "wooden-doors",
       title: r.woodenDoors,
@@ -243,7 +172,6 @@ export default function RateCards() {
         },
       ],
     },
-
     {
       id: "mirror",
       title: r.mirror,
@@ -256,40 +184,14 @@ export default function RateCards() {
     },
   ];
 
-  /* =========================================================
-     TOGGLE INDIVIDUAL SERVICE
-
-     IMPORTANT:
-     Only ONE service can be open at a time.
-
-     Example:
-     Washroom open
-       ↓
-     Click Chimney
-       ↓
-     Washroom closes
-     Chimney opens
-  ========================================================= */
-
   const toggleService = (id) => {
     setOpenService((current) => {
-      /*
-        If the user clicks the SAME service again,
-        close it.
-      */
       if (current === id) {
         return null;
       }
-
-      /*
-        If the user clicks a DIFFERENT service,
-        the previous one automatically closes
-        and the new one opens.
-      */
       return id;
     });
   };
-
   return (
     <section
       id="rates"
@@ -319,7 +221,6 @@ export default function RateCards() {
           blur-[110px]
         "
       />
-
       <div
         className="
           pointer-events-none
@@ -333,7 +234,6 @@ export default function RateCards() {
           blur-[110px]
         "
       />
-
       <div
         className="
           relative
@@ -345,13 +245,11 @@ export default function RateCards() {
           lg:px-8
         "
       >
-
         {/* ===================================================
             HEADER
         ==================================================== */}
 
         <div className="mx-auto max-w-3xl text-center">
-
           <span
             className="
               inline-flex
@@ -379,10 +277,8 @@ export default function RateCards() {
                 bg-[#25D366]
               "
             />
-
             {r.label}
           </span>
-
           <h2
             className="
               mt-5
@@ -397,7 +293,6 @@ export default function RateCards() {
           >
             {r.heading}
           </h2>
-
           <p
             className="
               mx-auto
@@ -412,41 +307,6 @@ export default function RateCards() {
           >
             {r.subtitle}
           </p>
-
-        </div>
-
-        {/* ===================================================
-            PACKAGE PRICING
-        ==================================================== */}
-
-        <div
-          className="
-            mt-10
-            grid
-            grid-cols-1
-            gap-5
-            md:grid-cols-2
-          "
-        >
-
-          <RateCard
-            title={r.standard}
-            subtitle={r.routinePackage}
-            prices={standardCleaning}
-            accent="blue"
-            enquiryText={r.enquire}
-            packageText={r.package}
-          />
-
-          <RateCard
-            title={r.deep}
-            subtitle={r.detailedPackage}
-            prices={deepCleaning}
-            accent="green"
-            enquiryText={r.enquire}
-            packageText={r.package}
-          />
-
         </div>
 
         {/* ===================================================
@@ -456,14 +316,13 @@ export default function RateCards() {
         <div
           id="individual-services"
           className="
-            mt-14
-            sm:mt-16
-            md:mt-20
+            mt-12
+            sm:mt-14
+            md:mt-16
           "
         >
-
+          {/* SECTION HEADING */}
           <div className="mb-7">
-
             <p
               className="
                 text-xs
@@ -475,7 +334,6 @@ export default function RateCards() {
             >
               {r.individual}
             </p>
-
             <h3
               className="
                 mt-2
@@ -488,7 +346,6 @@ export default function RateCards() {
             >
               {r.chooseService}
             </h3>
-
             <p
               className="
                 mt-3
@@ -501,7 +358,6 @@ export default function RateCards() {
             >
               {r.chooseServiceText}
             </p>
-
           </div>
 
           {/* =================================================
@@ -517,16 +373,8 @@ export default function RateCards() {
               lg:grid-cols-3
             "
           >
-
             {individualServices.map((service) => {
-
-              /*
-                IMPORTANT:
-                This checks ONE value instead of checking
-                a Set of many values.
-              */
               const isOpen = openService === service.id;
-
               return (
                 <div
                   key={service.id}
@@ -537,7 +385,6 @@ export default function RateCards() {
                     bg-white
                     transition-all
                     duration-300
-
                     ${
                       isOpen
                         ? "border-[#00A3E0] shadow-[0_12px_35px_rgba(3,27,96,0.10)]"
@@ -545,7 +392,6 @@ export default function RateCards() {
                     }
                   `}
                 >
-
                   {/* =================================================
                       SERVICE BUTTON
                   ================================================== */}
@@ -568,7 +414,6 @@ export default function RateCards() {
                       hover:bg-[#f7fbff]
                     "
                   >
-
                     <span
                       className="
                         min-w-0
@@ -581,7 +426,6 @@ export default function RateCards() {
                     >
                       {service.title}
                     </span>
-
                     <span
                       className={`
                         flex
@@ -593,7 +437,6 @@ export default function RateCards() {
                         rounded-full
                         transition-all
                         duration-300
-
                         ${
                           isOpen
                             ? "rotate-180 bg-[#031B60] text-white"
@@ -603,7 +446,6 @@ export default function RateCards() {
                     >
                       <ChevronDown size={18} />
                     </span>
-
                   </button>
 
                   {/* =================================================
@@ -615,7 +457,6 @@ export default function RateCards() {
                       grid
                       transition-[grid-template-rows]
                       duration-300
-
                       ${
                         isOpen
                           ? "grid-rows-[1fr]"
@@ -623,9 +464,7 @@ export default function RateCards() {
                       }
                     `}
                   >
-
                     <div className="overflow-hidden">
-
                       <div
                         className="
                           border-t
@@ -635,13 +474,11 @@ export default function RateCards() {
                           sm:p-5
                         "
                       >
-
                         {/* =================================================
                             PRICE OPTIONS
                         ================================================== */}
 
                         <div className="space-y-2">
-
                           {service.options.map((option) => (
                             <div
                               key={option.label}
@@ -658,7 +495,6 @@ export default function RateCards() {
                                 py-3
                               "
                             >
-
                               <span
                                 className="
                                   min-w-0
@@ -671,7 +507,6 @@ export default function RateCards() {
                               >
                                 {option.label}
                               </span>
-
                               <span
                                 className="
                                   shrink-0
@@ -683,10 +518,8 @@ export default function RateCards() {
                               >
                                 {option.price}
                               </span>
-
                             </div>
                           ))}
-
                         </div>
 
                         {/* =================================================
@@ -719,27 +552,18 @@ export default function RateCards() {
                             hover:-translate-y-0.5
                           "
                         >
-
                           <WhatsAppIcon size={21} />
-
                           <span>
                             {r.enquireAbout}
                           </span>
-
                         </a>
-
                       </div>
-
                     </div>
-
                   </div>
-
                 </div>
               );
             })}
-
           </div>
-
         </div>
 
         {/* ===================================================
@@ -760,7 +584,6 @@ export default function RateCards() {
             md:p-8
           "
         >
-
           <div
             className="
               flex
@@ -771,9 +594,7 @@ export default function RateCards() {
               md:justify-between
             "
           >
-
             <div className="min-w-0">
-
               <span
                 className="
                   inline-flex
@@ -791,7 +612,6 @@ export default function RateCards() {
               >
                 {r.quoteBased}
               </span>
-
               <h3
                 className="
                   mt-4
@@ -803,7 +623,6 @@ export default function RateCards() {
               >
                 {r.moveInOut}
               </h3>
-
               <p
                 className="
                   mt-3
@@ -816,7 +635,6 @@ export default function RateCards() {
               >
                 {r.moveDescription}
               </p>
-
               <p
                 className="
                   mt-4
@@ -828,9 +646,7 @@ export default function RateCards() {
               >
                 {r.comingSoon}
               </p>
-
             </div>
-
             <a
               href="https://wa.me/919494239260"
               target="_blank"
@@ -858,17 +674,12 @@ export default function RateCards() {
                 md:w-auto
               "
             >
-
               <WhatsAppIcon size={22} />
-
               <span>
                 {r.getQuote}
               </span>
-
             </a>
-
           </div>
-
         </div>
 
         {/* ===================================================
@@ -889,7 +700,6 @@ export default function RateCards() {
             sm:p-5
           "
         >
-
           <span
             className="
               mt-0.5
@@ -909,7 +719,6 @@ export default function RateCards() {
               strokeWidth={3}
             />
           </span>
-
           <p
             className="
               text-xs
@@ -923,196 +732,8 @@ export default function RateCards() {
             </strong>{" "}
             {r.note}
           </p>
-
         </div>
-
       </div>
     </section>
-  );
-}
-
-/* =========================================================
-   PACKAGE RATE CARD
-========================================================= */
-
-function RateCard({
-  title,
-  subtitle,
-  prices,
-  accent,
-  enquiryText,
-  packageText,
-}) {
-  const isGreen = accent === "green";
-
-  return (
-    <div
-      className="
-        relative
-        overflow-hidden
-        rounded-[24px]
-        border
-        border-[#d8e8f8]
-        bg-white
-        p-5
-        shadow-[0_12px_35px_rgba(3,27,96,0.07)]
-        sm:p-6
-        md:p-7
-      "
-    >
-
-      {/* TOP LINE */}
-
-      <div
-        className={`
-          absolute
-          left-0
-          top-0
-          h-1
-          w-full
-
-          ${
-            isGreen
-              ? "bg-[#25D366]"
-              : "bg-[#00A3E0]"
-          }
-        `}
-      />
-
-      <div>
-
-        <span
-          className={`
-            inline-flex
-            rounded-full
-            px-3
-            py-2
-            text-[10px]
-            font-bold
-            uppercase
-            tracking-wide
-            sm:text-xs
-
-            ${
-              isGreen
-                ? "bg-[#25D366]/10 text-[#1FBD5B]"
-                : "bg-[#00A3E0]/10 text-[#0875a4]"
-            }
-          `}
-        >
-          {packageText}
-        </span>
-
-        <h3
-          className="
-            mt-4
-            text-2xl
-            font-bold
-            text-[#031B60]
-            sm:text-3xl
-          "
-        >
-          {title}
-        </h3>
-
-        <p
-          className="
-            mt-2
-            text-sm
-            leading-6
-            text-[#506482]
-          "
-        >
-          {subtitle}
-        </p>
-
-      </div>
-
-      {/* PRICES */}
-
-      <div className="mt-6 space-y-3">
-
-        {prices.map((item) => (
-          <div
-            key={item.label}
-            className="
-              flex
-              min-h-[60px]
-              items-center
-              justify-between
-              gap-4
-              rounded-xl
-              border
-              border-[#d8e8f8]
-              bg-[#f8fcff]
-              px-4
-              py-3
-            "
-          >
-
-            <span
-              className="
-                text-sm
-                font-semibold
-                text-[#506482]
-              "
-            >
-              {item.label}
-            </span>
-
-            <span
-              className="
-                shrink-0
-                text-lg
-                font-extrabold
-                text-[#031B60]
-                sm:text-xl
-              "
-            >
-              {item.price}
-            </span>
-
-          </div>
-        ))}
-
-      </div>
-
-      {/* PACKAGE WHATSAPP */}
-
-      <a
-        href="https://wa.me/919494239260"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={`${enquiryText} ${title}`}
-        className="
-          group
-          mt-5
-          flex
-          min-h-[52px]
-          w-full
-          items-center
-          justify-center
-          gap-2
-          rounded-full
-          bg-[#031B60]
-          px-5
-          text-sm
-          font-bold
-          text-white
-          transition-all
-          duration-300
-          hover:bg-[#00A3E0]
-        "
-      >
-
-        <WhatsAppIcon size={22} />
-
-        <span>
-          {enquiryText}
-        </span>
-
-      </a>
-
-    </div>
   );
 }
