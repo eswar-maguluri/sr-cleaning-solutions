@@ -3,7 +3,12 @@
 import { useEffect, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Phone, Check } from "lucide-react";
+import {
+  Phone,
+  Check,
+  Sparkles,
+  Tag,
+} from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -12,7 +17,7 @@ gsap.registerPlugin(ScrollTrigger);
    WHATSAPP ICON
 ========================================================= */
 
-function WhatsAppIcon({ size = 21 }) {
+function WhatsAppIcon({ size = 20 }) {
   return (
     <img
       src="/whatsapp.svg"
@@ -28,39 +33,90 @@ function WhatsAppIcon({ size = 21 }) {
 }
 
 /* =========================================================
+   INFO BOX
+========================================================= */
+
+function InfoBox({
+  label,
+  value,
+  featured = false,
+}) {
+  return (
+    <div
+      className={`
+        min-w-0 rounded-xl border px-3 py-2.5
+        sm:px-3.5 sm:py-3
+        ${
+          featured
+            ? "border-white/15 bg-white/[0.07]"
+            : "border-[#d8e8f8] bg-[#f7fbff]"
+        }
+      `}
+    >
+      <p
+        className={`
+          text-[9px] font-bold uppercase tracking-[0.12em]
+          sm:text-[10px]
+          ${
+            featured
+              ? "text-white/50"
+              : "text-[#6d829e]"
+          }
+        `}
+      >
+        {label}
+      </p>
+
+      <p
+        className={`
+          mt-1 break-words text-[11px] font-bold leading-4
+          sm:text-xs sm:leading-5
+          ${
+            featured
+              ? "text-white"
+              : "text-[#031B60]"
+          }
+        `}
+      >
+        {value}
+      </p>
+    </div>
+  );
+}
+
+/* =========================================================
    SERVICES
 ========================================================= */
 
 export default function Services() {
   const { t } = useLanguage();
+
   const s = t.services;
 
   /* =========================================================
      SELECTED BHK
-
-     Each service has its own selected BHK.
   ========================================================= */
 
   const [selectedBhk, setSelectedBhk] = useState({
-    "01": "1 BHK",
-    "02": "1 BHK",
+    standard: "1 BHK",
+    deep: "1 BHK",
+    move: "1 BHK",
+    tidco: "1 BHK",
   });
 
   /* =========================================================
-     SERVICE DATA
+     SERVICES DATA
   ========================================================= */
 
   const services = [
+    /* =====================================================
+       STANDARD CLEANING
+    ===================================================== */
+
     {
       number: "01",
-      badge: s.routine,
-
       title: s.standard,
       description: s.standardDescription,
-
-      price: "₹1,799",
-      priceLabel: s.startsFrom,
-      size: "1 BHK",
 
       bhkPrices: [
         {
@@ -77,8 +133,11 @@ export default function Services() {
         },
       ],
 
+      selectionKey: "standard",
+
       method: s.manualCleaning,
       duration: s.confirmedScope,
+
       items: s.standardItems,
 
       sectionTitle: s.materials,
@@ -94,16 +153,14 @@ export default function Services() {
       buttonType: "phone",
     },
 
+    /* =====================================================
+       DEEP CLEANING
+    ===================================================== */
+
     {
       number: "02",
-      badge: s.intensive,
-
       title: s.deep,
       description: s.deepDescription,
-
-      price: "₹3,499",
-      priceLabel: s.startsFrom,
-      size: "1 BHK",
 
       bhkPrices: [
         {
@@ -120,8 +177,11 @@ export default function Services() {
         },
       ],
 
+      selectionKey: "deep",
+
       method: s.manualEquipment,
       duration: s.confirmedScope,
+
       items: s.deepItems,
 
       sectionTitle: s.equipmentMaterials,
@@ -139,16 +199,31 @@ export default function Services() {
       buttonType: "phone",
     },
 
+    /* =====================================================
+       MOVE-IN / MOVE-OUT
+    ===================================================== */
+
     {
       number: "03",
-      badge: s.moveInOut,
-
       title: s.move,
       description: s.moveDescription,
 
-      price: s.quote,
-      priceLabel: s.pricing,
-      size: s.scopeBased,
+      bhkPrices: [
+        {
+          bhk: "1 BHK",
+          price: "₹6,000",
+        },
+        {
+          bhk: "2 BHK",
+          price: "₹7,500",
+        },
+        {
+          bhk: "3 BHK",
+          price: "₹8,500",
+        },
+      ],
+
+      selectionKey: "move",
 
       method: s.availableEquipment,
       duration: s.confirmedAfterScope,
@@ -165,8 +240,93 @@ export default function Services() {
 
       featured: false,
 
-      buttonText: s.requestQuote,
-      buttonType: "whatsapp",
+      buttonText: s.bookEnquire,
+      buttonType: "phone",
+    },
+
+    /* =====================================================
+       TIDCO HOUSE - DEEP CLEANING
+    ===================================================== */
+
+    {
+      number: "04",
+      title: s.tidco,
+      description: s.tidcoDescription,
+
+      bhkPrices: [
+        {
+          bhk: "1 BHK",
+          price: "₹2,999",
+        },
+        {
+          bhk: "2 BHK",
+          price: "₹3,499",
+        },
+      ],
+
+      selectionKey: "tidco",
+
+      method: s.tidcoMethod,
+      duration: s.tidcoDuration,
+
+      items: s.tidcoItems,
+
+      sectionTitle: s.equipmentMaterials,
+
+      tags: [
+        s.vacuum,
+        s.miniScrubber,
+        s.miniBlower,
+        s.professionalCleaners,
+      ],
+
+      featured: false,
+
+      buttonText: s.bookEnquire,
+      buttonType: "phone",
+    },
+  ];
+
+  /* =========================================================
+     COMBO SERVICES
+  ========================================================= */
+
+  const combos = [
+    {
+      number: "C01",
+
+      title: s.combo1Title,
+
+      description: s.combo1Description,
+
+      price: s.combo1Price,
+
+      items: s.combo1Items,
+
+      tags: [
+        s.chimney,
+        s.refrigerator,
+        s.ceilingFan,
+      ],
+    },
+
+    {
+      number: "C02",
+
+      title: s.combo2Title,
+
+      description: s.combo2Description,
+
+      price: s.combo2Price,
+
+      items: s.combo2Items,
+
+      tags: [
+        s.kitchenSink,
+        s.washBasin,
+        s.singleDoor,
+        s.gasStove,
+      ],
     },
   ];
 
@@ -176,56 +336,79 @@ export default function Services() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const header = document.querySelector(
-        ".services-header"
-      );
+      const header =
+        document.querySelector(".services-header");
 
-      const cards = gsap.utils.toArray(
-        ".service-card"
-      );
+      const cards =
+        gsap.utils.toArray(".service-card");
 
-      if (!header || !cards.length) return;
+      const comboCards =
+        gsap.utils.toArray(".combo-card");
 
-      gsap.fromTo(
-        header,
-        {
-          opacity: 0,
-          y: 30,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: "power3.out",
-
-          scrollTrigger: {
-            trigger: header,
-            start: "top 90%",
-            once: true,
+      if (header) {
+        gsap.fromTo(
+          header,
+          {
+            opacity: 0,
+            y: 25,
           },
-        }
-      );
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.7,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: header,
+              start: "top 90%",
+              once: true,
+            },
+          }
+        );
+      }
 
-      gsap.fromTo(
-        cards,
-        {
-          opacity: 0,
-          y: 35,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.7,
-          stagger: 0.12,
-          ease: "power3.out",
-
-          scrollTrigger: {
-            trigger: ".services-grid",
-            start: "top 92%",
-            once: true,
+      if (cards.length) {
+        gsap.fromTo(
+          cards,
+          {
+            opacity: 0,
+            y: 25,
           },
-        }
-      );
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            stagger: 0.08,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: ".services-grid",
+              start: "top 92%",
+              once: true,
+            },
+          }
+        );
+      }
+
+      if (comboCards.length) {
+        gsap.fromTo(
+          comboCards,
+          {
+            opacity: 0,
+            y: 25,
+          },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            stagger: 0.08,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: ".combo-grid",
+              start: "top 92%",
+              once: true,
+            },
+          }
+        );
+      }
     });
 
     return () => ctx.revert();
@@ -242,10 +425,10 @@ export default function Services() {
         relative
         overflow-hidden
         bg-[#eef8ff]
-        py-16
-        sm:py-20
-        md:py-28
-        lg:py-32
+        py-12
+        sm:py-16
+        md:py-20
+        lg:py-24
       "
     >
       {/* =====================================================
@@ -256,15 +439,15 @@ export default function Services() {
         className="
           pointer-events-none
           absolute
-          -top-40
-          -right-40
-          h-[360px]
-          w-[360px]
+          -right-32
+          -top-32
+          h-72
+          w-72
           rounded-full
           bg-[#00A3E0]/10
-          blur-[110px]
-          sm:h-[450px]
-          sm:w-[450px]
+          blur-[90px]
+          sm:h-96
+          sm:w-96
         "
       />
 
@@ -272,17 +455,21 @@ export default function Services() {
         className="
           pointer-events-none
           absolute
-          -bottom-40
-          -left-40
-          h-[360px]
-          w-[360px]
+          -bottom-32
+          -left-32
+          h-72
+          w-72
           rounded-full
           bg-[#25D366]/10
-          blur-[120px]
-          sm:h-[450px]
-          sm:w-[450px]
+          blur-[100px]
+          sm:h-96
+          sm:w-96
         "
       />
+
+      {/* =====================================================
+          MAIN CONTAINER
+      ====================================================== */}
 
       <div
         className="
@@ -296,7 +483,7 @@ export default function Services() {
         "
       >
         {/* ===================================================
-            SECTION HEADER
+            HEADER
         ==================================================== */}
 
         <div className="services-header max-w-3xl">
@@ -304,8 +491,8 @@ export default function Services() {
             className="
               inline-flex
               items-center
-              gap-3
-              text-[11px]
+              gap-2
+              text-[10px]
               font-bold
               uppercase
               tracking-[0.2em]
@@ -313,22 +500,22 @@ export default function Services() {
               sm:text-xs
             "
           >
-            <span className="h-px w-7 bg-[#00A3E0]" />
+            <span className="h-px w-6 bg-[#00A3E0]" />
 
             {s.label}
           </span>
 
           <h2
             className="
-              mt-4
-              text-3xl
+              mt-3
+              text-2xl
               font-bold
               leading-tight
               tracking-tight
               text-[#031B60]
-              sm:text-4xl
-              md:text-5xl
-              lg:text-6xl
+              sm:text-3xl
+              md:text-4xl
+              lg:text-5xl
             "
           >
             {s.heading}
@@ -336,13 +523,13 @@ export default function Services() {
 
           <p
             className="
-              mt-5
+              mt-3
               max-w-2xl
-              text-sm
-              leading-7
+              text-xs
+              leading-6
               text-[#506482]
-              sm:text-base
-              md:text-lg
+              sm:text-sm
+              md:text-base
             "
           >
             {s.subtitle}
@@ -350,149 +537,161 @@ export default function Services() {
         </div>
 
         {/* ===================================================
-            SERVICE CARDS
+            SERVICE GRID
         ==================================================== */}
 
         <div
           className="
             services-grid
-            mt-10
+            mt-7
             grid
             grid-cols-1
-            gap-5
-            sm:mt-12
-            md:grid-cols-2
-            lg:mt-16
+            gap-4
+            sm:mt-9
+            sm:gap-5
             lg:grid-cols-3
-            lg:items-stretch
             lg:gap-6
           "
         >
-          {services.map((service) => (
-            <article
-              key={service.number}
-              className={`
-                service-card
-                group
-                relative
-                flex
-                min-w-0
-                flex-col
-                overflow-hidden
-                rounded-[22px]
-                border
-                p-5
-                transition-all
-                duration-300
-                hover:-translate-y-1
-                sm:rounded-[26px]
-                sm:p-6
-                lg:p-7
+          {services.map((service) => {
+            const currentSelection =
+              selectedBhk[service.selectionKey];
 
-                ${
-                  service.featured
-                    ? `
-                      border-[#031B60]
-                      bg-[#031B60]
-                      shadow-[0_20px_55px_rgba(3,27,96,0.20)]
-                    `
-                    : `
-                      border-[#d5e5f2]
-                      bg-white
-                      shadow-[0_15px_40px_rgba(3,27,96,0.07)]
-                      hover:border-[#9ed9f1]
-                      hover:shadow-[0_22px_50px_rgba(3,27,96,0.12)]
-                    `
-                }
-              `}
-            >
-              {/* =================================================
-                  TOP ACCENT
-              ================================================== */}
+            const selectedPrice =
+              service.bhkPrices?.find(
+                (item) =>
+                  item.bhk === currentSelection
+              )?.price;
 
-              <div
+            return (
+              <article
+                key={`service-${service.number}`}
                 className={`
-                  absolute
-                  left-0
-                  top-0
-                  h-1
-                  w-full
+                  service-card
+                  group
+                  relative
+                  flex
+                  min-w-0
+                  flex-col
+                  overflow-hidden
+                  rounded-[20px]
+                  border
+                  p-4
+                  transition-all
+                  duration-300
+                  hover:-translate-y-1
+                  sm:rounded-[24px]
+                  sm:p-5
+                  md:p-6
 
                   ${
                     service.featured
-                      ? "bg-gradient-to-r from-[#25D366] via-[#00A3E0] to-[#25D366]"
-                      : "bg-gradient-to-r from-[#00A3E0] to-[#25D366]"
-                  }
-                `}
-              />
-
-              {/* =================================================
-                  TITLE
-
-                  BADGES REMOVED
-                  No:
-                  01 · Routine Cleaning
-                  02 · Intensive Cleaning
-                  03 · Move-In / Move-Out
-              ================================================== */}
-
-              <h3
-                className={`
-                  mt-3
-                  text-xl
-                  font-bold
-                  leading-tight
-                  tracking-tight
-                  sm:text-2xl
-                  md:text-3xl
-
-                  ${
-                    service.featured
-                      ? "text-white"
-                      : "text-[#031B60]"
+                      ? `
+                        border-[#031B60]
+                        bg-[#031B60]
+                        shadow-[0_18px_45px_rgba(3,27,96,0.18)]
+                      `
+                      : `
+                        border-[#d5e5f2]
+                        bg-white
+                        shadow-[0_12px_32px_rgba(3,27,96,0.06)]
+                        hover:border-[#9ed9f1]
+                        hover:shadow-[0_18px_40px_rgba(3,27,96,0.10)]
+                      `
                   }
                 `}
               >
-                {service.title}
-              </h3>
+                {/* TOP ACCENT */}
 
-              {/* =================================================
-                  DESCRIPTION
-              ================================================== */}
+                <div
+                  className={`
+                    absolute
+                    left-0
+                    top-0
+                    h-1
+                    w-full
 
-              <p
-                className={`
-                  mt-3
-                  text-sm
-                  leading-6
-                  sm:text-[15px]
+                    ${
+                      service.featured
+                        ? "bg-gradient-to-r from-[#25D366] via-[#00A3E0] to-[#25D366]"
+                        : "bg-gradient-to-r from-[#00A3E0] to-[#25D366]"
+                    }
+                  `}
+                />
 
-                  ${
-                    service.featured
-                      ? "text-white/70"
-                      : "text-[#506482]"
-                  }
-                `}
-              >
-                {service.description}
-              </p>
+                {/* TITLE */}
 
-              {/* =================================================
-                  BHK PRICING
-                  HORIZONTAL TABS
-              ================================================== */}
+                <div className="mt-2 flex items-start gap-3">
+                  <div
+                    className={`
+                      flex
+                      h-10
+                      w-10
+                      shrink-0
+                      items-center
+                      justify-center
+                      rounded-full
 
-              {service.bhkPrices ? (
-                <div className="mt-7">
-                  {/* Small label */}
+                      ${
+                        service.featured
+                          ? "bg-white/10 text-[#25D366]"
+                          : "bg-[#031B60] text-white"
+                      }
+                    `}
+                  >
+                    <Sparkles size={18} />
+                  </div>
 
+                  <div className="min-w-0">
+                    <h3
+                      className={`
+                        text-lg
+                        font-bold
+                        leading-tight
+                        tracking-tight
+                        sm:text-xl
+                        md:text-2xl
+
+                        ${
+                          service.featured
+                            ? "text-white"
+                            : "text-[#031B60]"
+                        }
+                      `}
+                    >
+                      {service.title}
+                    </h3>
+
+                    <p
+                      className={`
+                        mt-2
+                        text-xs
+                        leading-5
+                        sm:text-sm
+                        sm:leading-6
+
+                        ${
+                          service.featured
+                            ? "text-white/70"
+                            : "text-[#506482]"
+                        }
+                      `}
+                    >
+                      {service.description}
+                    </p>
+                  </div>
+                </div>
+
+                {/* BHK PRICES */}
+
+                <div className="mt-5">
                   <p
                     className={`
-                      text-[10px]
+                      text-[9px]
                       font-bold
                       uppercase
-                      tracking-[0.16em]
-                      sm:text-xs
+                      tracking-[0.15em]
+                      sm:text-[10px]
 
                       ${
                         service.featured
@@ -501,146 +700,122 @@ export default function Services() {
                       }
                     `}
                   >
-                    Choose your home size
+                    {s.chooseHomeSize ||
+                      "Choose your home size"}
                   </p>
 
-                  {/* =================================================
-                      TABS
-                  ================================================== */}
-
                   <div
                     className={`
-                      mt-4
+                      mt-3
                       grid
-                      grid-cols-3
-                      border-b
-
                       ${
-                        service.featured
-                          ? "border-white/15"
-                          : "border-[#d8e8f8]"
+                        service.bhkPrices.length === 2
+                          ? "grid-cols-2"
+                          : "grid-cols-3"
                       }
+                      gap-2
                     `}
                   >
-                    {service.bhkPrices.map((item) => {
-                      const isSelected =
-                        selectedBhk[service.number] ===
-                        item.bhk;
+                    {service.bhkPrices.map(
+                      (item, index) => {
+                        const active =
+                          currentSelection ===
+                          item.bhk;
 
-                      return (
-                        <button
-                          key={item.bhk}
-                          type="button"
-                          onClick={() =>
-                            setSelectedBhk(
-                              (previous) => ({
-                                ...previous,
-                                [service.number]:
-                                  item.bhk,
-                              })
-                            )
-                          }
-                          aria-pressed={isSelected}
-                          className="
-                            relative
-                            flex
-                            min-h-[72px]
-                            flex-col
-                            items-center
-                            justify-center
-                            px-2
-                            py-3
-                            text-center
-                            transition-all
-                            duration-300
-                          "
-                        >
-                          {/* BHK */}
-
-                          <span
+                        return (
+                          <button
+                            key={`${service.number}-bhk-${index}`}
+                            type="button"
+                            onClick={() =>
+                              setSelectedBhk(
+                                (previous) => ({
+                                  ...previous,
+                                  [service.selectionKey]:
+                                    item.bhk,
+                                })
+                              )
+                            }
+                            aria-pressed={active}
                             className={`
-                              text-xs
-                              font-bold
-                              sm:text-sm
-
-                              ${
-                                isSelected
-                                  ? service.featured
-                                    ? "text-white"
-                                    : "text-[#031B60]"
-                                  : service.featured
-                                    ? "text-white/50"
-                                    : "text-[#71839c]"
-                              }
-                            `}
-                          >
-                            {item.bhk}
-                          </span>
-
-                          {/* PRICE */}
-
-                          <span
-                            className={`
-                              mt-1
-                              text-sm
-                              font-extrabold
-                              tracking-tight
-                              sm:text-base
-
-                              ${
-                                isSelected
-                                  ? service.featured
-                                    ? "text-white"
-                                    : "text-[#031B60]"
-                                  : service.featured
-                                    ? "text-white/50"
-                                    : "text-[#71839c]"
-                              }
-                            `}
-                          >
-                            {item.price}
-                          </span>
-
-                          {/* ACTIVE UNDERLINE */}
-
-                          <span
-                            className={`
-                              absolute
-                              bottom-[-1px]
-                              left-1/2
-                              h-[3px]
-                              -translate-x-1/2
-                              rounded-full
+                              min-w-0
+                              rounded-xl
+                              border
+                              px-2
+                              py-3
+                              text-center
                               transition-all
-                              duration-300
+                              duration-200
 
                               ${
-                                isSelected
+                                active
                                   ? service.featured
-                                    ? "w-12 bg-[#25D366]"
-                                    : "w-12 bg-[#00A3E0]"
-                                  : "w-0 bg-transparent"
+                                    ? "border-[#25D366] bg-white/10"
+                                    : "border-[#00A3E0] bg-[#f1faff]"
+                                  : service.featured
+                                    ? "border-white/10 bg-white/[0.03]"
+                                    : "border-[#d8e8f8] bg-white"
                               }
                             `}
-                          />
-                        </button>
-                      );
-                    })}
+                          >
+                            <span
+                              className={`
+                                block
+                                text-[10px]
+                                font-bold
+                                sm:text-xs
+
+                                ${
+                                  active
+                                    ? service.featured
+                                      ? "text-white"
+                                      : "text-[#031B60]"
+                                    : service.featured
+                                      ? "text-white/50"
+                                      : "text-[#71839c]"
+                                }
+                              `}
+                            >
+                              {item.bhk}
+                            </span>
+
+                            <span
+                              className={`
+                                mt-1
+                                block
+                                text-base
+                                font-extrabold
+                                sm:text-lg
+
+                                ${
+                                  active
+                                    ? service.featured
+                                      ? "text-white"
+                                      : "text-[#031B60]"
+                                    : service.featured
+                                      ? "text-white/50"
+                                      : "text-[#71839c]"
+                                }
+                              `}
+                            >
+                              {item.price}
+                            </span>
+                          </button>
+                        );
+                      }
+                    )}
                   </div>
 
-                  {/* =================================================
-                      SELECTED PRICE SUMMARY
-                  ================================================== */}
+                  {/* SELECTED PRICE */}
 
                   <div
                     className={`
-                      mt-4
+                      mt-3
                       flex
                       items-center
                       justify-between
                       rounded-xl
-                      px-4
-                      py-3
+                      px-3
+                      py-2.5
 
                       ${
                         service.featured
@@ -652,7 +827,7 @@ export default function Services() {
                     <div>
                       <p
                         className={`
-                          text-[10px]
+                          text-[8px]
                           font-bold
                           uppercase
                           tracking-[0.12em]
@@ -664,13 +839,13 @@ export default function Services() {
                           }
                         `}
                       >
-                        Selected
+                        {s.selected || "Selected"}
                       </p>
 
                       <p
                         className={`
                           mt-0.5
-                          text-sm
+                          text-xs
                           font-bold
 
                           ${
@@ -680,15 +855,14 @@ export default function Services() {
                           }
                         `}
                       >
-                        {selectedBhk[service.number]}
+                        {currentSelection}
                       </p>
                     </div>
 
                     <p
                       className={`
-                        text-xl
+                        text-lg
                         font-extrabold
-                        tracking-tight
 
                         ${
                           service.featured
@@ -697,291 +871,556 @@ export default function Services() {
                         }
                       `}
                     >
-                      {
-                        service.bhkPrices.find(
-                          (item) =>
-                            item.bhk ===
-                            selectedBhk[
-                              service.number
-                            ]
-                        )?.price
-                      }
+                      {selectedPrice}
                     </p>
                   </div>
                 </div>
-              ) : (
-                /* =================================================
-                   MOVE-IN / MOVE-OUT PRICE
-                ================================================== */
 
-                <div className="mt-7">
+                {/* METHOD / DURATION */}
+
+                <div className="mt-4 grid grid-cols-2 gap-2">
+                  <InfoBox
+                    label={s.method}
+                    value={service.method}
+                    featured={service.featured}
+                  />
+
+                  <InfoBox
+                    label={s.duration}
+                    value={service.duration}
+                    featured={service.featured}
+                  />
+                </div>
+
+                {/* INCLUDED SERVICES */}
+
+                <div className="mt-5">
+                  <h4
+                    className={`
+                      text-sm
+                      font-bold
+                      sm:text-base
+
+                      ${
+                        service.featured
+                          ? "text-white"
+                          : "text-[#031B60]"
+                      }
+                    `}
+                  >
+                    {s.whatsIncluded ||
+                      "What's Included"}
+                  </h4>
+
+                  <ul className="mt-3 space-y-2">
+                    {service.items.map(
+                      (item, index) => (
+                        <li
+                          key={`${service.number}-included-${index}`}
+                          className={`
+                            flex
+                            items-start
+                            gap-2
+                            text-xs
+                            leading-5
+                            sm:text-sm
+
+                            ${
+                              service.featured
+                                ? "text-white/75"
+                                : "text-[#506482]"
+                            }
+                          `}
+                        >
+                          <span
+                            className={`
+                              mt-0.5
+                              flex
+                              h-4
+                              w-4
+                              shrink-0
+                              items-center
+                              justify-center
+                              rounded-full
+
+                              ${
+                                service.featured
+                                  ? "bg-[#25D366] text-white"
+                                  : "bg-[#25D366]/10 text-[#1FBD5B]"
+                              }
+                            `}
+                          >
+                            <Check
+                              size={10}
+                              strokeWidth={3}
+                            />
+                          </span>
+
+                          <span>{item}</span>
+                        </li>
+                      )
+                    )}
+                  </ul>
+                </div>
+
+                {/* EQUIPMENT / MATERIALS */}
+
+                <div
+                  className={`
+                    mt-5
+                    border-t
+                    pt-4
+
+                    ${
+                      service.featured
+                        ? "border-white/15"
+                        : "border-[#d8e8f8]"
+                    }
+                  `}
+                >
                   <p
                     className={`
-                      text-[10px]
+                      text-[9px]
                       font-bold
                       uppercase
-                      tracking-[0.16em]
+                      tracking-[0.12em]
+                      sm:text-[10px]
 
                       ${
                         service.featured
                           ? "text-white/50"
-                          : "text-[#71839c]"
-                      }
-                    `}
-                  >
-                    {service.priceLabel}
-                  </p>
-
-                  <div className="mt-2 flex items-end justify-between gap-3">
-                    <p
-                      className={`
-                        text-3xl
-                        font-extrabold
-                        tracking-tight
-                        sm:text-4xl
-
-                        ${
-                          service.featured
-                            ? "text-white"
-                            : "text-[#031B60]"
-                        }
-                      `}
-                    >
-                      {service.price}
-                    </p>
-
-                    <span
-                      className={`
-                        pb-1
-                        text-xs
-
-                        ${
-                          service.featured
-                            ? "text-white/60"
-                            : "text-[#506482]"
-                        }
-                      `}
-                    >
-                      {service.size}
-                    </span>
-                  </div>
-                </div>
-              )}
-
-              {/* =================================================
-                  METHOD / DURATION
-              ================================================== */}
-
-              <div className="mt-5 grid grid-cols-1 gap-3 min-[390px]:grid-cols-2">
-                <InfoBox
-                  label={s.method}
-                  value={service.method}
-                  featured={service.featured}
-                />
-
-                <InfoBox
-                  label={s.duration}
-                  value={service.duration}
-                  featured={service.featured}
-                />
-              </div>
-
-              {/* =================================================
-                  INCLUDED SERVICES
-              ================================================== */}
-
-              <ul className="mt-6 space-y-3">
-                {service.items.map((item, index) => (
-                  <li
-                    key={index}
-                    className={`
-                      flex
-                      items-start
-                      gap-2.5
-                      text-sm
-                      leading-5
-
-                      ${
-                        service.featured
-                          ? "text-white/75"
                           : "text-[#506482]"
                       }
                     `}
                   >
-                    <span
-                      className={`
-                        mt-0.5
+                    {service.sectionTitle}
+                  </p>
+
+                  <div className="mt-2 flex flex-wrap gap-1.5">
+                    {service.tags.map(
+                      (tag, index) => (
+                        <span
+                          key={`${service.number}-tag-${index}`}
+                          className={`
+                            rounded-full
+                            border
+                            px-2.5
+                            py-1.5
+                            text-[9px]
+                            font-semibold
+                            sm:text-[10px]
+
+                            ${
+                              service.featured
+                                ? "border-white/15 bg-white/10 text-white/80"
+                                : "border-[#cce7f8] bg-[#f4faff] text-[#08679a]"
+                            }
+                          `}
+                        >
+                          {tag}
+                        </span>
+                      )
+                    )}
+                  </div>
+                </div>
+
+                {/* CTA */}
+
+                <div className="mt-5">
+                  {service.buttonType ===
+                  "whatsapp" ? (
+                    <a
+                      href="https://wa.me/919494239260"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="WhatsApp SR Cleaning Solutions"
+                      className="
                         flex
-                        h-5
-                        w-5
-                        shrink-0
+                        min-h-[48px]
+                        w-full
                         items-center
                         justify-center
+                        gap-2
                         rounded-full
-
-                        ${
-                          service.featured
-                            ? "bg-[#25D366] text-white"
-                            : "bg-[#25D366]/10 text-[#1FBD5B]"
-                        }
-                      `}
+                        bg-[#031B60]
+                        px-4
+                        text-xs
+                        font-bold
+                        text-white
+                        shadow-[0_8px_20px_rgba(3,27,96,0.12)]
+                        transition-all
+                        duration-300
+                        hover:bg-[#25D366]
+                        sm:min-h-[52px]
+                        sm:text-sm
+                      "
                     >
-                      <Check
-                        size={12}
-                        strokeWidth={3}
-                      />
-                    </span>
+                      <WhatsAppIcon size={18} />
 
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-
-              {/* =================================================
-                  EQUIPMENT / MATERIALS
-              ================================================== */}
-
-              <div
-                className={`
-                  mt-6
-                  border-t
-                  pt-5
-
-                  ${
-                    service.featured
-                      ? "border-white/15"
-                      : "border-[#d8e8f8]"
-                  }
-                `}
-              >
-                <p
-                  className={`
-                    text-[11px]
-                    font-bold
-                    uppercase
-                    tracking-[0.12em]
-                    sm:text-xs
-
-                    ${
-                      service.featured
-                        ? "text-white/55"
-                        : "text-[#506482]"
-                    }
-                  `}
-                >
-                  {service.sectionTitle}
-                </p>
-
-                <div className="mt-3 flex flex-wrap gap-2">
-                  {service.tags.map((tag) => (
-                    <span
-                      key={tag}
+                      {service.buttonText}
+                    </a>
+                  ) : (
+                    <a
+                      href="tel:+919494239260"
+                      aria-label="Call SR Cleaning Solutions"
                       className={`
+                        flex
+                        min-h-[48px]
+                        w-full
+                        items-center
+                        justify-center
+                        gap-2
                         rounded-full
-                        border
-                        px-3
-                        py-2
-                        text-[11px]
-                        font-semibold
-                        sm:text-xs
+                        px-4
+                        text-xs
+                        font-bold
+                        transition-all
+                        duration-300
+                        sm:min-h-[52px]
+                        sm:text-sm
 
                         ${
                           service.featured
-                            ? `
-                              border-white/15
-                              bg-white/10
-                              text-white/80
-                            `
-                            : `
-                              border-[#cce7f8]
-                              bg-[#f4faff]
-                              text-[#08679a]
-                            `
+                            ? "bg-white text-[#031B60] hover:bg-[#25D366] hover:text-white"
+                            : "bg-[#031B60] text-white hover:bg-[#00A3E0]"
                         }
                       `}
                     >
-                      {tag}
-                    </span>
-                  ))}
+                      <Phone size={16} />
+
+                      {service.buttonText}
+                    </a>
+                  )}
                 </div>
-              </div>
+              </article>
+            );
+          })}
+        </div>
 
-              {/* =================================================
-                  CTA
-              ================================================== */}
+        {/* =====================================================
+            COMBO SERVICES
+        ====================================================== */}
 
-              <div className="mt-7 pt-1">
-                {service.buttonType === "whatsapp" ? (
-                  <a
-                    href="https://wa.me/919494239260"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="WhatsApp SR Cleaning Solutions"
+        <div className="mt-10 sm:mt-14">
+          <div className="max-w-3xl">
+            <span
+              className="
+                inline-flex
+                items-center
+                gap-2
+                text-[10px]
+                font-bold
+                uppercase
+                tracking-[0.2em]
+                text-[#00A3E0]
+                sm:text-xs
+              "
+            >
+              <span className="h-px w-6 bg-[#00A3E0]" />
+
+              {s.comboLabel}
+            </span>
+
+            <h3
+              className="
+                mt-3
+                text-2xl
+                font-bold
+                tracking-tight
+                text-[#031B60]
+                sm:text-3xl
+                md:text-4xl
+              "
+            >
+              {s.comboHeading}
+            </h3>
+
+            <p
+              className="
+                mt-2
+                text-xs
+                leading-6
+                text-[#506482]
+                sm:text-sm
+              "
+            >
+              {s.comboSubtitle}
+            </p>
+          </div>
+
+          {/* COMBO GRID */}
+
+          <div
+            className="
+              combo-grid
+              mt-6
+              grid
+              grid-cols-1
+              gap-4
+              md:grid-cols-2
+            "
+          >
+            {combos.map((combo) => (
+              <article
+                key={`combo-${combo.number}`}
+                className="
+                  combo-card
+                  overflow-hidden
+                  rounded-[20px]
+                  border
+                  border-[#d5e5f2]
+                  bg-white
+                  p-4
+                  shadow-[0_12px_32px_rgba(3,27,96,0.06)]
+                  transition-all
+                  duration-300
+                  hover:-translate-y-1
+                  hover:border-[#9ed9f1]
+                  sm:rounded-[24px]
+                  sm:p-5
+                  md:p-6
+                "
+              >
+                {/* COMBO HEADER */}
+
+                <div className="flex items-start gap-3">
+                  <div
                     className="
                       flex
-                      min-h-[54px]
-                      w-full
+                      h-10
+                      w-10
+                      shrink-0
                       items-center
                       justify-center
-                      gap-2
                       rounded-full
                       bg-[#031B60]
-                      px-5
-                      text-sm
-                      font-bold
                       text-white
-                      shadow-[0_10px_25px_rgba(3,27,96,0.14)]
-                      transition-all
-                      duration-300
-                      hover:bg-[#25D366]
                     "
                   >
-                    <WhatsAppIcon size={21} />
+                    <Tag size={18} />
+                  </div>
 
-                    {service.buttonText}
-                  </a>
-                ) : (
-                  <a
-                    href="tel:+919494239260"
-                    aria-label="Call SR Cleaning Solutions"
-                    className={`
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-start justify-between gap-3">
+                      <h4
+                        className="
+                          text-lg
+                          font-bold
+                          leading-tight
+                          text-[#031B60]
+                          sm:text-xl
+                        "
+                      >
+                        {combo.title}
+                      </h4>
+
+                      <span
+                        className="
+                          shrink-0
+                          rounded-full
+                          bg-[#eaf8ef]
+                          px-2.5
+                          py-1
+                          text-[10px]
+                          font-bold
+                          text-[#159447]
+                          sm:text-xs
+                        "
+                      >
+                        {s.comboBadge || "COMBO"}
+                      </span>
+                    </div>
+
+                    <p
+                      className="
+                        mt-2
+                        text-xs
+                        leading-5
+                        text-[#506482]
+                        sm:text-sm
+                        sm:leading-6
+                      "
+                    >
+                      {combo.description}
+                    </p>
+                  </div>
+                </div>
+
+                {/* COMBO PRICE */}
+
+                <div
+                  className="
+                    mt-5
+                    flex
+                    items-center
+                    justify-between
+                    rounded-xl
+                    border
+                    border-[#cfe5f5]
+                    bg-[#f4faff]
+                    px-4
+                    py-3
+                  "
+                >
+                  <div>
+                    <p
+                      className="
+                        text-[9px]
+                        font-bold
+                        uppercase
+                        tracking-[0.12em]
+                        text-[#71839c]
+                      "
+                    >
+                      {s.comboPriceLabel ||
+                        "Combo Price"}
+                    </p>
+
+                    <p
+                      className="
+                        mt-0.5
+                        text-2xl
+                        font-extrabold
+                        text-[#031B60]
+                      "
+                    >
+                      {combo.price}
+                    </p>
+                  </div>
+
+                  <div
+                    className="
                       flex
-                      min-h-[54px]
-                      w-full
+                      h-9
+                      w-9
                       items-center
                       justify-center
-                      gap-2
                       rounded-full
-                      px-5
+                      bg-white
+                      text-[#031B60]
+                      shadow-sm
+                    "
+                  >
+                    <Sparkles size={17} />
+                  </div>
+                </div>
+
+                {/* COMBO INCLUDED */}
+
+                <div className="mt-5">
+                  <h5
+                    className="
                       text-sm
                       font-bold
-                      transition-all
-                      duration-300
-
-                      ${
-                        service.featured
-                          ? `
-                            bg-white
-                            text-[#031B60]
-                            hover:bg-[#25D366]
-                            hover:text-white
-                          `
-                          : `
-                            bg-[#031B60]
-                            text-white
-                            hover:bg-[#00A3E0]
-                          `
-                      }
-                    `}
+                      text-[#031B60]
+                      sm:text-base
+                    "
                   >
-                    <Phone size={18} />
+                    {s.whatsIncluded ||
+                      "What's Included"}
+                  </h5>
 
-                    {service.buttonText}
-                  </a>
-                )}
-              </div>
-            </article>
-          ))}
+                  <ul className="mt-3 space-y-2">
+                    {combo.items.map(
+                      (item, index) => (
+                        <li
+                          key={`${combo.number}-item-${index}`}
+                          className="
+                            flex
+                            items-start
+                            gap-2
+                            text-xs
+                            leading-5
+                            text-[#506482]
+                            sm:text-sm
+                          "
+                        >
+                          <span
+                            className="
+                              mt-0.5
+                              flex
+                              h-4
+                              w-4
+                              shrink-0
+                              items-center
+                              justify-center
+                              rounded-full
+                              bg-[#25D366]/10
+                              text-[#1FBD5B]
+                            "
+                          >
+                            <Check
+                              size={10}
+                              strokeWidth={3}
+                            />
+                          </span>
+
+                          <span>{item}</span>
+                        </li>
+                      )
+                    )}
+                  </ul>
+                </div>
+
+                {/* COMBO TAGS */}
+
+                <div className="mt-4 flex flex-wrap gap-1.5">
+                  {combo.tags.map(
+                    (tag, index) => (
+                      <span
+                        key={`${combo.number}-tag-${index}`}
+                        className="
+                          rounded-full
+                          border
+                          border-[#cce7f8]
+                          bg-[#f4faff]
+                          px-2.5
+                          py-1.5
+                          text-[9px]
+                          font-semibold
+                          text-[#08679a]
+                          sm:text-[10px]
+                        "
+                      >
+                        {tag}
+                      </span>
+                    )
+                  )}
+                </div>
+
+                {/* COMBO CTA */}
+
+                <a
+                  href="tel:+919494239260"
+                  aria-label={`Call SR Cleaning Solutions for ${combo.title}`}
+                  className="
+                    mt-5
+                    flex
+                    min-h-[48px]
+                    w-full
+                    items-center
+                    justify-center
+                    gap-2
+                    rounded-full
+                    bg-[#031B60]
+                    px-4
+                    text-xs
+                    font-bold
+                    text-white
+                    transition-all
+                    duration-300
+                    hover:bg-[#00A3E0]
+                    sm:min-h-[52px]
+                    sm:text-sm
+                  "
+                >
+                  <Phone size={16} />
+
+                  {s.bookEnquire}
+                </a>
+              </article>
+            ))}
+          </div>
         </div>
 
         {/* =====================================================
@@ -990,21 +1429,24 @@ export default function Services() {
 
         <div
           className="
-            mt-7
-            rounded-2xl
+            mt-6
+            rounded-xl
             border
             border-[#cfe5f5]
-            bg-white/70
-            p-4
-            sm:p-5
+            bg-white/80
+            p-3
+            sm:mt-8
+            sm:rounded-2xl
+            sm:p-4
           "
         >
           <p
             className="
-              text-xs
-              leading-6
+              text-[10px]
+              leading-5
               text-[#506482]
-              sm:text-sm
+              sm:text-xs
+              sm:leading-6
             "
           >
             <strong className="text-[#031B60]">
@@ -1015,69 +1457,5 @@ export default function Services() {
         </div>
       </div>
     </section>
-  );
-}
-
-/* =========================================================
-   INFO BOX
-========================================================= */
-
-function InfoBox({
-  label,
-  value,
-  featured,
-}) {
-  return (
-    <div
-      className={`
-        min-w-0
-        rounded-xl
-        border
-        px-3.5
-        py-3
-
-        ${
-          featured
-            ? "border-white/15 bg-white/[0.07]"
-            : "border-[#d8e8f8] bg-[#f7fbff]"
-        }
-      `}
-    >
-      <p
-        className={`
-          text-[10px]
-          font-bold
-          uppercase
-          tracking-[0.12em]
-
-          ${
-            featured
-              ? "text-white/50"
-              : "text-[#6d829e]"
-          }
-        `}
-      >
-        {label}
-      </p>
-
-      <p
-        className={`
-          mt-1
-          break-words
-          text-xs
-          font-bold
-          leading-5
-          sm:text-sm
-
-          ${
-            featured
-              ? "text-white"
-              : "text-[#031B60]"
-          }
-        `}
-      >
-        {value}
-      </p>
-    </div>
   );
 }
