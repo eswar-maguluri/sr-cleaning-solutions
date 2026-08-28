@@ -10,7 +10,7 @@ import {
 import { useLanguage } from "../context/LanguageContext";
 
 /* =========================================================
-   WHATSAPP LOGO
+   WHATSAPP SVG ICON
 ========================================================= */
 
 function WhatsAppIcon({ size = 18 }) {
@@ -41,8 +41,131 @@ function WhatsAppIcon({ size = 18 }) {
   );
 }
 
+/* =========================================================
+   INSTAGRAM SVG ICON
+========================================================= */
+
+function InstagramIcon({ size = 19 }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <rect
+        x="3"
+        y="3"
+        width="18"
+        height="18"
+        rx="5"
+        stroke="currentColor"
+        strokeWidth="2"
+      />
+
+      <circle
+        cx="12"
+        cy="12"
+        r="4"
+        stroke="currentColor"
+        strokeWidth="2"
+      />
+
+      <circle
+        cx="17.5"
+        cy="6.5"
+        r="1"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
+
+/* =========================================================
+   FACEBOOK SVG ICON
+========================================================= */
+
+function FacebookIcon({ size = 19 }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <path
+        fill="currentColor"
+        d="M14 8H16V4H14C10.69 4 8 6.69 8 10V12H5V16H8V22H12V16H15L16 12H12V10C12 8.9 12.9 8 14 8Z"
+      />
+    </svg>
+  );
+}
+
+/* =========================================================
+   SOCIAL ICON BUTTON
+========================================================= */
+
+function SocialIconButton({
+  href,
+  label,
+  children,
+}) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={label}
+      className="
+        group
+        flex
+        h-10
+        w-10
+        shrink-0
+        items-center
+        justify-center
+        rounded-full
+        border
+        border-white/20
+        bg-white/10
+        text-white
+        transition-all
+        duration-300
+        hover:-translate-y-1
+        hover:border-white/40
+        hover:bg-white/15
+        hover:text-white
+        focus:outline-none
+        focus:ring-2
+        focus:ring-[#00A3E0]
+        focus:ring-offset-2
+        focus:ring-offset-[#031B60]
+      "
+    >
+      <span
+        className="
+          transition-transform
+          duration-300
+          group-hover:scale-110
+        "
+      >
+        {children}
+      </span>
+    </a>
+  );
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
 export default function Footer() {
   const { t } = useLanguage();
+
   const f = t.footer;
 
   return (
@@ -50,19 +173,21 @@ export default function Footer() {
       className="
         relative
         overflow-hidden
-        bg-[#031B60]
         border-t
         border-white/10
+        bg-[#031B60]
       "
     >
-      {/* Decorative glow */}
+      {/* =====================================================
+          DECORATIVE GLOW
+      ====================================================== */}
 
       <div
         className="
           pointer-events-none
           absolute
-          -top-40
           -right-40
+          -top-40
           h-96
           w-96
           rounded-full
@@ -85,6 +210,10 @@ export default function Footer() {
         "
       />
 
+      {/* =====================================================
+          MAIN CONTAINER
+      ====================================================== */}
+
       <div
         className="
           relative
@@ -99,10 +228,9 @@ export default function Footer() {
           lg:py-20
         "
       >
-
-        {/* =====================================================
+        {/* ===================================================
             MAIN FOOTER GRID
-        ====================================================== */}
+        ==================================================== */}
 
         <div
           className="
@@ -114,16 +242,14 @@ export default function Footer() {
             lg:gap-12
           "
         >
-
-          {/* ===================================================
+          {/* =================================================
               BRAND
-          ==================================================== */}
+          ================================================== */}
 
           <div>
-
             <div className="flex items-center gap-4">
 
-              {/* Logo */}
+              {/* LOGO */}
 
               <div
                 className="
@@ -152,22 +278,22 @@ export default function Footer() {
                 />
               </div>
 
-              {/* Business Name */}
+              {/* BUSINESS NAME */}
 
               <div>
-
                 <h3
                   className="
                     text-xl
-                    sm:text-2xl
                     font-bold
                     leading-tight
                     text-white
+                    sm:text-2xl
                   "
                 >
                   SR Cleaning
                   <span className="text-[#25D366]">
-                    {" "}Solutions
+                    {" "}
+                    Solutions
                   </span>
                 </h3>
 
@@ -175,21 +301,19 @@ export default function Footer() {
                   className="
                     mt-1
                     text-[10px]
-                    sm:text-xs
                     font-semibold
                     uppercase
                     tracking-[0.12em]
                     text-[#8FD9FF]
+                    sm:text-xs
                   "
                 >
                   Professional Cleaning Services
                 </p>
-
               </div>
-
             </div>
 
-            {/* Accent */}
+            {/* ACCENT */}
 
             <div
               className="
@@ -203,6 +327,8 @@ export default function Footer() {
               "
             />
 
+            {/* DESCRIPTION */}
+
             <p
               className="
                 mt-5
@@ -214,16 +340,13 @@ export default function Footer() {
             >
               {f.text}
             </p>
-
           </div>
 
-
-          {/* ===================================================
+          {/* =================================================
               QUICK LINKS
-          ==================================================== */}
+          ================================================== */}
 
           <div>
-
             <h3
               className="
                 text-lg
@@ -242,7 +365,6 @@ export default function Footer() {
                 gap-3
               "
             >
-
               <a
                 href="#services"
                 className="
@@ -326,18 +448,14 @@ export default function Footer() {
               >
                 {f.udyam}
               </a>
-
             </div>
-
           </div>
 
-
-          {/* ===================================================
-              CONTACT
-          ==================================================== */}
+          {/* =================================================
+              CONTACT INFORMATION
+          ================================================== */}
 
           <div>
-
             <h3
               className="
                 text-lg
@@ -378,11 +496,10 @@ export default function Footer() {
                 </span>
               </a>
 
-
               {/* WHATSAPP */}
 
               <a
-                href="https://wa.me/919494239260"
+                href="https://wa.me/919494239260?text=Hello%20SR%20Cleaning%20Solutions%2C%20I%20would%20like%20to%20enquire%20about%20your%20cleaning%20services."
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="WhatsApp SR Cleaning Solutions"
@@ -419,7 +536,6 @@ export default function Footer() {
                 </span>
               </a>
 
-
               {/* EMAIL */}
 
               <a
@@ -448,7 +564,6 @@ export default function Footer() {
                 </span>
               </a>
 
-
               {/* ADDRESS */}
 
               <div
@@ -476,7 +591,6 @@ export default function Footer() {
                   Andhra Pradesh – 522005
                 </span>
               </div>
-
 
               {/* WEBSITE */}
 
@@ -508,15 +622,63 @@ export default function Footer() {
                 </span>
               </a>
 
+              {/* =================================================
+                  SOCIAL MEDIA
+              ================================================== */}
+
+              <div className="pt-2">
+
+                {/* SOCIAL MEDIA HEADING */}
+
+                <p
+                  className="
+                    text-xs
+                    font-bold
+                    uppercase
+                    tracking-[0.15em]
+                    text-white
+                    sm:text-sm
+                  "
+                >
+                  {f.socialMedia || "Social Media"}
+                </p>
+
+                {/* SOCIAL ICONS */}
+
+                <div
+                  className="
+                    mt-3
+                    flex
+                    items-center
+                    gap-3
+                  "
+                >
+                  {/* INSTAGRAM */}
+
+                  <SocialIconButton
+                    href="https://www.instagram.com/solutionssrcleaning/"
+                    label="Instagram - solutionssrcleaning"
+                  >
+                    <InstagramIcon size={19} />
+                  </SocialIconButton>
+
+                  {/* FACEBOOK */}
+
+                  <SocialIconButton
+                    href="https://www.facebook.com/solutionssrcleaning/"
+                    label="Facebook - solutionssrcleaning"
+                  >
+                    <FacebookIcon size={19} />
+                  </SocialIconButton>
+                </div>
+
+              </div>
             </div>
-
           </div>
-
         </div>
 
-
         {/* =====================================================
-            BOTTOM
+            BOTTOM COPYRIGHT
         ====================================================== */}
 
         <div
@@ -528,19 +690,16 @@ export default function Footer() {
             text-center
           "
         >
-
           <p
             className="
               text-xs
-              sm:text-sm
               text-white/50
+              sm:text-sm
             "
           >
             {f.rights}
           </p>
-
         </div>
-
       </div>
     </footer>
   );

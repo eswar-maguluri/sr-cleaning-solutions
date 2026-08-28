@@ -279,7 +279,6 @@ export default function Hero() {
 
           {/* =================================================
               TITLE
-              Telugu-safe sizing and line-height
           ================================================= */}
 
           <h1
@@ -289,19 +288,12 @@ export default function Hero() {
               sm:mt-8
               font-bold
               text-white
-
-              /* Telugu-safe line height */
               leading-[1.08]
-
-              /* Slightly tighter tracking */
               tracking-[-0.025em]
-
-              /* Smaller than previous 6.8rem */
               text-[clamp(2.7rem,9vw,4.5rem)]
               sm:text-5xl
               md:text-6xl
               lg:text-[5.5rem]
-
               max-w-5xl
               [perspective:800px]
             "
@@ -420,7 +412,7 @@ export default function Hero() {
             {/* WHATSAPP */}
 
             <a
-              href="https://wa.me/919494239260"
+              href="https://wa.me/919494239260?text=Hello%20SR%20Cleaning%20Solutions%2C%20I%20would%20like%20to%20enquire%20about%20your%20cleaning%20services."
               target="_blank"
               rel="noopener noreferrer"
               className="

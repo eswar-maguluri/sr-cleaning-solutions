@@ -469,33 +469,6 @@ export default function Terms() {
                         </div>
                       ))}
                     </div>
-
-                    {/* Bank transfer note */}
-
-                    <div
-                      className="
-                        mt-3
-                        rounded-xl
-                        border
-                        border-[#D8E8F8]
-                        bg-[#F4F9FF]
-                        px-3
-                        py-2.5
-                      "
-                    >
-                      <p
-                        className="
-                          text-xs
-                          leading-5
-                          text-[#71839c]
-                        "
-                      >
-                        <strong className="font-semibold text-[#031B60]">
-                          {x.paymentNoteLabel || "Note"}:
-                        </strong>{" "}
-                        {x.bankTransferNote}
-                      </p>
-                    </div>
                   </div>
                 )}
 
