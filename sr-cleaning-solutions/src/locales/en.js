@@ -61,32 +61,94 @@ const en = {
     move: "Move-In / Move-Out Cleaning",
     vacant: "Vacant Property Cleaning",
 
+    /* =======================================================
+       SERVICE DESCRIPTIONS
+    ======================================================= */
+
     standardDescription:
-      "Routine cleaning for homes that need regular upkeep and surface care.",
+      "Manual hand-cleaning using general household/regular cleaners. No machinery or industrial R1–R9 chemicals are used.",
 
     deepDescription:
-      "Detailed cleaning for areas requiring more intensive cleaning.",
+      "Detailed machine-assisted cleaning for areas requiring more intensive cleaning.",
 
     moveDescription:
       "Cleaning before moving into or after moving out of a property.",
 
+    /* =======================================================
+       PRICE / SERVICE LABELS
+    ======================================================= */
+
     startsFrom: "Starts From",
+
     pricing: "Pricing",
+
     quote: "Quote",
 
+    chooseHomeSize: "Choose your home size",
+
+    selected: "Selected",
+
     method: "Method",
+
     duration: "Duration",
 
-    manualCleaning: "Manual cleaning",
-    manualEquipment: "Manual + equipment",
-    availableEquipment: "Manual + available equipment",
-
-    confirmedScope: "Confirmed by scope",
-    confirmedAfterScope: "Confirmed after scope",
-
-    /* ---------------------------------------------------------
+    /* =======================================================
        STANDARD CLEANING
-    --------------------------------------------------------- */
+    ======================================================= */
+
+    manualCleaning:
+      "Manual hand-cleaning",
+
+    manualCleaningOnly:
+      "Manual cleaning only",
+
+    generalCleaners:
+      "General / regular cleaners",
+
+    manualTools:
+      "Manual hand tools",
+
+    noMachinery:
+      "No machinery",
+
+    noIndustrialR1R9Chemicals:
+      "No industrial R1–R9 chemicals",
+
+    /* =======================================================
+       DEEP CLEANING — MACHINE ASSISTED
+    ======================================================= */
+
+    machineAssisted:
+      "Machine assisted",
+
+    singleDiscFloorScrubber:
+      "Single-disc floor scrubber",
+
+    steamCleaning:
+      "Steam cleaning",
+
+    specializedStainRemovers:
+      "Specialized stain removers",
+
+    /* =======================================================
+       OTHER METHOD / DURATION
+    ======================================================= */
+
+    manualEquipment:
+      "Manual + suitable equipment",
+
+    availableEquipment:
+      "Manual + available equipment",
+
+    confirmedScope:
+      "Confirmed by scope",
+
+    confirmedAfterScope:
+      "Confirmed after scope",
+
+    /* =========================================================
+       STANDARD CLEANING ITEMS
+    ========================================================= */
 
     standardItems: [
       "Dusting & surface wiping",
@@ -95,20 +157,20 @@ const en = {
       "Accessible cobweb removal",
     ],
 
-    /* ---------------------------------------------------------
-       DEEP CLEANING
-    --------------------------------------------------------- */
+    /* =========================================================
+       DEEP CLEANING ITEMS
+    ========================================================= */
 
     deepItems: [
       "Detailed floor & surface cleaning",
       "More intensive kitchen & bathroom cleaning",
       "Dust & cobweb removal",
-      "Machine assistance where suitable",
+      "Machine-assisted cleaning where suitable",
     ],
 
-    /* ---------------------------------------------------------
-       MOVE-IN / MOVE-OUT
-    --------------------------------------------------------- */
+    /* =========================================================
+       MOVE-IN / MOVE-OUT ITEMS
+    ========================================================= */
 
     moveItems: [
       "Property-wide dust & surface cleaning",
@@ -117,15 +179,18 @@ const en = {
       "Accessible cobweb removal",
     ],
 
-    moveMethod: "Manual + suitable equipment",
+    moveMethod:
+      "Manual + suitable equipment",
 
-    moveDuration: "To be confirmed after scope",
+    moveDuration:
+      "To be confirmed after scope",
 
-    /* ---------------------------------------------------------
+    /* =========================================================
        TIDCO HOUSE
-    --------------------------------------------------------- */
+    ========================================================= */
 
-    tidco: "TIDCO House – Deep Cleaning",
+    tidco:
+      "TIDCO House – Deep Cleaning",
 
     tidcoDescription:
       "Detailed deep cleaning service for TIDCO houses with focused cleaning of accessible floors, kitchen, bathrooms and other reachable areas.",
@@ -139,17 +204,21 @@ const en = {
       "General dirt & buildup removal",
     ],
 
-    tidcoMethod: "Manual + suitable equipment",
+    tidcoMethod:
+      "Manual + suitable equipment",
 
-    tidcoDuration: "To be confirmed",
+    tidcoDuration:
+      "To be confirmed",
 
-    /* ---------------------------------------------------------
+    /* =========================================================
        COMBO SERVICES
-    --------------------------------------------------------- */
+    ========================================================= */
 
-    comboLabel: "Combo Services",
+    comboLabel:
+      "Combo Services",
 
-    comboHeading: "Cleaning Combos",
+    comboHeading:
+      "Cleaning Combos",
 
     comboSubtitle:
       "Convenient cleaning combinations for multiple household cleaning requirements.",
@@ -161,12 +230,13 @@ const en = {
       "A convenient combination for cleaning three commonly used household areas.",
 
     combo1Items: [
-      "Chimney cleaning",
+      "Kitchen chimney cleaning",
       "Refrigerator cleaning",
       "Ceiling fan cleaning",
     ],
 
-    combo1Price: "₹899",
+    combo1Price:
+      "₹899",
 
     combo2Title:
       "Kitchen Sink + Wash Basin + 1 Door + Stove",
@@ -181,15 +251,18 @@ const en = {
       "Gas stove cleaning",
     ],
 
-    combo2Price: "₹299",
+    combo2Price:
+      "₹299",
 
-    /* ---------------------------------------------------------
+    /* =========================================================
        COMMON SERVICE LABELS
-    --------------------------------------------------------- */
+    ========================================================= */
 
-    materials: "Materials",
+    materials:
+      "Materials",
 
-    equipmentMaterials: "Equipment / Materials",
+    equipmentMaterials:
+      "Equipment / Materials",
 
     equipmentWhereSuitable:
       "Equipment Where Suitable",
@@ -197,11 +270,9 @@ const en = {
     equipmentWhereSuitableShort:
       "Equipment Where Suitable",
 
-    generalCleaners:
-      "General / regular cleaners",
-
-    manualTools:
-      "Manual tools",
+    /* =========================================================
+       EQUIPMENT
+    ========================================================= */
 
     vacuum:
       "Vacuum",
@@ -218,11 +289,19 @@ const en = {
     availableEquipmentText:
       "Suitable available equipment",
 
+    /* =========================================================
+       CTA
+    ========================================================= */
+
     bookEnquire:
       "Book / Enquire",
 
     requestQuote:
       "Request Quote",
+
+    /* =========================================================
+       PRICING NOTE
+    ========================================================= */
 
     pricingNoteTitle:
       "Pricing note:",
@@ -233,10 +312,6 @@ const en = {
 
   /* =========================================================
      RATES
-
-     IMPORTANT:
-     Move-In / Move-Out is NOT included here.
-     It belongs to Services.
   ========================================================= */
 
   rates: {
@@ -247,11 +322,14 @@ const en = {
     subtitle:
       "Choose a service to view the available pricing options.",
 
-    standard: "Standard Cleaning",
+    standard:
+      "Standard Cleaning",
 
-    deep: "Deep Cleaning",
+    deep:
+      "Deep Cleaning",
 
-    individual: "Individual Services",
+    individual:
+      "Individual Services",
 
     routinePackage:
       "Routine cleaning package",
@@ -285,10 +363,6 @@ const en = {
 
     note:
       "Prices shown are based on the currently approved rate information. Additional or unconfirmed services should be quoted separately.",
-
-    /* ---------------------------------------------------------
-       INDIVIDUAL SERVICE PRICE LABELS
-    --------------------------------------------------------- */
 
     single:
       "Single",
@@ -389,7 +463,8 @@ const en = {
   ========================================================= */
 
   equipment: {
-    label: "Equipment Available",
+    label:
+      "Equipment Available",
 
     heading:
       "Equipment We Currently Use",
@@ -424,16 +499,14 @@ const en = {
   ========================================================= */
 
   terms: {
-    label: "Terms & Conditions",
+    label:
+      "Terms & Conditions",
 
-    heading: "Before You Book",
+    heading:
+      "Before You Book",
 
     subtitle:
       "Please review the following information before confirming a cleaning service.",
-
-    /* ---------------------------------------------------------
-       SERVICE SCOPE
-    --------------------------------------------------------- */
 
     serviceScope:
       "Service Scope",
@@ -441,29 +514,17 @@ const en = {
     serviceScopeText:
       "Cleaning work is carried out according to the service selected and the agreed scope of work.",
 
-    /* ---------------------------------------------------------
-       SERVICE TIMING
-    --------------------------------------------------------- */
-
     serviceTiming:
       "Service Timing",
 
     serviceTimingText:
       "Service duration may vary depending on the property size, condition and actual cleaning requirements.",
 
-    /* ---------------------------------------------------------
-       PRICING
-    --------------------------------------------------------- */
-
     pricing:
       "Pricing",
 
     pricingText:
       "Published prices apply to the services and options shown. Services or requirements outside the selected scope may require a separate quotation.",
-
-    /* ---------------------------------------------------------
-       CANCELLATION & RESCHEDULING
-    --------------------------------------------------------- */
 
     cancellation:
       "Cancellation & Rescheduling",
@@ -497,10 +558,6 @@ const en = {
         "Read less",
     },
 
-    /* ---------------------------------------------------------
-       PAYMENT METHODS
-    --------------------------------------------------------- */
-
     paymentMethods:
       "Payment Methods",
 
@@ -525,10 +582,6 @@ const en = {
     bankTransferNote:
       "Bank transfer is currently not available as a payment option.",
 
-    /* ---------------------------------------------------------
-       SERVICE AREA
-    --------------------------------------------------------- */
-
     serviceArea:
       "Service Area",
 
@@ -538,29 +591,17 @@ const en = {
     serviceAreaNote:
       "Service availability is subject to confirmation based on the customer's exact location, requested service and team availability.",
 
-    /* ---------------------------------------------------------
-       EQUIPMENT
-    --------------------------------------------------------- */
-
     equipment:
       "Equipment",
 
     equipmentText:
       "Available equipment is used where suitable for the cleaning requirement. Equipment availability may vary depending on the job.",
 
-    /* ---------------------------------------------------------
-       QUESTIONS
-    --------------------------------------------------------- */
-
     questions:
       "Questions & Clarification",
 
     questionsText:
       "Customers can contact SR Cleaning Solutions before booking to clarify the service scope, pricing and requirements.",
-
-    /* ---------------------------------------------------------
-       CONTACT CTA
-    --------------------------------------------------------- */
 
     clarificationHeading:
       "Need clarification before booking?",
@@ -570,10 +611,6 @@ const en = {
 
     contactUs:
       "Contact Us",
-
-    /* ---------------------------------------------------------
-       REVIEW NOTE
-    --------------------------------------------------------- */
 
     reviewNote:
       "Cancellation, advance payment, payment methods, service-area coverage and other final business policies will be updated once confirmed.",
@@ -694,6 +731,9 @@ const en = {
 
     emailUs:
       "Email Us",
+
+    socialMedia:
+      "Social Media",
 
     rights:
       "© 2026 SR Cleaning Solutions. All rights reserved.",

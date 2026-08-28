@@ -110,12 +110,14 @@ export default function Services() {
 
   const services = [
     /* =====================================================
-       STANDARD CLEANING
+       01 — STANDARD CLEANING
     ===================================================== */
 
     {
       number: "01",
+
       title: s.standard,
+
       description: s.standardDescription,
 
       bhkPrices: [
@@ -135,7 +137,17 @@ export default function Services() {
 
       selectionKey: "standard",
 
+      /*
+        STANDARD CLEANING:
+        Manual hand-cleaning using general household /
+        regular cleaners.
+
+        No machinery.
+        No industrial R1-R9 chemicals.
+      */
+
       method: s.manualCleaning,
+
       duration: s.confirmedScope,
 
       items: s.standardItems,
@@ -145,21 +157,27 @@ export default function Services() {
       tags: [
         s.generalCleaners,
         s.manualTools,
+        s.noMachinery,
+        s.noIndustrialR1R9Chemicals,
       ],
 
       featured: false,
 
       buttonText: s.bookEnquire,
+
       buttonType: "phone",
     },
 
     /* =====================================================
-       DEEP CLEANING
+       02 — DEEP CLEANING
+       MACHINE ASSISTED
     ===================================================== */
 
     {
       number: "02",
+
       title: s.deep,
+
       description: s.deepDescription,
 
       bhkPrices: [
@@ -179,7 +197,13 @@ export default function Services() {
 
       selectionKey: "deep",
 
-      method: s.manualEquipment,
+      /*
+        DEEP CLEANING:
+        Machine-assisted cleaning.
+      */
+
+      method: s.machineAssisted,
+
       duration: s.confirmedScope,
 
       items: s.deepItems,
@@ -187,25 +211,27 @@ export default function Services() {
       sectionTitle: s.equipmentMaterials,
 
       tags: [
-        s.vacuum,
-        s.miniScrubber,
-        s.miniBlower,
-        s.professionalCleaners,
+        s.singleDiscFloorScrubber,
+        s.steamCleaning,
+        s.specializedStainRemovers,
       ],
 
       featured: true,
 
       buttonText: s.bookEnquire,
+
       buttonType: "phone",
     },
 
     /* =====================================================
-       MOVE-IN / MOVE-OUT
+       03 — MOVE-IN / MOVE-OUT
     ===================================================== */
 
     {
       number: "03",
+
       title: s.move,
+
       description: s.moveDescription,
 
       bhkPrices: [
@@ -226,6 +252,7 @@ export default function Services() {
       selectionKey: "move",
 
       method: s.availableEquipment,
+
       duration: s.confirmedAfterScope,
 
       items: s.moveItems,
@@ -241,16 +268,20 @@ export default function Services() {
       featured: false,
 
       buttonText: s.bookEnquire,
+
       buttonType: "phone",
     },
 
     /* =====================================================
-       TIDCO HOUSE - DEEP CLEANING
+       04 — TIDCO HOUSE
+       DEEP CLEANING
     ===================================================== */
 
     {
       number: "04",
+
       title: s.tidco,
+
       description: s.tidcoDescription,
 
       bhkPrices: [
@@ -267,6 +298,7 @@ export default function Services() {
       selectionKey: "tidco",
 
       method: s.tidcoMethod,
+
       duration: s.tidcoDuration,
 
       items: s.tidcoItems,
@@ -283,6 +315,7 @@ export default function Services() {
       featured: false,
 
       buttonText: s.bookEnquire,
+
       buttonType: "phone",
     },
   ];
