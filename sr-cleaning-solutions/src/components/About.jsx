@@ -16,7 +16,6 @@ export default function About() {
         duration: 0.7,
         ease: "power3.out",
       });
-
       gsap.from(".about-heading", {
         opacity: 0,
         y: 40,
@@ -24,7 +23,6 @@ export default function About() {
         delay: 0.1,
         ease: "power3.out",
       });
-
       gsap.from(".about-line", {
         scaleX: 0,
         transformOrigin: "center",
@@ -32,7 +30,6 @@ export default function About() {
         delay: 0.25,
         ease: "power3.out",
       });
-
       gsap.from(".about-text", {
         opacity: 0,
         y: 30,
@@ -41,10 +38,8 @@ export default function About() {
         ease: "power3.out",
       });
     }, sectionRef);
-
     return () => ctx.revert();
   }, []);
-
   return (
     <section
       id="about"
@@ -72,7 +67,6 @@ export default function About() {
           pointer-events-none
         "
       />
-
       <div
         className="
           absolute
@@ -86,7 +80,6 @@ export default function About() {
           pointer-events-none
         "
       />
-
       {/* Subtle grid */}
       <div
         className="
@@ -98,7 +91,6 @@ export default function About() {
           bg-[size:55px_55px]
         "
       />
-
       <div
         className="
           relative
@@ -136,7 +128,6 @@ export default function About() {
               shadow-[0_0_12px_rgba(37,211,102,0.7)]
             "
           />
-
           <span
             className="
               text-xs
@@ -150,7 +141,6 @@ export default function About() {
             About
           </span>
         </div>
-
         {/* Heading */}
         <h2
           className="
@@ -168,7 +158,6 @@ export default function About() {
         >
           {t.about.heading}
         </h2>
-
         {/* Accent */}
         <div
           className="
@@ -185,7 +174,6 @@ export default function About() {
             to-[#25D366]
           "
         />
-
         {/* Content */}
         <div
           className="
@@ -225,7 +213,6 @@ export default function About() {
           >
             “
           </div>
-
           <p
             className="
               relative

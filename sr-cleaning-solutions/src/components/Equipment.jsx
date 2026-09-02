@@ -5,7 +5,6 @@ import { useLanguage } from "../context/LanguageContext";
 export default function Equipment() {
   const { t } = useLanguage();
   const e = t.equipment;
-
   const equipment = [
     {
       name: e.vacuum,
@@ -23,7 +22,6 @@ export default function Equipment() {
       image: "/mini-blower.jpg",
     },
   ];
-
   return (
     <section
       id="equipment"
@@ -37,7 +35,6 @@ export default function Equipment() {
       "
     >
       {/* Background decoration */}
-
       <div
         className="
           pointer-events-none
@@ -51,7 +48,6 @@ export default function Equipment() {
           blur-[100px]
         "
       />
-
       <div
         className="
           pointer-events-none
@@ -65,7 +61,6 @@ export default function Equipment() {
           blur-[100px]
         "
       />
-
       <div
         className="
           relative
@@ -78,9 +73,7 @@ export default function Equipment() {
         "
       >
         {/* Header */}
-
         <div className="mx-auto max-w-3xl text-center">
-
           <span
             className="
               inline-flex
@@ -108,10 +101,8 @@ export default function Equipment() {
                 bg-[#25D366]
               "
             />
-
             {e.label}
           </span>
-
           <h2
             className="
               mt-5
@@ -126,7 +117,6 @@ export default function Equipment() {
           >
             {e.heading}
           </h2>
-
           <p
             className="
               mx-auto
@@ -144,7 +134,6 @@ export default function Equipment() {
         </div>
 
         {/* Equipment cards */}
-
         <div
           className="
             mt-10
@@ -176,7 +165,6 @@ export default function Equipment() {
               "
             >
               {/* Image */}
-
               <div
                 className="
                   relative
@@ -207,11 +195,8 @@ export default function Equipment() {
               </div>
 
               {/* Content */}
-
               <div className="p-5 sm:p-6">
-
                 <div className="flex items-start gap-3">
-
                   <span
                     className="
                       mt-1
@@ -228,9 +213,7 @@ export default function Equipment() {
                   >
                     ✓
                   </span>
-
                   <div className="min-w-0">
-
                     <h3
                       className="
                         text-xl
@@ -242,7 +225,6 @@ export default function Equipment() {
                     >
                       {item.name}
                     </h3>
-
                     <p
                       className="
                         mt-2
@@ -253,18 +235,14 @@ export default function Equipment() {
                     >
                       {item.description}
                     </p>
-
                   </div>
-
                 </div>
-
               </div>
             </article>
           ))}
         </div>
 
         {/* Accuracy note */}
-
         <div
           className="
             mx-auto
@@ -290,7 +268,6 @@ export default function Equipment() {
             {e.note}
           </p>
         </div>
-
       </div>
     </section>
   );

@@ -6,7 +6,6 @@ export default function FloatingButtons() {
       {/* =====================================================
           DESKTOP FLOATING BUTTONS
       ====================================================== */}
-
       <div
         className="
           hidden
@@ -69,7 +68,6 @@ export default function FloatingButtons() {
             "
           />
         </a>
-
         {/* WHATSAPP */}
         <a
           href="https://wa.me/919494239260"
@@ -132,7 +130,6 @@ export default function FloatingButtons() {
       {/* =====================================================
           MOBILE STICKY BAR
       ====================================================== */}
-
       <div
         className="
           fixed
@@ -151,7 +148,6 @@ export default function FloatingButtons() {
           pb-[env(safe-area-inset-bottom)]
         "
       >
-
         {/* CALL */}
         <a
           href="tel:+919494239260"
@@ -204,7 +200,6 @@ export default function FloatingButtons() {
             Call Now
           </span>
         </a>
-
         {/* WHATSAPP */}
         <a
           href="https://wa.me/919494239260"
