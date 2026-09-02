@@ -27,12 +27,10 @@ function WhatsAppIcon({ size = 18 }) {
         fill="#25D366"
         d="M12.04 2C6.51 2 2 6.51 2 12.04c0 1.77.46 3.49 1.33 5.02L2.06 21.8l4.88-1.25a10.02 10.02 0 0 0 5.1 1.39h.01c5.52 0 10.01-4.51 10.01-10.04C22.06 6.51 17.56 2 12.04 2Z"
       />
-
       <path
         fill="#fff"
         d="M12.04 3.7a8.34 8.34 0 0 0-7.15 12.67l.19.3-.73 2.68 2.75-.72.28.17a8.34 8.34 0 1 0 4.66-15.1Z"
       />
-
       <path
         fill="#25D366"
         d="M17.05 14.35c-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.14-.61.14-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.14-1.14-.42-2.17-1.34-.8-.71-1.34-1.59-1.5-1.86-.16-.27-.02-.42.12-.56.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.61-1.47-.84-2.01-.22-.53-.45-.46-.61-.47h-.52c-.18 0-.48.07-.73.34-.25.27-.96.94-.96 2.29s.98 2.66 1.11 2.85c.14.18 1.92 2.93 4.66 4.11.65.28 1.16.45 1.55.58.65.21 1.24.18 1.7.11.52-.08 1.6-.65 1.82-1.28.23-.63.23-1.17.16-1.28-.07-.11-.25-.18-.52-.32Z"
@@ -44,7 +42,6 @@ function WhatsAppIcon({ size = 18 }) {
 /* =========================================================
    INSTAGRAM SVG ICON
 ========================================================= */
-
 function InstagramIcon({ size = 19 }) {
   return (
     <svg
@@ -64,7 +61,6 @@ function InstagramIcon({ size = 19 }) {
         stroke="currentColor"
         strokeWidth="2"
       />
-
       <circle
         cx="12"
         cy="12"
@@ -72,7 +68,6 @@ function InstagramIcon({ size = 19 }) {
         stroke="currentColor"
         strokeWidth="2"
       />
-
       <circle
         cx="17.5"
         cy="6.5"
@@ -86,7 +81,6 @@ function InstagramIcon({ size = 19 }) {
 /* =========================================================
    FACEBOOK SVG ICON
 ========================================================= */
-
 function FacebookIcon({ size = 19 }) {
   return (
     <svg
@@ -108,7 +102,6 @@ function FacebookIcon({ size = 19 }) {
 /* =========================================================
    SOCIAL ICON BUTTON
 ========================================================= */
-
 function SocialIconButton({
   href,
   label,
@@ -162,12 +155,9 @@ function SocialIconButton({
 /* =========================================================
    FOOTER
 ========================================================= */
-
 export default function Footer() {
   const { t } = useLanguage();
-
   const f = t.footer;
-
   return (
     <footer
       className="
@@ -181,7 +171,6 @@ export default function Footer() {
       {/* =====================================================
           DECORATIVE GLOW
       ====================================================== */}
-
       <div
         className="
           pointer-events-none
@@ -195,7 +184,6 @@ export default function Footer() {
           blur-3xl
         "
       />
-
       <div
         className="
           pointer-events-none
@@ -213,7 +201,6 @@ export default function Footer() {
       {/* =====================================================
           MAIN CONTAINER
       ====================================================== */}
-
       <div
         className="
           relative
@@ -231,7 +218,6 @@ export default function Footer() {
         {/* ===================================================
             MAIN FOOTER GRID
         ==================================================== */}
-
         <div
           className="
             grid
@@ -245,12 +231,9 @@ export default function Footer() {
           {/* =================================================
               BRAND
           ================================================== */}
-
           <div>
             <div className="flex items-center gap-4">
-
               {/* LOGO */}
-
               <div
                 className="
                   flex
@@ -277,9 +260,7 @@ export default function Footer() {
                   "
                 />
               </div>
-
               {/* BUSINESS NAME */}
-
               <div>
                 <h3
                   className="
@@ -296,7 +277,6 @@ export default function Footer() {
                     Solutions
                   </span>
                 </h3>
-
                 <p
                   className="
                     mt-1
@@ -314,7 +294,6 @@ export default function Footer() {
             </div>
 
             {/* ACCENT */}
-
             <div
               className="
                 mt-5
@@ -328,7 +307,6 @@ export default function Footer() {
             />
 
             {/* DESCRIPTION */}
-
             <p
               className="
                 mt-5
@@ -345,7 +323,6 @@ export default function Footer() {
           {/* =================================================
               QUICK LINKS
           ================================================== */}
-
           <div>
             <h3
               className="
@@ -356,7 +333,6 @@ export default function Footer() {
             >
               {f.quickLinks}
             </h3>
-
             <div
               className="
                 mt-5
@@ -376,7 +352,6 @@ export default function Footer() {
               >
                 {f.services}
               </a>
-
               <a
                 href="#rates"
                 className="
@@ -388,7 +363,6 @@ export default function Footer() {
               >
                 {f.rates}
               </a>
-
               <a
                 href="#equipment"
                 className="
@@ -400,7 +374,6 @@ export default function Footer() {
               >
                 {f.equipment}
               </a>
-
               <a
                 href="#terms"
                 className="
@@ -412,7 +385,6 @@ export default function Footer() {
               >
                 {f.terms}
               </a>
-
               <a
                 href="#reviews"
                 className="
@@ -424,7 +396,6 @@ export default function Footer() {
               >
                 {f.reviews}
               </a>
-
               <a
                 href="#about"
                 className="
@@ -436,7 +407,6 @@ export default function Footer() {
               >
                 {f.about}
               </a>
-
               <a
                 href="#udyam"
                 className="
@@ -454,7 +424,6 @@ export default function Footer() {
           {/* =================================================
               CONTACT INFORMATION
           ================================================== */}
-
           <div>
             <h3
               className="
@@ -465,11 +434,8 @@ export default function Footer() {
             >
               {f.contact}
             </h3>
-
             <div className="mt-5 space-y-4">
-
               {/* PHONE */}
-
               <a
                 href="tel:+919494239260"
                 className="
@@ -490,14 +456,12 @@ export default function Footer() {
                     text-[#00A3E0]
                   "
                 />
-
                 <span>
                   +91 9494239260
                 </span>
               </a>
 
               {/* WHATSAPP */}
-
               <a
                 href="https://wa.me/919494239260?text=Hello%20SR%20Cleaning%20Solutions%2C%20I%20would%20like%20to%20enquire%20about%20your%20cleaning%20services."
                 target="_blank"
@@ -530,14 +494,12 @@ export default function Footer() {
                 >
                   <WhatsAppIcon size={18} />
                 </span>
-
                 <span>
                   {f.whatsapp}
                 </span>
               </a>
 
               {/* EMAIL */}
-
               <a
                 href="mailto:services.srcleaningsolutions@gmail.com"
                 className="
@@ -558,14 +520,12 @@ export default function Footer() {
                     text-[#00A3E0]
                   "
                 />
-
                 <span className="break-all">
                   services.srcleaningsolutions@gmail.com
                 </span>
               </a>
 
               {/* ADDRESS */}
-
               <div
                 className="
                   flex
@@ -584,7 +544,6 @@ export default function Footer() {
                     text-[#25D366]
                   "
                 />
-
                 <span>
                   Vengalayapalem, Guntur,
                   <br />
@@ -593,7 +552,6 @@ export default function Footer() {
               </div>
 
               {/* WEBSITE */}
-
               <a
                 href="https://www.srcleaningsolutions.com/"
                 target="_blank"
@@ -616,7 +574,6 @@ export default function Footer() {
                     text-[#00A3E0]
                   "
                 />
-
                 <span>
                   www.srcleaningsolutions.com
                 </span>
@@ -627,9 +584,7 @@ export default function Footer() {
               ================================================== */}
 
               <div className="pt-2">
-
                 {/* SOCIAL MEDIA HEADING */}
-
                 <p
                   className="
                     text-xs
@@ -642,9 +597,7 @@ export default function Footer() {
                 >
                   {f.socialMedia || "Social Media"}
                 </p>
-
                 {/* SOCIAL ICONS */}
-
                 <div
                   className="
                     mt-3
@@ -654,7 +607,6 @@ export default function Footer() {
                   "
                 >
                   {/* INSTAGRAM */}
-
                   <SocialIconButton
                     href="https://www.instagram.com/solutionssrcleaning/"
                     label="Instagram - solutionssrcleaning"
@@ -663,7 +615,6 @@ export default function Footer() {
                   </SocialIconButton>
 
                   {/* FACEBOOK */}
-
                   <SocialIconButton
                     href="https://www.facebook.com/solutionssrcleaning/"
                     label="Facebook - solutionssrcleaning"
@@ -671,7 +622,6 @@ export default function Footer() {
                     <FacebookIcon size={19} />
                   </SocialIconButton>
                 </div>
-
               </div>
             </div>
           </div>

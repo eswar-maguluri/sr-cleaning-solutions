@@ -619,25 +619,6 @@ export default function Terms() {
             </a>
           </div>
         </div>
-
-        {/* ===================================================
-            REVIEW NOTE
-        ==================================================== */}
-
-        <p
-          className="
-            mx-auto
-            mt-6
-            max-w-3xl
-            text-center
-            text-xs
-            sm:text-sm
-            leading-6
-            text-[#71839c]
-          "
-        >
-          {x.reviewNote}
-        </p>
       </div>
     </section>
   );

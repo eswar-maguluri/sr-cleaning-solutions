@@ -611,9 +611,7 @@ const en = {
 
     contactUs:
       "Contact Us",
-
-    reviewNote:
-      "Cancellation, advance payment, payment methods, service-area coverage and other final business policies will be updated once confirmed.",
+    
   },
 
   /* =========================================================
