@@ -16,22 +16,18 @@ gsap.registerPlugin(ScrollTrigger);
 export default function Reviews() {
   const { t } = useLanguage();
   const [reviews, setReviews] = useState([]);
-
   useEffect(() => {
     loadReviews();
   }, []);
-
   const loadReviews = async () => {
     try {
       const querySnapshot = await getDocs(
         collection(db, "reviews")
       );
-
       const data = querySnapshot.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
       }));
-
       console.log("MY REVIEWS:", data);
       setReviews(data);
     } catch (error) {
@@ -41,13 +37,10 @@ export default function Reviews() {
 
   useEffect(() => {
     if (!reviews.length) return;
-
     const ctx = gsap.context(() => {
       const heading = document.querySelector(".reviews-header");
       const cards = gsap.utils.toArray(".review-card");
-
       if (!heading || !cards.length) return;
-
       gsap.fromTo(
         heading,
         {
@@ -66,7 +59,6 @@ export default function Reviews() {
           },
         }
       );
-
       gsap.fromTo(
         cards,
         {
@@ -87,12 +79,10 @@ export default function Reviews() {
         }
       );
     });
-
     return () => {
       ctx.revert();
     };
   }, [reviews]);
-
   return (
     <section
       id="reviews"
@@ -106,7 +96,6 @@ export default function Reviews() {
       "
     >
       {/* Background atmosphere */}
-
       <div
         className="
           pointer-events-none
@@ -120,7 +109,6 @@ export default function Reviews() {
           blur-[140px]
         "
       />
-
       <div
         className="
           pointer-events-none
@@ -136,7 +124,6 @@ export default function Reviews() {
       />
 
       {/* Fine background grid */}
-
       <div
         className="
           pointer-events-none
@@ -147,7 +134,6 @@ export default function Reviews() {
           bg-[size:48px_48px]
         "
       />
-
       <div
         className="
           relative
@@ -160,7 +146,6 @@ export default function Reviews() {
         "
       >
         {/* Heading */}
-
         <div className="reviews-header text-center max-w-3xl mx-auto">
           <div
             className="
@@ -191,7 +176,6 @@ export default function Reviews() {
                   animate-ping
                 "
               />
-
               <span
                 className="
                   relative
@@ -203,7 +187,6 @@ export default function Reviews() {
                 "
               />
             </span>
-
             <span
               className="
                 text-[10px]
@@ -217,7 +200,6 @@ export default function Reviews() {
               Reviews
             </span>
           </div>
-
           <h2
             className="
               text-4xl
@@ -235,7 +217,6 @@ export default function Reviews() {
         </div>
 
         {/* Slider */}
-
         <div className="reviews-slider-wrap mt-12 sm:mt-14 md:mt-16">
           <Swiper
             slidesPerView={1}
@@ -303,7 +284,6 @@ export default function Reviews() {
                   "
                 >
                   {/* Premium top gradient */}
-
                   <div
                     className="
                       absolute
@@ -319,7 +299,6 @@ export default function Reviews() {
                   />
 
                   {/* Decorative quote */}
-
                   <div
                     className="
                       pointer-events-none
@@ -336,10 +315,8 @@ export default function Reviews() {
                   >
                     “
                   </div>
-
                   <div className="relative z-10">
                     {/* Rating */}
-
                     <div
                       className="
                         flex
@@ -355,7 +332,6 @@ export default function Reviews() {
                     </div>
 
                     {/* Small divider */}
-
                     <div
                       className="
                         mt-5
@@ -372,7 +348,6 @@ export default function Reviews() {
                     />
 
                     {/* Review */}
-
                     <p
                       className="
                         mt-5
@@ -389,7 +364,6 @@ export default function Reviews() {
                   </div>
 
                   {/* Reviewer */}
-
                   <div
                     className="
                       relative
@@ -424,7 +398,6 @@ export default function Reviews() {
                       <span className="relative z-10">
                         {review.name?.charAt(0)?.toUpperCase()}
                       </span>
-
                       <span
                         className="
                           absolute
@@ -439,7 +412,6 @@ export default function Reviews() {
                         "
                       />
                     </div>
-
                     <div className="min-w-0">
                       <div
                         className="
@@ -456,7 +428,6 @@ export default function Reviews() {
                   </div>
 
                   {/* Hover glow */}
-
                   <div
                     className="
                       pointer-events-none

@@ -9,11 +9,9 @@ import { collection, addDoc } from "firebase/firestore";
 
 export default function ReviewForm() {
   const { t } = useLanguage();
-
   const [name, setName] = useState("");
   const [rating, setRating] = useState(5);
   const [review, setReview] = useState("");
-
   const sectionRef = useRef(null);
   const formRef = useRef(null);
 
@@ -25,7 +23,6 @@ export default function ReviewForm() {
         duration: 0.7,
         ease: "power3.out",
       });
-
       gsap.from(".review-form-title", {
         opacity: 0,
         y: 35,
@@ -33,7 +30,6 @@ export default function ReviewForm() {
         delay: 0.1,
         ease: "power3.out",
       });
-
       gsap.from(".review-form-card", {
         opacity: 0,
         y: 55,
@@ -42,7 +38,6 @@ export default function ReviewForm() {
         delay: 0.2,
         ease: "power3.out",
       });
-
       gsap.from(".review-form-field", {
         opacity: 0,
         y: 18,
@@ -52,32 +47,27 @@ export default function ReviewForm() {
         ease: "power2.out",
       });
     }, sectionRef);
-
     return () => ctx.revert();
   }, []);
 
   const submitReview = async (e) => {
     e.preventDefault();
-
     try {
       await addDoc(collection(db, "reviews"), {
         name,
         rating: Number(rating),
         review,
       });
-
       alert(
         t.language === "te"
           ? "సమీక్ష విజయవంతంగా పంపబడింది!"
           : "Review submitted successfully!"
       );
-
       setName("");
       setRating(5);
       setReview("");
     } catch (err) {
       console.error(err);
-
       alert(
         t.language === "te"
           ? "సమీక్ష పంపడంలో విఫలమైంది"
@@ -85,7 +75,6 @@ export default function ReviewForm() {
       );
     }
   };
-
   return (
     <section
       ref={sectionRef}
@@ -112,7 +101,6 @@ export default function ReviewForm() {
           pointer-events-none
         "
       />
-
       <div
         className="
           absolute
@@ -126,7 +114,6 @@ export default function ReviewForm() {
           pointer-events-none
         "
       />
-
       {/* Fine decorative grid */}
       <div
         className="
@@ -138,7 +125,6 @@ export default function ReviewForm() {
           bg-[size:55px_55px]
         "
       />
-
       <div
         className="
           relative
@@ -151,7 +137,6 @@ export default function ReviewForm() {
       >
         {/* Heading */}
         <div className="text-center mb-10 sm:mb-12 md:mb-14">
-
           <div
             className="
               review-form-eyebrow
@@ -182,10 +167,8 @@ export default function ReviewForm() {
                 shadow-[0_0_12px_rgba(37,211,102,0.8)]
               "
             />
-
             {t.reviews.leaveReview}
           </div>
-
           <h2
             className="
               review-form-title
@@ -255,9 +238,7 @@ export default function ReviewForm() {
               pointer-events-none
             "
           />
-
           <div className="relative z-10 space-y-4 sm:space-y-5">
-
             {/* Name */}
             <div className="review-form-field">
               <input
@@ -292,7 +273,6 @@ export default function ReviewForm() {
                 "
               />
             </div>
-
             {/* Rating */}
             <div className="review-form-field">
               <select
@@ -410,7 +390,6 @@ export default function ReviewForm() {
                     to-transparent
                   "
                 />
-
                 <span className="relative z-10">
                   {t.reviews.submit}
                 </span>

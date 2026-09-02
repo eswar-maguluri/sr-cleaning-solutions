@@ -70,7 +70,7 @@ export default function FloatingButtons() {
         </a>
         {/* WHATSAPP */}
         <a
-          href="https://wa.me/919494239260"
+          href="https://wa.me/919494239260?text=Hello%20SR%20Cleaning%20Solutions%2C%20I%20would%20like%20to%20enquire%20about%20your%20cleaning%20services."
           target="_blank"
           rel="noopener noreferrer"
           aria-label="WhatsApp SR Cleaning Solutions"
@@ -202,7 +202,7 @@ export default function FloatingButtons() {
         </a>
         {/* WHATSAPP */}
         <a
-          href="https://wa.me/919494239260"
+          href="https://wa.me/919494239260?text=Hello%20SR%20Cleaning%20Solutions%2C%20I%20would%20like%20to%20enquire%20about%20your%20cleaning%20services."
           target="_blank"
           rel="noopener noreferrer"
           aria-label="WhatsApp SR Cleaning Solutions"
