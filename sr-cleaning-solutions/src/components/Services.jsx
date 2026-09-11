@@ -88,7 +88,7 @@ function InfoBox({
    SERVICES
 ========================================================= */
 
-export default function Services() {
+export default function Services({ onEnquiry }) {
   const { t } = useLanguage();
 
   const s = t.services;
@@ -103,17 +103,6 @@ export default function Services() {
     move: "1 BHK",
     tidco: "1 BHK",
   });
-
-  /* =========================================================
-     ENQUIRY ACTION
-  ========================================================= */
-
-  const handleEnquiry = () => {
-    document.getElementById("enquiry")?.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-  };
 
   /* =========================================================
      SERVICES DATA
@@ -1111,7 +1100,7 @@ export default function Services() {
                   ) : (
                     <button
                       type="button"
-                      onClick={handleEnquiry}
+                      onClick={() => onEnquiry(service.title)}
                       aria-label={`Enquire about ${service.title}`}
                       className={`
                         flex
@@ -1478,7 +1467,7 @@ export default function Services() {
                 <div className="mt-5 grid grid-cols-1 gap-2 sm:grid-cols-2">
                   <button
                     type="button"
-                    onClick={handleEnquiry}
+                    onClick={() => onEnquiry(combo.title)}
                     aria-label={`Enquire about ${combo.title}`}
                     className="
                       flex
