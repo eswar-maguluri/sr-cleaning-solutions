@@ -218,16 +218,18 @@ export default function EnquiryForm({
       <div
         className="
           relative
-          max-h-[92vh]
-          w-full
+          max-h-[88vh]
+          w-[92%]
           max-w-2xl
           overflow-y-auto
-          rounded-[28px]
+          rounded-[24px]
           border
           border-[#d8e8f8]
           bg-white
-          p-6
+          p-4
           shadow-[0_25px_80px_rgba(3,27,96,0.25)]
+          sm:w-full
+          sm:rounded-[28px]
           sm:p-8
           md:p-10
         "
