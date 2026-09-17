@@ -279,6 +279,7 @@ function ServiceCard({
   service,
   isOpen,
   onToggle,
+  onEnquiry,
 }) {
   return (
     <article
@@ -696,7 +697,7 @@ function ServiceCard({
                   sm:text-2xl
                 "
               >
-                What's Included
+                What Included
               </h4>
 
               <div
@@ -797,11 +798,12 @@ function ServiceCard({
                 BOOK BUTTON
             ================================================= */}
 
-            <a
-              href="https://wa.me/919494239260?text=Hello%20SR%20Cleaning%20Solutions%2C%20I%20would%20like%20to%20enquire%20about%20your%20cleaning%20services."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="
+            <button
+                type="button"
+                onClick={() =>
+                    onEnquiry(service.title)
+            }
+                className="
                 mt-5
                 flex
                 min-h-[52px]
@@ -821,22 +823,21 @@ function ServiceCard({
 
                 sm:min-h-[58px]
                 sm:text-lg
-              "
+                "
             >
               <CalendarDays
-                size={21}
-                strokeWidth={1.8}
+                  size={21}
+                  strokeWidth={1.8}
               />
-
               <span>
                 Book / Enquire Now
               </span>
 
               <ArrowRight
-                size={21}
-                strokeWidth={2}
+                  size={21}
+                  strokeWidth={2}
               />
-            </a>
+            </button>
 
             {/* =================================================
                 CLOSE
@@ -882,7 +883,7 @@ function ServiceCard({
    MAIN COMPONENT
 ========================================================= */
 
-export default function RateCards() {
+export default function RateCards({ onEnquiry }) {
   const { t } = useLanguage();
 
   const rates =
@@ -1738,22 +1739,22 @@ export default function RateCards() {
           "
         >
           {services.map((service) => (
-            <ServiceCard
-              key={service.id}
-              service={service}
-              isOpen={
+              <ServiceCard
+                  key={service.id}
+                  service={service}
+                  isOpen={
                 openServiceId ===
-                service.id
+                      service.id
               }
-              onToggle={() =>
-                toggleService(
-                  service.id
-                )
+                  onToggle={() =>
+                      toggleService(
+                          service.id
+                      )
               }
-            />
+                  onEnquiry={onEnquiry}
+              />
           ))}
-        </div>
-
+         </div>
         {/* ===================================================
             PRICING NOTE
         =================================================== */}

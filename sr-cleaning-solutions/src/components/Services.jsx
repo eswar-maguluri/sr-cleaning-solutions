@@ -88,7 +88,7 @@ function InfoBox({
    SERVICES
 ========================================================= */
 
-export default function Services() {
+export default function Services({ onEnquiry }) {
   const { t } = useLanguage();
 
   const s = t.services;
@@ -165,7 +165,7 @@ export default function Services() {
 
       buttonText: s.bookEnquire,
 
-      buttonType: "phone",
+      buttonType: "enquiry",
     },
 
     /* =====================================================
@@ -200,6 +200,11 @@ export default function Services() {
       /*
         DEEP CLEANING:
         Machine-assisted cleaning.
+
+        Current equipment:
+        Vacuum Cleaner
+        Mini Hand Scrubber
+        Mini Blower
       */
 
       method: s.machineAssisted,
@@ -211,16 +216,16 @@ export default function Services() {
       sectionTitle: s.equipmentMaterials,
 
       tags: [
-        s.singleDiscFloorScrubber,
-        s.steamCleaning,
-        s.specializedStainRemovers,
+        s.vacuum,
+        s.miniScrubber,
+        s.miniBlower,
       ],
 
       featured: true,
 
       buttonText: s.bookEnquire,
 
-      buttonType: "phone",
+      buttonType: "enquiry",
     },
 
     /* =====================================================
@@ -269,7 +274,7 @@ export default function Services() {
 
       buttonText: s.bookEnquire,
 
-      buttonType: "phone",
+      buttonType: "enquiry",
     },
 
     /* =====================================================
@@ -316,7 +321,7 @@ export default function Services() {
 
       buttonText: s.bookEnquire,
 
-      buttonType: "phone",
+      buttonType: "enquiry",
     },
   ];
 
@@ -1059,7 +1064,7 @@ export default function Services() {
 
                 {/* CTA */}
 
-                <div className="mt-5">
+                <div className="mt-5 grid grid-cols-1 gap-2 sm:grid-cols-2">
                   {service.buttonType ===
                   "whatsapp" ? (
                     <a
@@ -1075,15 +1080,15 @@ export default function Services() {
                         justify-center
                         gap-2
                         rounded-full
-                        bg-[#031B60]
+                        bg-[#25D366]
                         px-4
                         text-xs
                         font-bold
                         text-white
-                        shadow-[0_8px_20px_rgba(3,27,96,0.12)]
+                        shadow-[0_8px_20px_rgba(37,211,102,0.18)]
                         transition-all
                         duration-300
-                        hover:bg-[#25D366]
+                        hover:bg-[#1FBD5B]
                         sm:min-h-[52px]
                         sm:text-sm
                       "
@@ -1093,9 +1098,10 @@ export default function Services() {
                       {service.buttonText}
                     </a>
                   ) : (
-                    <a
-                      href="tel:+919494239260"
-                      aria-label="Call SR Cleaning Solutions"
+                    <button
+                      type="button"
+                      onClick={() => onEnquiry(service.title)}
+                      aria-label={`Enquire about ${service.title}`}
                       className={`
                         flex
                         min-h-[48px]
@@ -1114,16 +1120,51 @@ export default function Services() {
 
                         ${
                           service.featured
-                            ? "bg-white text-[#031B60] hover:bg-[#25D366] hover:text-white"
+                            ? "bg-white text-[#031B60] hover:bg-[#00A3E0] hover:text-white"
                             : "bg-[#031B60] text-white hover:bg-[#00A3E0]"
                         }
                       `}
                     >
-                      <Phone size={16} />
+                      <Phone
+                        size={16}
+                        className="rotate-0"
+                      />
 
                       {service.buttonText}
-                    </a>
+                    </button>
                   )}
+
+                  <a
+                    href="tel:+919494239260"
+                    aria-label={`Call SR Cleaning Solutions for ${service.title}`}
+                    className={`
+                      flex
+                      min-h-[48px]
+                      w-full
+                      items-center
+                      justify-center
+                      gap-2
+                      rounded-full
+                      border
+                      px-4
+                      text-xs
+                      font-bold
+                      transition-all
+                      duration-300
+                      sm:min-h-[52px]
+                      sm:text-sm
+
+                      ${
+                        service.featured
+                          ? "border-white/20 bg-white/10 text-white hover:bg-[#25D366] hover:text-white"
+                          : "border-[#031B60] bg-white text-[#031B60] hover:bg-[#031B60] hover:text-white"
+                      }
+                    `}
+                  >
+                    <Phone size={16} />
+
+                    Call Now
+                  </a>
                 </div>
               </article>
             );
@@ -1423,33 +1464,65 @@ export default function Services() {
 
                 {/* COMBO CTA */}
 
-                <a
-                  href="tel:+919494239260"
-                  aria-label={`Call SR Cleaning Solutions for ${combo.title}`}
-                  className="
-                    mt-5
-                    flex
-                    min-h-[48px]
-                    w-full
-                    items-center
-                    justify-center
-                    gap-2
-                    rounded-full
-                    bg-[#031B60]
-                    px-4
-                    text-xs
-                    font-bold
-                    text-white
-                    transition-all
-                    duration-300
-                    hover:bg-[#00A3E0]
-                    sm:min-h-[52px]
-                    sm:text-sm
-                  "
-                >
-                  <Phone size={16} />
-                  {s.bookEnquire}
-                </a>
+                <div className="mt-5 grid grid-cols-1 gap-2 sm:grid-cols-2">
+                  <button
+                    type="button"
+                    onClick={() => onEnquiry(combo.title)}
+                    aria-label={`Enquire about ${combo.title}`}
+                    className="
+                      flex
+                      min-h-[48px]
+                      w-full
+                      items-center
+                      justify-center
+                      gap-2
+                      rounded-full
+                      bg-[#031B60]
+                      px-4
+                      text-xs
+                      font-bold
+                      text-white
+                      transition-all
+                      duration-300
+                      hover:bg-[#00A3E0]
+                      sm:min-h-[52px]
+                      sm:text-sm
+                    "
+                  >
+                    {s.bookEnquire}
+                  </button>
+
+                  <a
+                    href="tel:+919494239260"
+                    aria-label={`Call SR Cleaning Solutions for ${combo.title}`}
+                    className="
+                      flex
+                      min-h-[48px]
+                      w-full
+                      items-center
+                      justify-center
+                      gap-2
+                      rounded-full
+                      border
+                      border-[#031B60]
+                      bg-white
+                      px-4
+                      text-xs
+                      font-bold
+                      text-[#031B60]
+                      transition-all
+                      duration-300
+                      hover:bg-[#031B60]
+                      hover:text-white
+                      sm:min-h-[52px]
+                      sm:text-sm
+                    "
+                  >
+                    <Phone size={16} />
+
+                    Call Now
+                  </a>
+                </div>
               </article>
             ))}
           </div>
